@@ -16,7 +16,7 @@ import javax.swing.*;
  *
  */
 
-public class CafeGUI2 extends JFrame implements ActionListener {
+public class CafeGUI extends JFrame implements ActionListener {
 
 	// This is where the info will be drawn from
 	//private Menu menu;
@@ -47,7 +47,7 @@ public class CafeGUI2 extends JFrame implements ActionListener {
 
 	
 
-	public CafeGUI2() {
+	public CafeGUI() {
 
 		
 		
@@ -173,7 +173,7 @@ class TestGUI {
 	
 	public static void main(String[] args){
 		
-		CafeGUI2 test = new CafeGUI2();
+		CafeGUI test = new CafeGUI();
 		
 		test.setSize(600, 600);
 		test.setVisible(true);
