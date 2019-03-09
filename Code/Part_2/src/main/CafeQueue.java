@@ -1,9 +1,12 @@
 package main;
 import java.util.Queue;
 
+import part1.Order;
+import part1.OrderList;
+
 public class CafeQueue extends Thread{
 
-	private Queue<Object> queue;
+	private Queue<Order> queue;
 	
 	CafeQueue(){
 		
@@ -16,18 +19,22 @@ public class CafeQueue extends Thread{
 	 * @see java.lang.Thread#run()
 	 */
 	public void run() {
-		while(OrderList.getSize != 0 && queue.size() != 0) {
-			addToQueue();
-			sleep(50);
+		while(OrderList.getSize() != 0 && queue.size() != 0) {
+			try {
+				addToQueue();
+				sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	/*
-	 * Add an order to the queue
+	 * Add an order to the queue from the orderList
 	 */
 	private synchronized void addToQueue() {
 		Order order = OrderList.getOrder();
-		sendToLog("%s has joined the queue", order.getName());
+		sendToLog( order.getID() + " has joined the queue");
 		queue.add(order);
 	}
 	
@@ -35,9 +42,9 @@ public class CafeQueue extends Thread{
 	 * Method for the server thread to access orders from the queue.
 	 * Accessed orders will be removed from the queue.
 	 */
-	public synchronized Object serveCustomer() {
+	public synchronized Order serveCustomer() {
 		
-		sendToLog("Customer Served : %s", queue.peek().getName());
+		sendToLog("Customer Served : " + queue.peek().getID());
 		return queue.poll();
 	}
 	
