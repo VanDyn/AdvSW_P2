@@ -11,24 +11,30 @@ public enum Log {
 	INSTANCE;
 	
 	// File destination
-	private File logfile;
+	private StringBuilder logFile;
 	
 	// Private constructor
 	private Log() {
-		logfile = new File("LogFile.txt");
+		logFile = new StringBuilder();
 	}
 	
-	// Synchorized public method for writing to log.
+	// Synchorized public method for files to a StringBuilder object.
 	public synchronized void log(String s) {
 		// Attempt to write to given file
-		try {
-			FileWriter fw = new FileWriter(this.logfile,true);
-			fw.write(s);
-			fw.write(System.lineSeparator());
-			fw.close();
-		} catch (IOException ex) {
-			System.err.println("Could not log " + s);
-		}
+		logFile.append(s);
+		logFile.append(System.lineSeparator());
 		
+	}
+	
+	// method that prints StringBuilder to a file.
+	public void logToFile() {
+		try {
+			FileWriter fw = new FileWriter( new File("LogFile.txt"), false);
+			fw.write(logFile.toString());
+			fw.close();
+		} catch (IOException e) {
+			System.out.println(e.toString());
+			
+		}
 	}
 }
