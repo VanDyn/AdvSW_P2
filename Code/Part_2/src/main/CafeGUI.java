@@ -6,17 +6,19 @@ import java.awt.event.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.*;
 
 /**
- * Class which will implement the GUI for the coffee shop.
+ * Class which will implement the GUI for the coffee shop simulation.
  * 
  * @author ShayneShaw
  *
  */
 
-public class CafeGUI extends JFrame implements ActionListener {
+public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 	// This is where the info will be drawn from
 	//private Menu menu;
@@ -44,6 +46,8 @@ public class CafeGUI extends JFrame implements ActionListener {
 
 	// Linked list for order
 	//private LinkedList<MenuItem> currentOrder;
+	
+	// private ObservableDemo weatherUpdate ;   //  IMPLEMENT OBSERVABLE CLASSSES, THIS IS JUST AN EXAMPLE
 
 	
 
@@ -165,6 +169,36 @@ public class CafeGUI extends JFrame implements ActionListener {
 
 		// Stop the program
 
+	}
+	
+	private void updateQueueDisplay(){
+		
+		// update the queue display
+		queueDisplay.append("Updated");
+	}
+	
+	private void updateTillOne(){
+		
+		// update till 1 display
+		tillOneDisplay.append("Update Till 1");
+	}
+	
+	private void updateTillTwo(){
+		
+		// update till 2 display
+		tillTwoDisplay.append("Update till 2");
+		
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+		 // IMPLEMENT OBSERVABLE METHODS, THIS IS JUST AN EXAMPLE
+		
+		// weatherUpdate = (ObservableDemo) observable;   
+        // System.out.println("Weather Report Live. Its "+weatherUpdate.getWeather());
+		
 	}
 
 }
