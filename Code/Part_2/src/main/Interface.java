@@ -17,11 +17,13 @@ import java.util.*;
 public class Interface {
 
 	private static Menu menu;
-	private static Map<String,Order> orderList;
+	//private static Map<String,Order> orderList;
+	public static ArrayList<Order> orderList;
 	
 	public Interface(String filename) {
 		menu = new Menu("src/main/exampleMenu.txt");
-		orderList = new TreeMap<String,Order>();
+		//orderList = new TreeMap<String,Order>();
+		orderList = new ArrayList<Order>();
 		
 		try {
 			getPrevOrders(filename);
@@ -55,23 +57,24 @@ public class Interface {
 				
 				//Needed customer info. Is it needed? If so, refactor orderlist
 				String cusInfo = orderLine[0];
+				String[] name = cusInfo.split(";");
 //				String time = cusInfo.substring(0, cusInfo.indexOf(";"));
 //				String name = cusInfo.substring(cusInfo.indexOf(":"));
-
 				//Needed order info (Only need item descriptions) 
 				String ordInfo = orderLine[1];
 				String[] o = ordInfo.split(";");
 				ordInfo = o[2];
-				
 				o = ordInfo.split(",");
 				for(String s: o) {
 					s=s.substring(0,s.indexOf(":"));
 					MenuItem mi = menu.getItem(s);
 					orderTotal = orderTotal.add(menu.getItemCost(s));
+					
 					order.add(mi);
 				}
+				
 				//Create an order and append to orderList
-				makeOrder(cusInfo,order,orderTotal);
+				makeOrder(name[1],order,orderTotal);
 				
 			}		
 			
@@ -96,14 +99,26 @@ public class Interface {
 	private void makeOrder(String cusInfo, LinkedList<MenuItem> mi, BigDecimal total) {
 		//Order constructor with calc total?
 		Order o = new Order(mi,total);
-		orderList.put(cusInfo, o);
+		o.setId(cusInfo);
+		orderList.add(o);
 	}
 	/**
 	 * 
 	 * @return a list of orders 
 	 */
-	public Map<String,Order> getOrderList(){
-		return orderList;
+//	public Map<String,Order> getOrderList(){
+//		return orderList;
+//	}
+	
+	public static int getSize() {
+		return orderList.size();
+	}
+	
+	public static Order getOrder() {
+		Order o = orderList.get(0);
+		orderList.remove(0);
+		return o;
+		
 	}
 
 }

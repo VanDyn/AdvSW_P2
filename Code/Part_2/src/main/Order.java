@@ -23,6 +23,10 @@ public class Order implements Comparable<Order>
 		this.total = total;
 	}
 	
+	public void setId(String id) {
+		this.ID = id;
+	}
+	
 	/**
 	 * Constructor to be used when creating an order through the GUI
 	 * @param Items LinkedList of menuItem objects

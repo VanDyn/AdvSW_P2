@@ -26,10 +26,15 @@ public class CafeQueue extends Thread implements CafeQueueInterface{
 	 * @see java.lang.Thread#run()
 	 */
 	public void run() {
-		while(OrderList.getSize != 0 && queue.size() != 0) {
+		while(Interface.getSize() != 0 && queue.size() != 0) {
 			addToQueue();
 			notifyObservers();
-			sleep(50);
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -37,8 +42,8 @@ public class CafeQueue extends Thread implements CafeQueueInterface{
 	 * Add an order to the queue
 	 */
 	private synchronized void addToQueue() {
-		Order order = OrderList.getOrder();
-		sendToLog("%s has joined the queue", order.getName());
+		Order order = Interface.getOrder();
+		sendToLog("%s has joined the queue", order.getID());
 		queue.add(order);
 	}
 	
@@ -48,7 +53,7 @@ public class CafeQueue extends Thread implements CafeQueueInterface{
 	 */
 	public static synchronized Order serveCustomer() {
 		
-		sendToLog("Customer Served : %s", queue.peek().getName());
+		sendToLog("Customer Served : %s", queue.peek().getID());
 		return queue.poll();
 	}
 	

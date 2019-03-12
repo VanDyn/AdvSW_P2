@@ -19,14 +19,19 @@ public class CaffeineAddictsAndCo {
 		Interface i = new Interface(filename);
 		ol = new OrderList();
 		
-		for(Entry<String, Order> o: i.getOrderList().entrySet()) ol.addOrder(o.getKey(), o.getValue());;
+	   System.out.println( Interface.getSize());
+	   System.out.println(Interface.getOrder().getID());
+	   System.out.println( Interface.getSize());
+		
+		
+		//for(Entry<String, Order> o: i.getOrderList().entrySet()) ol.addOrder(o.getKey(), o.getValue());;
 		//Retrieve customer info for every order
-		System.out.println(ol.getCusInfo());
-		//Retrieve just time of first order
-		String o = ol.getCusInfo().get(0);
-		System.out.println(o.substring(0, o.indexOf(";")));
-		//Retrieve just name of first order
-		System.out.println(o.substring(o.indexOf(";")+1));
+//		System.out.println(ol.getCusInfo());
+//		//Retrieve just time of first order
+//		String o = ol.getCusInfo().get(0);
+//		System.out.println(o.substring(0, o.indexOf(";")));
+//		//Retrieve just name of first order
+//		System.out.println(o.substring(o.indexOf(";")+1));
 		
 	}
 }
