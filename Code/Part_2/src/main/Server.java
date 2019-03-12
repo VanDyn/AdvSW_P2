@@ -2,19 +2,47 @@ package main;
 
 import java.math.BigDecimal;
 import java.util.LinkedList;
+import java.util.Observable;
+import main.CafeQueue;
+import main.MenuItem;
+import main.Order;
 
-class Server implements Runnable 
-{ 
+import java.util.ArrayList;
+import java.util.List;
+
+public class Server implements Runnable  
+{
 	private String customerName;
 	private BigDecimal total;
 	private String description;
 	private CafeQueue;
+	private List<Observer> observers = new ArrayList<Observer>();
+	private int state = 0;
 	
 	public Server(CafeQueue queue)
 	{
 		this.CafeQueue = queue; //take class as argument
 	}
 
+	public int getState() {
+	   return state;
+	}
+
+	public void setState(int state) {
+	   this.state = state;
+	   notifyAllObservers();
+	}
+
+	public void attach(Observer observer){
+	   observers.add(observer);		
+	}
+
+	public void notifyAllObservers(){
+	   for (Observer observer : observers) {
+	         observer.update();
+	   }
+	} 	
+	
 	public void run()
 	{
 		Order order = CafeQueue.serveCustomer(); //get orders from class
