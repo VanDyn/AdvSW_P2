@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
@@ -8,10 +9,10 @@ import java.util.Queue;
 import main.Order;
 import main.OrderList;
 
-public class CafeQueue extends Thread implements CafeQueueInterface{
+public class CafeQueue implements Runnable{
 
 	private static Queue<Order> queue;
-	private List<Observer> registeredObservers = new LinkedList<Observer>();
+	private List<Observer> registeredObservers = new ArrayList<Observer>();
 	
 	CafeQueue(){
 		
@@ -62,22 +63,25 @@ public class CafeQueue extends Thread implements CafeQueueInterface{
 		Log log = Log.getInstance(details);
 	}
 
-	@Override
 	public void registerObserver(Observer obs) {
 		registeredObservers.add(obs);
 		
 	}
 
-	@Override
 	public void removeObserver(Observer obs) {
 		registeredObservers.remove(obs);
 		
 	}
 
-	@Override
 	public void notifyObservers() {
-		for(Observer obs : registeredObservers) obs.update();
+		for(Observer obs : registeredObservers) {
+			obs.update();
+		}
 		
+	}
+	
+	public static Queue getQueue() {
+		return queue;
 	}
 	
 }
