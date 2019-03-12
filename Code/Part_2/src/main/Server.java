@@ -5,6 +5,9 @@ import java.util.LinkedList;
 
 class Server implements Runnable 
 { 
+	private String customerName;
+	private BigDecimal total;
+	private String description;
 	private CafeQueue;
 	
 	public Server(CafeQueue queue)
@@ -17,6 +20,7 @@ class Server implements Runnable
 		Order order = CafeQueue.serveCustomer(); //get orders from class
 		LinkedList<MenuItem> list = order.getItemList();
 		int length = list.size();
+		customerName = order.getName();
 		BigDecimal total;
 		try 
 		{
@@ -24,7 +28,8 @@ class Server implements Runnable
 			{
 				MenuItem item = list.pop();
 				total.add(item.getCost());
-				System.out.println("Processing: " + item.getDescription() + " total: " + (total).toString());
+				description = item.getDescription();
+				System.out.println("Processing: " + description + " total: " + (total).toString());
 				Thread.sleep((long)(Math.random() * 3000));  //sleep random max 3 seconds
 			}
 		}
