@@ -39,7 +39,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	private JTextArea tillOneDisplay, tillTwoDisplay;
 	private JScrollPane scrollTillOne, scrollTillTwo;
 
-
+	private Server tillUpdate1;
 	// For formatting
 	//private String format = "%1$10s %2$-60s";
 	//private String output;
@@ -145,7 +145,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 */
 	public void actionPerformed(ActionEvent e) {
 
-		System.out.println(e.getActionCommand());
+		System.out.println(e.getActionCommand());   // REMEMBER TO DELETE THIS
 
 		if (e.getSource() == start) {
 
@@ -177,9 +177,10 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		queueDisplay.append("Updated");
 	}
 	
-	private void updateTillOne(){
+	private void updateTillOne(Observable arg0, Object arg1){
 		
 		// update till 1 display
+		tillUpdate = (Server) arg0;
 		tillOneDisplay.append("Update Till 1");
 	}
 	
