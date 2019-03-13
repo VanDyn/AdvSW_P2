@@ -48,13 +48,14 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	//private LinkedList<MenuItem> currentOrder;
 	
 	// private ObservableDemo weatherUpdate ;   //  IMPLEMENT OBSERVABLE CLASSSES, THIS IS JUST AN EXAMPLE
-
+	
+	private CafeQueue q;
 	
 
-	public CafeGUI() {
-
+	public CafeGUI(CafeQueue queue) {
 		
-		
+		this.q = queue;
+		queue.registerObserver(this);
 
 		// Set up window title and ensure program ends on close
 		// Create a container and layout
@@ -166,42 +167,46 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	}
 
 	private void stopDemo() {
-
+		Log.INSTANCE.logToFile();
 		// Stop the program
 
 	}
 	
-	private void updateQueueDisplay(){
-		
-		// update the queue display
-		queueDisplay.append("Updated");
-	}
+//	private void updateQueueDisplay(){
+//		
+//		// update the queue display
+//		queueDisplay.append("Updated");
+//	}
+//	
+//	private void updateTillOne(Observable arg0, Object arg1){
+//		
+//		// update till 1 display
+//		//tillUpdate = (Server) arg0;
+//		tillOneDisplay.append("Update Till 1");
+//	}
+//	
+//	private void updateTillTwo(){
+//		
+//		// update till 2 display
+//		tillTwoDisplay.append("Update till 2");
+//		
+//	}
+
+	public void update() {
+		// TODO Auto-generated method stub
 	
-	private void updateTillOne(Observable arg0, Object arg1){
-		
-		// update till 1 display
-		//tillUpdate = (Server) arg0;
-		tillOneDisplay.append("Update Till 1");
-	}
-	
-	private void updateTillTwo(){
-		
-		// update till 2 display
-		tillTwoDisplay.append("Update till 2");
-		
 	}
 
 	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
+	public void update(Observable o, Object arg) {
 		
 		 // IMPLEMENT OBSERVABLE METHODS, THIS IS JUST AN EXAMPLE
-		 queueUpdate = (CafeQueue) arg0;
-			System.out.println(">GUI< " + queueUpdate.getQueueSize());
-
-		 tillOneDisplay.append(String.valueOf(CafeQueue.getQueueSize()));
+		 //queueUpdate = (CafeQueue) arg0;
+		int size = q.getQueueSize();
+		 tillOneDisplay.append(String.valueOf(size));
 		// weatherUpdate = (ObservableDemo) observable; 
-        // System.out.println("Weather Report Live. Its "+weatherUpdate.getWeather());
+       // System.out.println("Weather Report Live. Its "+weatherUpdate.getWeather());
+		
 		
 	}
 

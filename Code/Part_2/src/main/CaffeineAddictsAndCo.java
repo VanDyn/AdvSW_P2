@@ -18,14 +18,20 @@ public class CaffeineAddictsAndCo {
 	   String filename = "src/main/existingOrders";
 	   Interface i = new Interface(filename);
 	   ol = new OrderList();
-	   CafeGUI gui = new CafeGUI();
 	   
-	   Thread queue = new Thread(new CafeQueue(i));
+	   
+	   CafeQueue queue = new CafeQueue(i); 
+	   CafeGUI gui = new CafeGUI(queue);
 	   queue.start();
-	   Thread s1 = new Thread(new Server());
-	   s1.start();
-		
-	
+	   Server s1 = new Server(queue); s1.start();
+	   
+//	   Thread queue = new Thread(new CafeQueue(i));
+//	   queue.start();
+//	   CafeGUI gui = new CafeGUI();
+//	   Thread s1 = new Thread(new Server());
+//	   s1.start();
+	   
+	   //Log.INSTANCE.logToFile();
 		
 	}
 }

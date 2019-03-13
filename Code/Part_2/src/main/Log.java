@@ -23,6 +23,7 @@ public enum Log {
 		// Attempt to write to given file
 		logFile.append(s);
 		logFile.append(System.lineSeparator());
+		//System.out.println(">L<" + s);
 		
 	}
 	

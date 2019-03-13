@@ -8,9 +8,8 @@ import java.util.Queue;
 import java.util.Observable;
 
 import main.Order;
-import main.OrderList;
 
-public class CafeQueue extends Observable implements Runnable{
+public class CafeQueue extends Thread implements Subject{
 
 	private static Queue<Order> queue = new LinkedList<>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
@@ -36,12 +35,13 @@ public class CafeQueue extends Observable implements Runnable{
 			addToQueue();
 			notifyObservers();
 			try {
-				Thread.sleep(50);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		
 	}
 	
 	/*
@@ -91,7 +91,7 @@ public class CafeQueue extends Observable implements Runnable{
 		return queue;
 	}
 	
-	public static synchronized int getQueueSize(){
+	public synchronized int getQueueSize(){
 		
 		return queue.size();
 	}

@@ -12,7 +12,7 @@ import main.Order;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Server implements Runnable  
+public class Server extends Thread implements Subject
 {
 	private String customerName;
 	private BigDecimal total;
@@ -22,25 +22,23 @@ public class Server implements Runnable
 	private int state = 0;
 	
 
-	public Server()
+	public Server(CafeQueue q)
 	{
-		//this.queue = queue; //take class as argument
+		this.queue = q; //take class as argument
 	}
 
-	public int getState() {
-	   return state;
-	}
+	
 
-	public void setState(int state) {
-	   this.state = state;
-	   notifyAllObservers();
-	}
+//	public void setState(int state) {
+//	   this.state = state;
+//	   notifyAllObservers();
+//	}
 
 	public void attach(Observer observer){
 	   observers.add(observer);		
 	}
 
-	public void notifyAllObservers(){
+	public void notifyObservers(){
 	   for (Observer observer : observers) {
 	         observer.update(null, observer);
 	   }
@@ -48,7 +46,7 @@ public class Server implements Runnable
 	
 	public void run()
 	{
-		while(CafeQueue.getQueueSize() != 0) {
+		while(queue.getQueueSize() != 0) {
 			Order order = CafeQueue.serveCustomer(); //get orders from class
 			//System.out.println(">s< Serving: " + order.getID());
 			LinkedList<MenuItem> list = order.getItemList();
@@ -69,5 +67,22 @@ public class Server implements Runnable
 			catch(Exception e){}
 		}
 	}
+
+
+
+	@Override
+	public void registerObserver(Observer obs) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void removeObserver(Observer obs) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
