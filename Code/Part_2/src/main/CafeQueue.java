@@ -12,11 +12,13 @@ import main.OrderList;
 
 public class CafeQueue extends Observable implements Runnable{
 
-	private static Queue<Order> queue;
+	private static Queue<Order> queue = new LinkedList<>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
+	//Interface i;
 	
-	CafeQueue(){
-		
+	CafeQueue(Interface i){
+		//this.i = i;
+		//this.queue = new ArrayList<>();
 	}
 	
 
@@ -28,7 +30,9 @@ public class CafeQueue extends Observable implements Runnable{
 	 * @see java.lang.Thread#run()
 	 */
 	public void run() {
-		while(Interface.getSize() != 0 && queue.size() != 0) {
+		//System.out.println(Interface.getSize());
+		while(Interface.getSize() != 0) {// && queue.size() != 0) {
+			
 			addToQueue();
 			notifyObservers();
 			try {
@@ -45,6 +49,7 @@ public class CafeQueue extends Observable implements Runnable{
 	 */
 	private synchronized void addToQueue() {
 		Order order = Interface.getOrder();
+		//System.out.println(">Q<" + order.getID() + " has joined the queue");
 		sendToLog(order.getID() + " has joined the queue");
 		queue.add(order);
 	}
@@ -54,7 +59,7 @@ public class CafeQueue extends Observable implements Runnable{
 	 * Accessed orders will be removed from the queue.
 	 */
 	public static synchronized Order serveCustomer() {
-		
+		System.out.println(">Q< Serving customer: " + queue.peek().getID());
 		sendToLog("Customer Served : " + queue.peek().getID());
 		return queue.poll();
 	}
@@ -86,7 +91,7 @@ public class CafeQueue extends Observable implements Runnable{
 		return queue;
 	}
 	
-	public int getQueueSize(){
+	public static int getQueueSize(){
 		
 		return queue.size();
 	}

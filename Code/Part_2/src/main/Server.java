@@ -21,9 +21,10 @@ public class Server implements Runnable
 	private List<Observer> observers = new ArrayList<Observer>();
 	private int state = 0;
 	
-	public Server(CafeQueue queue)
+
+	public Server()
 	{
-		this.queue = queue; //take class as argument
+		//this.queue = queue; //take class as argument
 	}
 
 	public int getState() {
@@ -47,23 +48,26 @@ public class Server implements Runnable
 	
 	public void run()
 	{
-		Order order = CafeQueue.serveCustomer(); //get orders from class
-		LinkedList<MenuItem> list = order.getItemList();
-		int length = list.size();
-		customerName = order.getID();
-		BigDecimal total = new BigDecimal(0);;
-		try 
-		{
-			for(int i=0;i<length;i++) //print processing message and sleep
+		while(CafeQueue.getQueueSize() != 0) {
+			Order order = CafeQueue.serveCustomer(); //get orders from class
+			//System.out.println(">s< Serving: " + order.getID());
+			LinkedList<MenuItem> list = order.getItemList();
+			int length = list.size();
+			customerName = order.getID();
+			BigDecimal total = new BigDecimal(0);;
+			try 
 			{
-				MenuItem item = list.pop();
-				total.add(item.getCost());
-				description = item.getDescription();
-				System.out.println("Processing: " + description + " total: " + (total).toString());
-				Thread.sleep((long)(Math.random() * 3000));  //sleep random max 3 seconds
+				for(int i=0;i<length;i++) //print processing message and sleep
+				{
+					MenuItem item = list.pop();
+					total.add(item.getCost());
+					description = item.getDescription();
+					System.out.println("Processing: " + description + " total: " + (total).toString());
+					Thread.sleep((long)(Math.random() * 3000));  //sleep random max 3 seconds
+				}
 			}
+			catch(Exception e){}
 		}
-		catch(Exception e){}
 	}
 
 }
