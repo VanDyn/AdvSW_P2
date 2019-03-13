@@ -91,7 +91,7 @@ public class CafeQueue extends Observable implements Runnable{
 		return queue;
 	}
 	
-	public static int getQueueSize(){
+	public static synchronized int getQueueSize(){
 		
 		return queue.size();
 	}

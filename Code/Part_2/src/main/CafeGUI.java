@@ -196,9 +196,10 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		// TODO Auto-generated method stub
 		
 		 // IMPLEMENT OBSERVABLE METHODS, THIS IS JUST AN EXAMPLE
-		
 		 queueUpdate = (CafeQueue) arg0;
-		 tillOneDisplay.append(String.valueOf(queueUpdate.getQueueSize()));
+			System.out.println(">GUI< " + queueUpdate.getQueueSize());
+
+		 tillOneDisplay.append(String.valueOf(CafeQueue.getQueueSize()));
 		// weatherUpdate = (ObservableDemo) observable; 
         // System.out.println("Weather Report Live. Its "+weatherUpdate.getWeather());
 		
