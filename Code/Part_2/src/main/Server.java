@@ -3,6 +3,8 @@ package main;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.Observable;
+import java.util.Observer;
+
 import main.CafeQueue;
 import main.MenuItem;
 import main.Order;
@@ -15,13 +17,13 @@ public class Server implements Runnable
 	private String customerName;
 	private BigDecimal total;
 	private String description;
-	private CafeQueue;
+	private CafeQueue queue;
 	private List<Observer> observers = new ArrayList<Observer>();
 	private int state = 0;
 	
 	public Server(CafeQueue queue)
 	{
-		this.CafeQueue = queue; //take class as argument
+		this.queue = queue; //take class as argument
 	}
 
 	public int getState() {
@@ -48,8 +50,8 @@ public class Server implements Runnable
 		Order order = CafeQueue.serveCustomer(); //get orders from class
 		LinkedList<MenuItem> list = order.getItemList();
 		int length = list.size();
-		customerName = order.getName();
-		BigDecimal total;
+		customerName = order.getID();
+		BigDecimal total = new BigDecimal(0);;
 		try 
 		{
 			for(int i=0;i<length;i++) //print processing message and sleep

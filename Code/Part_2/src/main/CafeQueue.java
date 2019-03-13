@@ -44,7 +44,7 @@ public class CafeQueue implements Runnable{
 	 */
 	private synchronized void addToQueue() {
 		Order order = Interface.getOrder();
-		sendToLog("%s has joined the queue", order.getID());
+		sendToLog(order.getID() + " has joined the queue");
 		queue.add(order);
 	}
 	
@@ -54,13 +54,14 @@ public class CafeQueue implements Runnable{
 	 */
 	public static synchronized Order serveCustomer() {
 		
-		sendToLog("Customer Served : %s", queue.peek().getID());
+		sendToLog("Customer Served : " + queue.peek().getID());
 		return queue.poll();
 	}
 	
 	// Sends a string to the Log class
-	private synchronized void sendToLog(String details) {
-		Log log = Log.getInstance(details);
+	private static synchronized void sendToLog(String details) {
+		Log l = Log.INSTANCE;
+		l.log(details);
 	}
 
 	public void registerObserver(Observer obs) {
