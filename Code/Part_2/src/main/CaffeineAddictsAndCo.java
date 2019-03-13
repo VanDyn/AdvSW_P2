@@ -24,14 +24,6 @@ public class CaffeineAddictsAndCo {
 	   CafeGUI gui = new CafeGUI(queue);
 	   queue.start();
 	   Server s1 = new Server(queue); s1.start();
-	   
-//	   Thread queue = new Thread(new CafeQueue(i));
-//	   queue.start();
-//	   CafeGUI gui = new CafeGUI();
-//	   Thread s1 = new Thread(new Server());
-//	   s1.start();
-	   
-	   //Log.INSTANCE.logToFile();
 		
 	}
 }

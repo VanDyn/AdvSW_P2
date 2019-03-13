@@ -212,15 +212,3 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 }
 
-//class TestGUI {
-//	
-//	public static void main(String[] args){
-//		
-//		CafeGUI test = new CafeGUI();
-//		
-//		test.setSize(600, 600);
-//		test.setVisible(true);
-//		
-//		
-//	}
-//}

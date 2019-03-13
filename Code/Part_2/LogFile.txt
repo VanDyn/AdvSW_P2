@@ -1,0 +1,4 @@
+Dave has joined the queue
+Customer Served : Dave
+John has joined the queue
+Customer Served : John
