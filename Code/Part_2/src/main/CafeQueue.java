@@ -76,7 +76,7 @@ public class CafeQueue implements Runnable{
 
 	public void notifyObservers() {
 		for(Observer obs : registeredObservers) {
-			obs.update();
+			obs.update(null, obs);
 		}
 		
 	}

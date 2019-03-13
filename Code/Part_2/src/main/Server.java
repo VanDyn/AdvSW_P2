@@ -41,7 +41,7 @@ public class Server implements Runnable
 
 	public void notifyAllObservers(){
 	   for (Observer observer : observers) {
-	         observer.update();
+	         observer.update(null, observer);
 	   }
 	} 	
 	
