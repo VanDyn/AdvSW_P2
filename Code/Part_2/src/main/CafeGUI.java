@@ -39,7 +39,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	private JTextArea tillOneDisplay, tillTwoDisplay;
 	private JScrollPane scrollTillOne, scrollTillTwo;
 
-	private Server tillUpdate1;
+	private CafeQueue queueUpdate;
 	// For formatting
 	//private String format = "%1$10s %2$-60s";
 	//private String output;
@@ -180,7 +180,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	private void updateTillOne(Observable arg0, Object arg1){
 		
 		// update till 1 display
-		tillUpdate = (Server) arg0;
+		//tillUpdate = (Server) arg0;
 		tillOneDisplay.append("Update Till 1");
 	}
 	
@@ -197,7 +197,9 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		
 		 // IMPLEMENT OBSERVABLE METHODS, THIS IS JUST AN EXAMPLE
 		
-		// weatherUpdate = (ObservableDemo) observable;   
+		 queueUpdate = (CafeQueue) arg0;
+		 tillOneDisplay.append(String.valueOf(queueUpdate.getQueueSize()));
+		// weatherUpdate = (ObservableDemo) observable; 
         // System.out.println("Weather Report Live. Its "+weatherUpdate.getWeather());
 		
 	}

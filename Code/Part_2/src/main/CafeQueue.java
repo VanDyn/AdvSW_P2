@@ -5,11 +5,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
 import java.util.Queue;
+import java.util.Observable;
 
 import main.Order;
 import main.OrderList;
 
-public class CafeQueue implements Runnable{
+public class CafeQueue extends Observable implements Runnable{
 
 	private static Queue<Order> queue;
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
@@ -85,4 +86,8 @@ public class CafeQueue implements Runnable{
 		return queue;
 	}
 	
+	public int getQueueSize(){
+		
+		return queue.size();
+	}
 }
