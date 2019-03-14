@@ -20,8 +20,10 @@ public class CaffeineAddictsAndCo {
 	   ol = new OrderList();
 	   
 	   
-	   CafeQueue queue = new CafeQueue(i); 
-	   CafeGUI gui = new CafeGUI(queue);
+	   CafeQueue queue = new CafeQueue(i);
+	   Server server = new Server(queue);
+	   
+	   CafeGUI gui = new CafeGUI(queue, server);
 	   queue.start();
 	   Server s1 = new Server(queue); s1.start();
 		

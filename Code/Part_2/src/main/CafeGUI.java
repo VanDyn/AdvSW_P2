@@ -20,10 +20,6 @@ import javax.swing.*;
 
 public class CafeGUI extends JFrame implements ActionListener, Observer {
 
-	// This is where the info will be drawn from
-	//private Menu menu;
-	//private ArrayList<MenuItem> products;
-
 	// Buttons and fields for Panel 1
 	private JButton start, stop;
 	private JLabel welcome;
@@ -39,23 +35,22 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	private JTextArea tillOneDisplay, tillTwoDisplay;
 	private JScrollPane scrollTillOne, scrollTillTwo;
 
-	private CafeQueue queueUpdate;
 	// For formatting
 	//private String format = "%1$10s %2$-60s";
 	//private String output;
 
-	// Linked list for order
-	//private LinkedList<MenuItem> currentOrder;
-	
-	// private ObservableDemo weatherUpdate ;   //  IMPLEMENT OBSERVABLE CLASSSES, THIS IS JUST AN EXAMPLE
 	
 	private CafeQueue q;
+	private Server s;
 	
 
-	public CafeGUI(CafeQueue queue) {
+	public CafeGUI(CafeQueue queue, Server server) {
 		
 		this.q = queue;
 		queue.registerObserver(this);
+		
+		this.s = server;
+		server.registerObserver(this);
 
 		// Set up window title and ensure program ends on close
 		// Create a container and layout
@@ -172,43 +167,33 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 	}
 	
-//	private void updateQueueDisplay(){
-//		
-//		// update the queue display
-//		queueDisplay.append("Updated");
-//	}
-//	
-//	private void updateTillOne(Observable arg0, Object arg1){
-//		
-//		// update till 1 display
-//		//tillUpdate = (Server) arg0;
-//		tillOneDisplay.append("Update Till 1");
-//	}
-//	
-//	private void updateTillTwo(){
-//		
-//		// update till 2 display
-//		tillTwoDisplay.append("Update till 2");
-//		
-//	}
-
-	public void update() {
-		// TODO Auto-generated method stub
+	private void updateQueueDisplay(Observable o, Object arg){
+		
+		// update the queue display
+		int size = q.getQueueSize();
+		queueDisplay.append(String.valueOf(size));
+	}
 	
+	private void updateTillOne(Observable arg0, Object arg1){
+		
+		// update till 1 display
+		String serving = "s.getShitFromServer";
+		tillOneDisplay.append("update till 1");
+	}
+	
+	private void updateTillTwo(){
+		
+		// update till 2 display
+		tillTwoDisplay.append("Update till 2");
+		
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
-		
-		 // IMPLEMENT OBSERVABLE METHODS, THIS IS JUST AN EXAMPLE
-		 //queueUpdate = (CafeQueue) arg0;
-		int size = q.getQueueSize();
-		 tillOneDisplay.append(String.valueOf(size));
-		// weatherUpdate = (ObservableDemo) observable; 
-       // System.out.println("Weather Report Live. Its "+weatherUpdate.getWeather());
-		
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
 		
 	}
+	
 
 }
 

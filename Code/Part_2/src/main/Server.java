@@ -44,6 +44,9 @@ public class Server extends Thread implements Subject
 	   }
 	} 	
 	
+	
+	// There is a lot happening in this method.  Refactor it into multiple methods?  I need these so that I can display what is happening in the GUI
+	
 	public void run()
 	{
 		while(queue.getQueueSize() != 0) {
