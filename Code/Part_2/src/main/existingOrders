@@ -1,2 +1,10 @@
 12:00;Dave/COF101,COF101,COF102;8.20;Americano:Coffee,Americano:Coffee,Latte:Coffee
 12:05;John/COF103,COF101;4.70;Espresso:Coffee,Americano:Coffee
+12:06;Kerry/COF101,BAK401;3.90;Americano:Coffee,Chocolate Cookie:Bakery
+12:08;Ryan/TEA201;1.90;Black Tea:Tea
+12:10;Dillon/BAK403,BAK403,BAK403;4.05;Brownie:Bakery,Brownie:Bakery,Brownie:Bakery
+12:10;Chris/SND301,COF102;6.40;Ham and Cheese:Sandwich,Latte:Coffee
+12:11;Darren/BAK402,TEA203;4.10;Blueberry Muffin:Bakery,Iced Tea:Tea
+12:12;Kayleigh/COF103,TEA101;4.00;Espresso:Coffee,Black Tea:Tea
+12:13;Rebecca/TEA101,TEA101,TEA101;4.80;Black Tea:Tea,Black Tea:Tea,Black Tea:Tea
+12:15;Ryan/SND302;4.00;Egg:Sandwich
