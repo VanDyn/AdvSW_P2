@@ -25,7 +25,9 @@ public class CaffeineAddictsAndCo {
 	   
 	   CafeGUI gui = new CafeGUI(queue, server);
 	   queue.start();
-	   Server s1 = new Server(queue); s1.start();
+	   server.start();
+	   
+	   //Server s1 = new Server(queue); s1.start();
 		
 	}
 }

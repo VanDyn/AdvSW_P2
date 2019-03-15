@@ -16,11 +16,11 @@ public class Server extends Thread implements Subject
 {
 	private String customerName;
 	private BigDecimal total;
+	private Order order;
 	private String description;
 	private CafeQueue queue;
 	private List<Observer> observers = new ArrayList<Observer>();
-	private int state = 0;
-	
+	private List<Observer> registeredObservers = new ArrayList<Observer>();
 
 	public Server(CafeQueue q)
 	{
@@ -34,15 +34,7 @@ public class Server extends Thread implements Subject
 //	   notifyAllObservers();
 //	}
 
-	public void attach(Observer observer){
-	   observers.add(observer);		
-	}
-
-	public void notifyObservers(){
-	   for (Observer observer : observers) {
-	         observer.update(null, observer);
-	   }
-	} 	
+	
 	
 	
 	// There is a lot happening in this method.  Refactor it into multiple methods?  I need these so that I can display what is happening in the GUI
@@ -63,27 +55,41 @@ public class Server extends Thread implements Subject
 					MenuItem item = list.pop();
 					total.add(item.getCost());
 					description = item.getDescription();
-					System.out.println("Processing: " + description + " total: " + (total).toString());
+					
+					notifyObservers();
+					sendToLog("Processing: " + description + " total: " + (total).toString());
+					
 					Thread.sleep((long)(Math.random() * 3000));  //sleep random max 3 seconds
 				}
 			}
 			catch(Exception e){}
 		}
+
 	}
-
-
-
-	@Override
+	
+	public String getItem(){
+		return description;
+	}
+	
+	private static synchronized void sendToLog(String details) {
+		Log l = Log.INSTANCE;
+		l.log(details);
+	}
+	
 	public void registerObserver(Observer obs) {
-		// TODO Auto-generated method stub
+		registeredObservers.add(obs);
 		
 	}
 
-
-
-	@Override
 	public void removeObserver(Observer obs) {
-		// TODO Auto-generated method stub
+		registeredObservers.remove(obs);
+		
+	}
+
+	public void notifyObservers() {
+		for(Observer obs : registeredObservers) {
+			obs.update(null, this);
+		}
 		
 	}
 

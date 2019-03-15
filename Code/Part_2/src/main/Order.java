@@ -92,7 +92,10 @@ public class Order implements Comparable<Order>
 		}
 		return 0;
 	}
+	public int getItemNumber() {
+		return itemList.size();
+	}
 	
-
+	
 }
 

@@ -167,12 +167,12 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 	}
 	
-	public void updateQueueDisplay(Observable o, Object arg){
-		
-		// update the queue display
-		int size = q.getQueueSize();
-		queueDisplay.append(String.valueOf(size));
-	}
+//	public void updateQueueDisplay(Observable o, Object arg){
+//		
+//		// update the queue display
+//		int size = q.getQueueSize();
+//		queueDisplay.append(String.valueOf(size));
+//	}
 //	
 //	private void updateTillOne(Observable arg0, Object arg1){
 //		
@@ -191,12 +191,14 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		queueDisplay.append(String.valueOf(s));
 	}
 
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		System.out.println(arg1.getClass().getSimpleName());
-		if(arg1.getClass().getSimpleName().equals("CafeQueue")) {
+	public synchronized void update(Observable arg0, Object arg1) {
+
+		//System.out.println(arg1.getClass().getSimpleName());
+		if(arg1.equals(q)) {
 			int size = q.getQueueSize();
 			queueDisplay.append(String.valueOf(size));
+		}else if(arg1.equals(s)) {
+			tillOneDisplay.append(s.getItem());
 		}
 		
 	}
