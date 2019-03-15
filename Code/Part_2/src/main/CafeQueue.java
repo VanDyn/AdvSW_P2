@@ -82,7 +82,7 @@ public class CafeQueue extends Thread implements Subject{
 
 	public void notifyObservers() {
 		for(Observer obs : registeredObservers) {
-			obs.update(null, obs);
+			obs.update(null, this);
 		}
 		
 	}

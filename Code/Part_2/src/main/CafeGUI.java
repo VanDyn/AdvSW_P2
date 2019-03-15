@@ -167,33 +167,57 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 	}
 	
-	private void updateQueueDisplay(Observable o, Object arg){
+	public void updateQueueDisplay(Observable o, Object arg){
 		
 		// update the queue display
 		int size = q.getQueueSize();
 		queueDisplay.append(String.valueOf(size));
 	}
-	
-	private void updateTillOne(Observable arg0, Object arg1){
-		
-		// update till 1 display
-		String serving = "s.getShitFromServer";
-		tillOneDisplay.append("update till 1");
-	}
-	
-	private void updateTillTwo(){
-		
-		// update till 2 display
-		tillTwoDisplay.append("Update till 2");
-		
+//	
+//	private void updateTillOne(Observable arg0, Object arg1){
+//		
+//		// update till 1 display
+//		String serving = "s.getShitFromServer";
+//		tillOneDisplay.append("update till 1");
+//	}
+//	
+//	private void updateTillTwo(){
+//		
+//		// update till 2 display
+//		tillTwoDisplay.append("Update till 2");
+//		
+//	}
+	public void setQDisplay(int s) {
+		queueDisplay.append(String.valueOf(s));
 	}
 
-	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
+		System.out.println(arg1.getClass().getSimpleName());
+		if(arg1.getClass().getSimpleName().equals("CafeQueue")) {
+			int size = q.getQueueSize();
+			queueDisplay.append(String.valueOf(size));
+		}
 		
 	}
+	
+
+
 	
 
 }
 
+//private class QObserver implements Observer{
+//
+//	public QObserver() {
+//		// TODO Auto-generated constructor stub
+//	}
+//
+//	@Override
+//	public void update(Observable o, Object arg) {
+//		int size = o.getQueueSize();
+//		CafeGUI.setQDisplay()
+//		
+//	}
+//	
+//}
