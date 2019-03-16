@@ -2,8 +2,33 @@ Dave has joined the queue
 Customer Served : Dave
 Processing: Americano total: 0
 John has joined the queue
+Kerry has joined the queue
 Processing: Americano total: 0
+Ryan has joined the queue
+Dillon has joined the queue
+Chris has joined the queue
 Processing: Latte total: 0
+Darren has joined the queue
+Kayleigh has joined the queue
 Customer Served : John
 Processing: Espresso total: 0
+Rebecca has joined the queue
+Ryan has joined the queue
 Processing: Americano total: 0
+Customer Served : Kerry
+Processing: Americano total: 0
+Processing: Chocolate Cookie total: 0
+Customer Served : Ryan
+Processing: Black Tea total: 0
+Customer Served : Dillon
+Processing: Brownie total: 0
+Processing: Brownie total: 0
+Processing: Brownie total: 0
+Customer Served : Chris
+Processing: Ham and Cheese total: 0
+Processing: Latte total: 0
+Customer Served : Darren
+Processing: Blueberry Muffin total: 0
+Processing: Iced Tea total: 0
+Customer Served : Kayleigh
+Processing: Espresso total: 0

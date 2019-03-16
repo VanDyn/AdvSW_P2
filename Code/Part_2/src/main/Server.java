@@ -21,10 +21,15 @@ public class Server extends Thread implements Subject
 	private CafeQueue queue;
 	private List<Observer> observers = new ArrayList<Observer>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
+	
+	private SandwichCounter s;
+	private Bakery b;
 
-	public Server(CafeQueue q)
+	public Server(CafeQueue q, SandwichCounter s, Bakery b)
 	{
 		this.queue = q; //take class as argument
+		this. s = s;
+		this.b = b;
 	}
 
 	
@@ -56,8 +61,18 @@ public class Server extends Thread implements Subject
 					total.add(item.getCost());
 					description = item.getDescription();
 					
-					notifyObservers();
-					sendToLog("Processing: " + description + " total: " + (total).toString());
+					// check if there sandwich or bakery items prepared
+					if(item.getCategory().equals("Sandwich") && s.get(item.getDescription()) == 1) {
+						
+						notifyObservers();
+						sendToLog("Processing: " + description + " total: " + (total).toString());
+					}else if(item.getCategory().equals("Bakery") && s.get(item.getDescription()) == 1) {
+						notifyObservers();
+						sendToLog("Processing: " + description + " total: " + (total).toString());
+					}else {
+						notifyObservers();
+						sendToLog("Processing: " + description + " total: " + (total).toString());
+					}
 					
 					Thread.sleep((long)(Math.random() * 3000));  //sleep random max 3 seconds
 				}
