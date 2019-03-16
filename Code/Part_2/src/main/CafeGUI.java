@@ -15,7 +15,7 @@ import javax.swing.*;
  * Class which will implement the GUI for the coffee shop simulation.
  * 
  * @author ShayneShaw
- *
+ * 
  */
 
 public class CafeGUI extends JFrame implements ActionListener, Observer {
@@ -38,14 +38,20 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	// For formatting
 	// private String format = "%1$10s %2$-60s";
 	// private String output;
-
+	
+	// Instances to be observed
 	private CafeQueue q;
 	private Server s;
 
-	// Booleans
+	// Booleans to determine when to start or stop the threads.
 	private boolean begin;
 	private boolean end;
-
+	
+	/**
+	 * CafeGUI constructor which takes both the CafeQueue and Server classes to observe.
+	 * @param queue - an instance of CafeQueue class
+	 * @param server - an instance of Server class
+	 */
 	public CafeGUI(CafeQueue queue, Server server) {
 
 		this.q = queue;
@@ -74,6 +80,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		stop = new JButton("Stop");
 		panel1.add(start);
 		panel1.add(stop);
+		
 		content.add(panel1);
 
 		// Panel 2
@@ -163,20 +170,37 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		}
 
 	}
-
+	
+	/** 
+	 * This will create the log once the cafe has closed
+	 * 
+	 */
 	private void makeLog() {
 		Log.INSTANCE.logToFile();
 
 	}
 
+	/**
+	 * Getter method which returns the status of "begin"
+	 * @return boolean begin
+	 */
 	public boolean getStart() {
 		return begin;
 	}
-
+	
+	/**
+	 * Getter method which returns the status of "end"
+	 * @return boolean end
+	 */
 	public boolean getStop() {
 		return end;
 	}
 
+	/**
+	 * This method will update the GUI displays when any change is observed in
+	 * either the Server or CafeQueue classes.
+	 * 
+	 */
 	public synchronized void update(Observable arg0, Object arg1) {
 
 		// System.out.println(arg1.getClass().getSimpleName());

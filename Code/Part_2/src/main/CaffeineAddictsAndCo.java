@@ -24,6 +24,8 @@ public class CaffeineAddictsAndCo {
 	   Server server = new Server(queue);
 	   
 	   CafeGUI gui = new CafeGUI(queue, server);
+	   
+	   // while (gui.getStart == true && gui.getStop == false)   // start the threads  NOT SURE WHERE TO USE THIS!
 	   queue.start();
 	   server.start();
 	   
