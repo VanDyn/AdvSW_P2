@@ -36,19 +36,21 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	private JScrollPane scrollTillOne, scrollTillTwo;
 
 	// For formatting
-	//private String format = "%1$10s %2$-60s";
-	//private String output;
+	// private String format = "%1$10s %2$-60s";
+	// private String output;
 
-	
 	private CafeQueue q;
 	private Server s;
-	
+
+	// Booleans
+	private boolean begin;
+	private boolean end;
 
 	public CafeGUI(CafeQueue queue, Server server) {
-		
+
 		this.q = queue;
 		queue.registerObserver(this);
-		
+
 		this.s = server;
 		server.registerObserver(this);
 
@@ -100,7 +102,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		tillTwo.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
 		panel3.add(tillOne);
 		panel3.add(tillTwo);
-		
+
 		content.add(panel3);
 
 		// Panel 4
@@ -109,18 +111,18 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 		tillOneDisplay = new JTextArea(7, 30);
 		tillOneDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
-		tillOneDisplay.setLineWrap(true); 
+		tillOneDisplay.setLineWrap(true);
 		tillOneDisplay.setEditable(false);
 		scrollTillOne = new JScrollPane(tillOneDisplay);
 		panel4.add(scrollTillOne);
-		
+
 		tillTwoDisplay = new JTextArea(7, 30);
 		tillTwoDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
-		tillTwoDisplay.setLineWrap(true); 
+		tillTwoDisplay.setLineWrap(true);
 		tillTwoDisplay.setEditable(false);
 		scrollTillTwo = new JScrollPane(tillTwoDisplay);
 		panel4.add(scrollTillTwo);
-		
+
 		content.add(panel4);
 
 		// Add listeners to the buttons
@@ -130,6 +132,10 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		// Pack and set visible
 		pack();
 		setVisible(true);
+
+		// Booleans
+		begin = false;
+		end = false;
 
 	}
 
@@ -141,85 +147,46 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 */
 	public void actionPerformed(ActionEvent e) {
 
-		System.out.println(e.getActionCommand());   // REMEMBER TO DELETE THIS
+		System.out.println(e.getActionCommand()); // REMEMBER TO DELETE THIS
 
 		if (e.getSource() == start) {
 
-			startDemo();
-			
+			begin = true;
+			end = false;
+
 		} else if (e.getSource() == stop) {
 
-			stopDemo();
+			begin = false;
+			end = true;
+			makeLog();
 
 		}
 
 	}
 
-	private void startDemo() {
-
-		// Start the program
-
-	}
-
-	private void stopDemo() {
+	private void makeLog() {
 		Log.INSTANCE.logToFile();
-		// Stop the program
 
 	}
-	
-//	public void updateQueueDisplay(Observable o, Object arg){
-//		
-//		// update the queue display
-//		int size = q.getQueueSize();
-//		queueDisplay.append(String.valueOf(size));
-//	}
-//	
-//	private void updateTillOne(Observable arg0, Object arg1){
-//		
-//		// update till 1 display
-//		String serving = "s.getShitFromServer";
-//		tillOneDisplay.append("update till 1");
-//	}
-//	
-//	private void updateTillTwo(){
-//		
-//		// update till 2 display
-//		tillTwoDisplay.append("Update till 2");
-//		
-//	}
-	public void setQDisplay(int s) {
-		queueDisplay.append(String.valueOf(s));
+
+	public boolean getStart() {
+		return begin;
+	}
+
+	public boolean getStop() {
+		return end;
 	}
 
 	public synchronized void update(Observable arg0, Object arg1) {
 
-		//System.out.println(arg1.getClass().getSimpleName());
-		if(arg1.equals(q)) {
+		// System.out.println(arg1.getClass().getSimpleName());
+		if (arg1.equals(q)) {
 			int size = q.getQueueSize();
 			queueDisplay.append(String.valueOf(size));
-		}else if(arg1.equals(s)) {
+		} else if (arg1.equals(s)) {
 			tillOneDisplay.append(s.getItem());
 		}
-		
+
 	}
-	
-
-
-	
 
 }
-
-//private class QObserver implements Observer{
-//
-//	public QObserver() {
-//		// TODO Auto-generated constructor stub
-//	}
-//
-//	@Override
-//	public void update(Observable o, Object arg) {
-//		int size = o.getQueueSize();
-//		CafeGUI.setQDisplay()
-//		
-//	}
-//	
-//}
