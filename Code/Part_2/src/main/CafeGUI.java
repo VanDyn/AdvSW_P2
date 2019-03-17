@@ -38,41 +38,35 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	// Formatting
 	// private String format = "%1$10s %2$-60s";
 	// private String output;
-
+	
 	// Instances to be observed
 	private CafeQueue q;
-	private Server s1;
-	private Server s2;
+	private Server s;
 
 	// Booleans to determine when to start or stop the threads.
 	private boolean begin;
 	private boolean end;
-
+	
 	/**
-	 * CafeGUI constructor which takes both the CafeQueue and Server classes to
-	 * observe.
-	 * 
-	 * @param queue
-	 *            - an instance of CafeQueue class
-	 * @param server
-	 *            - an instance of Server class
+	 * CafeGUI constructor which takes both the CafeQueue and Server classes to observe.
+	 * @param queue - an instance of CafeQueue class
+	 * @param server - an instance of Server class
 	 */
 	public CafeGUI(CafeQueue queue, Server server) {
-
+		
 		// Instances to be observed
 		this.q = queue;
 		queue.registerObserver(this);
 
-		this.s1 = server;
+		this.s = server;
 		server.registerObserver(this);
+		
+	
 
-		this.s2 = server;
-		server.registerObserver(this);
-
-		// Set up window title and ensure program ends on close
+		// Set up window title and ensure program ends on close		
 		setTitle("Caffeine Addicts & Co");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+		
 		// Create a container and layout
 		Container content = getContentPane();
 		content.setLayout(new GridLayout(4, 1));
@@ -90,7 +84,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		stop = new JButton("Stop");
 		panel1.add(start);
 		panel1.add(stop);
-
+		
 		content.add(panel1);
 
 		// Panel 2
@@ -180,8 +174,8 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		}
 
 	}
-
-	/**
+	
+	/** 
 	 * This will create the log once the cafe has closed
 	 * 
 	 */
@@ -192,50 +186,50 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 	/**
 	 * Getter method which returns the status of "begin"
-	 * 
 	 * @return boolean begin
 	 */
 	public boolean getStart() {
 		return begin;
 	}
-
+	
 	/**
 	 * Getter method which returns the status of "end"
-	 * 
 	 * @return boolean end
 	 */
 	public boolean getStop() {
 		return end;
 	}
-
-	public JTextArea getQueueDisplay() {
+	
+	public JTextArea getQueueDisplay(){
 		return queueDisplay;
 	}
-
-	public void setTillOneDisplay(String s) {
-		tillOneDisplay.append("\n" + s);
+	
+	public JTextArea getTillOneDisplay(){
+		return tillOneDisplay;
 	}
-
-	public JTextArea getTillTwoDisplay() {
+	
+	public JTextArea getTillTwoDisplay(){
 		return tillTwoDisplay;
 	}
-
 	public void setQueueDisplay(String s) {
-		queueDisplay.append("\n" + s);
+		queueDisplay.append(s);
 	}
-
+	
+	public void setTillOneDisplay(String s) {
+		tillOneDisplay.append(s);
+	}
+	
 	/**
-	 * Takes a string and a JTextArea as arguments and prints the string to the
-	 * JTextArea on a new line
-	 * 
-	 * @param s
-	 *            - String
-	 * @param j
-	 *            - JTextArea
+	 * Takes a string and a JTextArea as arguments and prints the string to the JTextArea
+	 * on a new line
+	 * @param s - String
+	 * @param j - JTextArea
 	 */
-	public void printToDisplay(String s, JTextArea j) {
+	public void printToDisplay(String s, JTextArea j){
 		j.append("\n" + s);
 	}
+	
+	
 
 	/**
 	 * This method will update the GUI displays when any change is observed in
@@ -244,20 +238,15 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 */
 	public synchronized void update(Observable arg0, Object arg1) {
 
+		// System.out.println(arg1.getClass().getSimpleName());
+		
 		if (arg1.equals(q)) {
-
-			CafeController.updateQueue();
-		} else if (arg1.equals(s1)) {
-			printToDisplay(s1.getItem(), tillOneDisplay);
-		} else if (arg1.equals(s2)) {
-			printToDisplay(s2.getItem(), tillTwoDisplay);
-
-			// CafeController.updateQueue();
-			// } else if (arg1.equals(s)) {
-			// CafeController.updateServer(s, 1);
-			// >>>>>>> 3f4b0dc64a8b6e85a64018092c9047ce960aabe3
+			CafeController.updateQueue(); 
+		} else if (arg1.equals(s)) {
+			CafeController.updateServer(s, 1);
 		}
 
 	}
+	
 
 }

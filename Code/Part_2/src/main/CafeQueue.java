@@ -14,6 +14,7 @@ public class CafeQueue extends Thread implements Subject{
 
 	private static Queue<Order> queue = new LinkedList<>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
+	
 	//Interface i;
 	
 	CafeQueue(Interface i){
@@ -96,8 +97,6 @@ public class CafeQueue extends Thread implements Subject{
 		return queue.size();
 	}
 	
-<<<<<<< HEAD
-=======
 	public synchronized static ArrayList<String> getQueueMembers(){
 		ArrayList<String> members = new ArrayList<String>();
 		
@@ -115,5 +114,4 @@ public class CafeQueue extends Thread implements Subject{
 	
 	
 	
->>>>>>> 3f4b0dc64a8b6e85a64018092c9047ce960aabe3
 }
