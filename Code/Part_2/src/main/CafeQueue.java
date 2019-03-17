@@ -86,7 +86,7 @@ public class CafeQueue extends Thread implements Subject{
 		
 	}
 	
-	public static Queue getQueue() {
+	public static Queue<Order> getQueue() {
 		return queue;
 	}
 	

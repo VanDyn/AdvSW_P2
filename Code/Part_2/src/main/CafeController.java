@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Observable;
+import java.util.Observer;
 import java.util.Queue;
 
 import javax.swing.JTextArea;
@@ -21,7 +22,7 @@ import javax.swing.JTextArea;
  *
  */
 
-public class CafeController {
+public class CafeController implements Observer {
 	
 	private CafeGUI gui;
 	private Server server;
@@ -53,9 +54,9 @@ public class CafeController {
 		
 		if (arg1.equals(queue)) {
 			int size = queue.getQueueSize();
-			gui.printToDisplay(String.valueOf(size), gui.getQueueDisplay());
+			gui.printToDisplay(String.valueOf(size) + "Controller", gui.getQueueDisplay());
 		} else if (arg1.equals(server)) {
-			gui.printToDisplay(server.getItem(), gui.getTillOneDisplay());
+			gui.printToDisplay(server.getItem() + "Controller", gui.getTillOneDisplay());
 		}
 	}
 	

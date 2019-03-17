@@ -217,7 +217,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 * @param j - JTextArea
 	 */
 	public void printToDisplay(String s, JTextArea j){
-		j.append("/n" + s);
+		j.append("\n" + s);
 	}
 	
 	
@@ -231,12 +231,12 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 		// System.out.println(arg1.getClass().getSimpleName());
 		
-//		if (arg1.equals(q)) {
-//			int size = q.getQueueSize();
-//			queueDisplay.append(String.valueOf(size));
-//		} else if (arg1.equals(s)) {
-//			tillOneDisplay.append(s.getItem());
-//		}
+		if (arg1.equals(q)) {
+			int size = q.getQueueSize();
+			printToDisplay(String.valueOf(size), queueDisplay); 
+		} else if (arg1.equals(s)) {
+			printToDisplay(s.getItem(), tillOneDisplay);
+		}
 
 	}
 	
