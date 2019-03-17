@@ -35,7 +35,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	private JTextArea tillOneDisplay, tillTwoDisplay;
 	private JScrollPane scrollTillOne, scrollTillTwo;
 
-	// For formatting
+	// Formatting
 	// private String format = "%1$10s %2$-60s";
 	// private String output;
 	
@@ -53,17 +53,19 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 * @param server - an instance of Server class
 	 */
 	public CafeGUI(CafeQueue queue, Server server) {
-
+		
+		// Instances to be observed
 		this.q = queue;
 		queue.registerObserver(this);
 
 		this.s = server;
 		server.registerObserver(this);
 
-		// Set up window title and ensure program ends on close
-		// Create a container and layout
+		// Set up window title and ensure program ends on close		
 		setTitle("Caffeine Addicts & Co");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		// Create a container and layout
 		Container content = getContentPane();
 		content.setLayout(new GridLayout(4, 1));
 
@@ -195,6 +197,30 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	public boolean getStop() {
 		return end;
 	}
+	
+	public JTextArea getQueueDisplay(){
+		return queueDisplay;
+	}
+	
+	public JTextArea getTillOneDisplay(){
+		return tillOneDisplay;
+	}
+	
+	public JTextArea getTillTwoDisplay(){
+		return tillTwoDisplay;
+	}
+	
+	/**
+	 * Takes a string and a JTextArea as arguments and prints the string to the JTextArea
+	 * on a new line
+	 * @param s - String
+	 * @param j - JTextArea
+	 */
+	public void printToDisplay(String s, JTextArea j){
+		j.append("/n" + s);
+	}
+	
+	
 
 	/**
 	 * This method will update the GUI displays when any change is observed in
@@ -204,13 +230,15 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	public synchronized void update(Observable arg0, Object arg1) {
 
 		// System.out.println(arg1.getClass().getSimpleName());
-		if (arg1.equals(q)) {
-			int size = q.getQueueSize();
-			queueDisplay.append(String.valueOf(size));
-		} else if (arg1.equals(s)) {
-			tillOneDisplay.append(s.getItem());
-		}
+		
+//		if (arg1.equals(q)) {
+//			int size = q.getQueueSize();
+//			queueDisplay.append(String.valueOf(size));
+//		} else if (arg1.equals(s)) {
+//			tillOneDisplay.append(s.getItem());
+//		}
 
 	}
+	
 
 }
