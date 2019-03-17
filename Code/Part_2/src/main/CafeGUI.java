@@ -41,7 +41,8 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	
 	// Instances to be observed
 	private CafeQueue q;
-	private Server s;
+	private Server s1;
+	private Server s2;
 
 	// Booleans to determine when to start or stop the threads.
 	private boolean begin;
@@ -58,7 +59,10 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		this.q = queue;
 		queue.registerObserver(this);
 
-		this.s = server;
+		this.s1 = server;
+		server.registerObserver(this);
+		
+		this.s2 = server;
 		server.registerObserver(this);
 
 		// Set up window title and ensure program ends on close		
@@ -202,15 +206,15 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		return queueDisplay;
 	}
 	
-	public JTextArea getTillOneDisplay(){
-		return tillOneDisplay;
+	public void setTillOneDisplay(String s){
+		tillOneDisplay.append("\n" + s);
 	}
 	
 	public JTextArea getTillTwoDisplay(){
 		return tillTwoDisplay;
 	}
 	public void setQueueDisplay(String s) {
-		queueDisplay.append(s);
+		queueDisplay.append("\n" + s);
 	}
 	
 	/**
@@ -231,15 +235,13 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 * 
 	 */
 	public synchronized void update(Observable arg0, Object arg1) {
-
-		// System.out.println(arg1.getClass().getSimpleName());
 		
 		if (arg1.equals(q)) {
 			CafeController.updateQueue();
-			//int size = q.getQueueSize();
-			//printToDisplay(String.valueOf(size), queueDisplay); 
-		} else if (arg1.equals(s)) {
-			printToDisplay(s.getItem(), tillOneDisplay);
+		} else if (arg1.equals(s1)) {
+			printToDisplay(s1.getItem(), tillOneDisplay);
+		} else if (arg1.equals(s2)) {
+			printToDisplay(s2.getItem(), tillTwoDisplay);
 		}
 
 	}

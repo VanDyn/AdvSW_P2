@@ -94,4 +94,5 @@ public class CafeQueue extends Thread implements Subject{
 		
 		return queue.size();
 	}
+	
 }
