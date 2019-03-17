@@ -43,7 +43,9 @@ public class CafeController {
 	}
 	
 	// I think this method should be fully implemented here as opposed to in the GUI
-	// However it's not printing anything atm for some reason.
+	// However it's not printing anything atm for some reason.  I think there are too
+	// many instances of the server and queue in multiple classes and I don't think it 
+	// is looking at the correct one.
 	
 	
 	public synchronized void update(Observable arg0, Object arg1){
