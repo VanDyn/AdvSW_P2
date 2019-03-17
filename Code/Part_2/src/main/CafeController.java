@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
@@ -37,6 +39,7 @@ public class CafeController {
 	}
 
 	
+<<<<<<< HEAD
 	public synchronized static void updateQueue() {
 
 		Queue<Order> q = CafeQueue.getQueue();
@@ -46,5 +49,38 @@ public class CafeController {
 		}
 
 	}
+=======
+	public synchronized static void updateQueue() {	
+		ArrayList<String> arr = CafeQueue.getQueueMembers();
+		
+		for(String i : arr) {
+			gui.setQueueDisplay(i + "\n");
+		}
+			
+	}
+	
+	public synchronized static void updateServer(Server s, int thread) {	
+		if(thread == 1) {
+			gui.setTillOneDisplay(s.getItem());
+		}
+			
+	}
+	
+//	public String getItem(){
+//		return server.getItem();
+//	}
+//	
+//	public String getCustomerName(){
+//		return server.getCustomerName();
+//	}
+//	
+//	public Queue getQueue(){
+//		return queue.getQueue();
+//	}
+//	
+//	public void printToDisplay(String s, JTextArea j){
+//		gui.printToDisplay(s, j);
+//	}	
+>>>>>>> 3f4b0dc64a8b6e85a64018092c9047ce960aabe3
 
 }

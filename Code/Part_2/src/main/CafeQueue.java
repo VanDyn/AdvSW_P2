@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
@@ -95,4 +96,24 @@ public class CafeQueue extends Thread implements Subject{
 		return queue.size();
 	}
 	
+<<<<<<< HEAD
+=======
+	public synchronized static ArrayList<String> getQueueMembers(){
+		ArrayList<String> members = new ArrayList<String>();
+		
+		for(Order m : queue) {
+			members.add(m.getID());
+		}
+		
+		return members;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+>>>>>>> 3f4b0dc64a8b6e85a64018092c9047ce960aabe3
 }
