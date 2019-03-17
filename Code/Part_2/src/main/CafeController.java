@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
  * Class to act as the controller for MVC design pattern
  * 
  * "Model View, Model View, Model View Controller
- *  MVC’s the paradigm for factoring your code,
+ *  MVCï¿½s the paradigm for factoring your code,
  *  into functional segments so your brain does not explode.
  *  ...."
  *  
@@ -22,11 +22,11 @@ import javax.swing.JTextArea;
  *
  */
 
-public class CafeController implements Observer {
+public class CafeController {
 	
-	private CafeGUI gui;
-	private Server server;
-	private CafeQueue queue;
+	private static CafeGUI gui;
+//	private Server server;
+//	private CafeQueue queue;
 	
 	/**
 	 * Takes an instance of CafeGUI, Server and CafeQueue
@@ -35,12 +35,15 @@ public class CafeController implements Observer {
 	 * @param server - Server
 	 * @param queue - CafeQueue
 	 */
-	public CafeController(CafeGUI view, Server slave, CafeQueue line){
-		
+//	public CafeController(CafeGUI view, Server slave, CafeQueue line){
+//		
+//		this.gui = gui;
+//		this.server = server;
+//		this.queue = queue;
+//		
+//	}
+	CafeController(CafeGUI gui){
 		this.gui = gui;
-		this.server = server;
-		this.queue = queue;
-		
 	}
 	
 	// I think this method should be fully implemented here as opposed to in the GUI
@@ -49,32 +52,41 @@ public class CafeController implements Observer {
 	// is looking at the correct one.
 	
 	
-	public synchronized void update(Observable arg0, Object arg1){
-		//gui.update(arg0, arg1); call the GUI method
-		
-		if (arg1.equals(queue)) {
-			int size = queue.getQueueSize();
-			gui.printToDisplay(String.valueOf(size) + "Controller", gui.getQueueDisplay());
-		} else if (arg1.equals(server)) {
-			gui.printToDisplay(server.getItem() + "Controller", gui.getTillOneDisplay());
-		}
+	
+	
+//	public synchronized void update(Observable arg0, Object arg1){
+//		//gui.update(arg0, arg1); call the GUI method
+//		
+//		if (arg1.equals(queue)) {
+//			int size = queue.getQueueSize();
+//			gui.printToDisplay(String.valueOf(size) + "Controller", gui.getQueueDisplay());
+//		} else if (arg1.equals(server)) {
+//			gui.printToDisplay(server.getItem() + "Controller", gui.getTillOneDisplay());
+//		}
+//	}
+	
+	public synchronized static void updateQueue() {
+		 
+		 gui.setQueueDisplay(String.valueOf(CafeQueue.getQueue().size()));
 	}
 	
-	public String getItem(){
-		return server.getItem();
-	}
 	
-	public String getCustomerName(){
-		return server.getCustomerName();
-	}
 	
-	public Queue getQueue(){
-		return queue.getQueue();
-	}
-	
-	public void printToDisplay(String s, JTextArea j){
-		gui.printToDisplay(s, j);
-	}	
+//	public String getItem(){
+//		return server.getItem();
+//	}
+//	
+//	public String getCustomerName(){
+//		return server.getCustomerName();
+//	}
+//	
+//	public Queue getQueue(){
+//		return queue.getQueue();
+//	}
+//	
+//	public void printToDisplay(String s, JTextArea j){
+//		gui.printToDisplay(s, j);
+//	}	
 
 }
 

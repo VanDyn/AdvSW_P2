@@ -209,6 +209,9 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	public JTextArea getTillTwoDisplay(){
 		return tillTwoDisplay;
 	}
+	public void setQueueDisplay(String s) {
+		queueDisplay.append(s);
+	}
 	
 	/**
 	 * Takes a string and a JTextArea as arguments and prints the string to the JTextArea
@@ -232,8 +235,9 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		// System.out.println(arg1.getClass().getSimpleName());
 		
 		if (arg1.equals(q)) {
-			int size = q.getQueueSize();
-			printToDisplay(String.valueOf(size), queueDisplay); 
+			CafeController.updateQueue();
+			//int size = q.getQueueSize();
+			//printToDisplay(String.valueOf(size), queueDisplay); 
 		} else if (arg1.equals(s)) {
 			printToDisplay(s.getItem(), tillOneDisplay);
 		}
