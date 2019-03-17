@@ -213,6 +213,10 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		queueDisplay.append(s);
 	}
 	
+	public void setTillOneDisplay(String s) {
+		tillOneDisplay.append(s);
+	}
+	
 	/**
 	 * Takes a string and a JTextArea as arguments and prints the string to the JTextArea
 	 * on a new line
@@ -235,11 +239,9 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		// System.out.println(arg1.getClass().getSimpleName());
 		
 		if (arg1.equals(q)) {
-			CafeController.updateQueue();
-			//int size = q.getQueueSize();
-			//printToDisplay(String.valueOf(size), queueDisplay); 
+			CafeController.updateQueue(); 
 		} else if (arg1.equals(s)) {
-			printToDisplay(s.getItem(), tillOneDisplay);
+			CafeController.updateServer(s, 1);
 		}
 
 	}
