@@ -14,12 +14,14 @@ public class CafeQueue extends Thread implements Subject{
 
 	private static Queue<Order> queue = new LinkedList<>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
+	private SimTime time;
 	
 	//Interface i;
 	
-	CafeQueue(Interface i){
+	CafeQueue(Interface i, SimTime t){
 		//this.i = i;
 		//this.queue = new ArrayList<>();
+		this.time = t;
 	}
 	
 
@@ -36,7 +38,7 @@ public class CafeQueue extends Thread implements Subject{
 			addToQueue();
 			notifyObservers();
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(time.get());
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

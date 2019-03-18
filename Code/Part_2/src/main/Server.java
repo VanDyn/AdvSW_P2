@@ -20,9 +20,11 @@ public class Server extends Thread implements Subject {
 	private CafeQueue queue;
 	private List<Observer> observers = new ArrayList<Observer>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
+	private SimTime time;
 
-	public Server(CafeQueue q) {
+	public Server(CafeQueue q, SimTime t) {
 		this.queue = q; // take class as argument
+		this.time = t;
 	}
 
 	// public void setState(int state) {
@@ -52,8 +54,8 @@ public class Server extends Thread implements Subject {
 
 					notifyObservers();
 					sendToLog("Processing: " + description + " total: " + (total).toString());
-
-					Thread.sleep((long) (Math.random() * 3000)); // sleep random
+					Thread.sleep(time.get());
+					//Thread.sleep((long) (Math.random() * 3000)); // sleep random
 																	// max 3
 																	// seconds
 				}
