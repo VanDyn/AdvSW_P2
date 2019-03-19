@@ -29,6 +29,7 @@ public class CafeController {
 	// private Server server;
 	// private CafeQueue queue;
 	private static String temp;
+	private static String temp2;
 
 	/**
 	 * Takes an instance of CafeGUI, Server and CafeQueue
@@ -40,6 +41,7 @@ public class CafeController {
 	CafeController(CafeGUI gui) {
 		this.gui = gui;
 		this.temp = "X";
+		this.temp2 = "Y";
 	}
 
 	public synchronized static void updateQueue() {
@@ -71,12 +73,12 @@ public class CafeController {
 		}
 		else if (thread == 2){
 			
-			System.out.println(s.getCustomerName() + temp + "TILL TWO");  // REMEMBER TO DELETE THIS!
+			System.out.println(s.getCustomerName() + temp2);  // REMEMBER TO DELETE THIS!
 
-			if (temp == "X" || temp != s.getCustomerName()) {
-				temp = s.getCustomerName();
+			if (temp2 == "Y" || temp2 != s.getCustomerName()) {
+				temp2 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillTwoDisplay());
-				gui.printToDisplay("Currently Serving : " + temp, gui.getTillTwoDisplay());
+				gui.printToDisplay("Currently Serving : " + temp2, gui.getTillTwoDisplay());
 				gui.printToDisplay(s.getItem(), gui.getTillTwoDisplay());
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillTwoDisplay());

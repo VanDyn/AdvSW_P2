@@ -21,10 +21,13 @@ public class Server extends Thread implements Subject {
 	private List<Observer> observers = new ArrayList<Observer>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
 	private SimTime time;
-
-	public Server(CafeQueue q, SimTime t) {
+	private ServerControl control;
+	private int serverNo; 
+	public Server(CafeQueue q, SimTime t, ServerControl c, int i) {
 		this.queue = q; // take class as argument
 		this.time = t;
+		this.control = c;
+		this.serverNo = i;
 	}
 
 	// public void setState(int state) {
@@ -36,33 +39,43 @@ public class Server extends Thread implements Subject {
 	// methods? I need these so that I can display what is happening in the GUI
 
 	public void run() {
-		while (queue.getQueueSize() != 0) {
-			Order order = queue.serveCustomer(); // get orders from class
-			// System.out.println(">s< Serving: " + order.getID());
-			LinkedList<MenuItem> list = order.getItemList();
-			int length = list.size();
-			customerName = order.getID();
-			BigDecimal total = new BigDecimal(0);
-			;
-			try {
-				for (int i = 0; i < length; i++) // print processing message and
-													// sleep
-				{
-					MenuItem item = list.pop();
-					total.add(item.getCost());
-					description = item.getDescription();
-
-					notifyObservers();
-					sendToLog("Processing: " + description + " total: " + (total).toString());
-					Thread.sleep(time.get());
-					//Thread.sleep((long) (Math.random() * 3000)); // sleep random
-																	// max 3
-																	// seconds
-				}
-			} catch (Exception e) {
-			}
+		try {
+			Thread.sleep(this.serverNo*100);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+		while (queue.getQueueSize() != 0) {
+			if(this.control.get(this.serverNo)==false) {continue;} 
+			else {
+				Order order = queue.serveCustomer(); // get orders from class
+				// System.out.println(">s< Serving: " + order.getID());
+				LinkedList<MenuItem> list = order.getItemList();
+				int length = list.size();
+				customerName = order.getID();
+				BigDecimal total = new BigDecimal(0);
+				;
+				try {
+					for (int i = 0; i < length; i++) // print processing message and
+														// sleep
+					{
+						MenuItem item = list.pop();
+						total.add(item.getCost());
+						description = item.getDescription();
 
+						notifyObservers();
+						sendToLog("Processing: " + description + " total: " + (total).toString());
+						Thread.sleep(time.get());
+						//Thread.sleep((long) (Math.random() * 3000)); // sleep random
+																		// max 3
+																		// seconds
+					}
+				} catch (Exception e) {
+				}
+			}
+			
+			}
+			
 	}
 
 	public String getItem() {
@@ -94,5 +107,8 @@ public class Server extends Thread implements Subject {
 	public String getCustomerName() {
 		return customerName;
 	}
-
+	
+	public int getServerNo(){
+		return this.serverNo;
+	}
 }

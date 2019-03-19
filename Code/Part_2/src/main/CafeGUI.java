@@ -279,13 +279,13 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 */
 	public synchronized void update(Observable arg0, Object arg1) {
 
-		// System.out.println(arg1.getClass().getSimpleName());
+		// System.out.println(arg1.getClass().getSimpleName());  //
 		
 		if (arg1.equals(q)) {
 			CafeController.updateQueue(); 
-		} else if (arg1.equals(s)) {
+		} else if (((Server) arg1).getServerNo()==0) {
 			CafeController.updateServer(s, 1);
-		}else if(arg1.equals(s2)) {
+		}else if(((Server) arg1).getServerNo()==1) {
 			CafeController.updateServer(s2, 2);
 		}
 

@@ -34,6 +34,12 @@ public class CafeQueue extends Thread implements Subject{
 	 */
 	public void run() {
 		//System.out.println(Interface.getSize());
+		
+		// ADD EXCEPTION FOR EMPTY QUEUE
+		
+		addToQueue();
+		addToQueue();
+		addToQueue();
 		while(Interface.getSize() != 0) {// && queue.size() != 0) {
 			addToQueue();
 			notifyObservers();
