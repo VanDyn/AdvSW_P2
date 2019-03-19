@@ -61,10 +61,12 @@ public class CafeQueue extends Thread implements Subject{
 	 * Method for the server thread to access orders from the queue.
 	 * Accessed orders will be removed from the queue.
 	 */
-	public static synchronized Order serveCustomer() {
-		System.out.println(">Q< Serving customer: " + queue.peek().getID());
+	public synchronized Order serveCustomer() {
+		//System.out.println(">Q< Serving customer: " + queue.peek().getID());
 		sendToLog("Customer Served : " + queue.peek().getID());
-		return queue.poll();
+		Order temp = queue.poll();
+		notifyObservers();
+		return temp;
 	}
 	
 	// Sends a string to the Log class

@@ -37,7 +37,7 @@ public class Server extends Thread implements Subject {
 
 	public void run() {
 		while (queue.getQueueSize() != 0) {
-			Order order = CafeQueue.serveCustomer(); // get orders from class
+			Order order = queue.serveCustomer(); // get orders from class
 			// System.out.println(">s< Serving: " + order.getID());
 			LinkedList<MenuItem> list = order.getItemList();
 			int length = list.size();
