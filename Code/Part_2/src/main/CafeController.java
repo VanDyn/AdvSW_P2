@@ -30,28 +30,33 @@ public class CafeController {
 	// private CafeQueue queue;
 	private static String temp;
 	private static String temp2;
+	private static String temp3;
+	private static String temp4;
 
 	/**
 	 * Takes an instance of CafeGUI, Server and CafeQueue
 	 * 
-	 * @param gui - CafeGUI
+	 * @param gui
+	 *            - CafeGUI
 	 * 
 	 */
 
 	CafeController(CafeGUI gui) {
 		this.gui = gui;
-		this.temp = "X";
-		this.temp2 = "Y";
+		this.temp = "W";
+		this.temp2 = "X";
+		this.temp = "Y";
+		this.temp2 = "Z";
 	}
 
 	public synchronized static void updateQueue() {
 
-		gui.clearQueueDisplay();
+		gui.clearDisplay(gui.getQueueDisplay());
 
 		ArrayList<String> arr = CafeQueue.getQueueMembers();
 
 		for (String i : arr) {
-			gui.setQueueDisplay(i + "\n");
+			gui.printToDisplay(i, gui.getQueueDisplay());
 		}
 
 	}
@@ -59,9 +64,10 @@ public class CafeController {
 	public synchronized static void updateServer(Server s, int thread) {
 		if (thread == 1) {
 
-			System.out.println(s.getCustomerName() + temp);  // REMEMBER TO DELETE THIS!
+			System.out.println(s.getCustomerName() + temp); // REMEMBER TO
+															// DELETE THIS!
 
-			if (temp == "X" || temp != s.getCustomerName()) {
+			if (temp == "W" || temp != s.getCustomerName()) {
 				temp = s.getCustomerName();
 				gui.clearDisplay(gui.getTillOneDisplay());
 				gui.printToDisplay("Currently Serving : " + temp, gui.getTillOneDisplay());
@@ -70,12 +76,12 @@ public class CafeController {
 				gui.printToDisplay(s.getItem(), gui.getTillOneDisplay());
 			}
 
-		}
-		else if (thread == 2){
-			
-			System.out.println(s.getCustomerName() + temp2);  // REMEMBER TO DELETE THIS!
+		} else if (thread == 2) {
 
-			if (temp2 == "Y" || temp2 != s.getCustomerName()) {
+			System.out.println(s.getCustomerName() + temp2); // REMEMBER TO
+																// DELETE THIS!
+
+			if (temp2 == "X" || temp2 != s.getCustomerName()) {
 				temp2 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillTwoDisplay());
 				gui.printToDisplay("Currently Serving : " + temp2, gui.getTillTwoDisplay());
@@ -83,7 +89,35 @@ public class CafeController {
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillTwoDisplay());
 			}
-			
+
+		} else if (thread == 3) {
+
+			System.out.println(s.getCustomerName() + temp3); // REMEMBER TO
+																// DELETE THIS!
+
+			if (temp3 == "Y" || temp3 != s.getCustomerName()) {
+				temp3 = s.getCustomerName();
+				gui.clearDisplay(gui.getTillThreeDisplay());
+				gui.printToDisplay("Currently Serving : " + temp3, gui.getTillThreeDisplay());
+				gui.printToDisplay(s.getItem(), gui.getTillThreeDisplay());
+			} else {
+				gui.printToDisplay(s.getItem(), gui.getTillThreeDisplay());
+			}
+
+		} else if (thread == 4) {
+
+			System.out.println(s.getCustomerName() + temp4); // REMEMBER TO
+																// DELETE THIS!
+
+			if (temp4 == "Z" || temp4 != s.getCustomerName()) {
+				temp4 = s.getCustomerName();
+				gui.clearDisplay(gui.getTillFourDisplay());
+				gui.printToDisplay("Currently Serving : " + temp4, gui.getTillFourDisplay());
+				gui.printToDisplay(s.getItem(), gui.getTillFourDisplay());
+			} else {
+				gui.printToDisplay(s.getItem(), gui.getTillFourDisplay());
+			}
+
 		}
 
 	}

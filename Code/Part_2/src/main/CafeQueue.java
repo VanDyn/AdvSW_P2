@@ -40,6 +40,7 @@ public class CafeQueue extends Thread implements Subject{
 		addToQueue();
 		addToQueue();
 		addToQueue();
+		
 		while(Interface.getSize() != 0) {// && queue.size() != 0) {
 			addToQueue();
 			notifyObservers();

@@ -33,8 +33,8 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	private JLabel tillOne, tillTwo;
 
 	// Text areas for panel 4
-	private JTextArea tillOneDisplay, tillTwoDisplay;
-	private JScrollPane scrollTillOne, scrollTillTwo;
+	private JTextArea tillOneDisplay, tillTwoDisplay, tillThreeDisplay, tillFourDisplay;
+	private JScrollPane scrollTillOne, scrollTillTwo, scrollTillThree, scrollTillFour;
 
 	// Formatting
 	// private String format = "%1$10s %2$-60s";
@@ -44,6 +44,8 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	private CafeQueue q;
 	private Server s;
 	private Server s2;
+	private Server s3;
+	private Server s4;
 
 	// Booleans to determine when to start or stop the threads.
 	private boolean begin;
@@ -56,7 +58,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 * @param server - an instance of Server class
 	 * @param t 
 	 */
-	public CafeGUI(CafeQueue queue, Server server, Server server2, SimTime t) {
+	public CafeGUI(CafeQueue queue, Server server, Server server2, Server server3, Server server4, SimTime t) {
 		
 		// Instances to be observed
 		this.q = queue;
@@ -67,6 +69,12 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		
 		this.s2 = server2;
 		server2.registerObserver(this);
+		
+		this.s3 = server3;
+		server3.registerObserver(this);
+		
+		this.s4 = server4;
+		server4.registerObserver(this);
 		
 		this.time = t;
 	
@@ -137,7 +145,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 		// Panel 4
 		JPanel panel4 = new JPanel();
-		panel4.setLayout(new GridLayout(1, 2));
+		panel4.setLayout(new GridLayout(2, 2));
 
 		tillOneDisplay = new JTextArea(7, 30);
 		tillOneDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
@@ -159,6 +167,26 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		scrollTillTwo = new JScrollPane(tillTwoDisplay);
 		panel4.add(scrollTillTwo);
 
+		tillThreeDisplay = new JTextArea(7, 30);
+		tillThreeDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
+		tillThreeDisplay.setLineWrap(true);
+		tillThreeDisplay.setEditable(false);
+		DefaultCaret caret4 = (DefaultCaret)tillThreeDisplay.getCaret();
+		caret4.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		
+		scrollTillThree = new JScrollPane(tillThreeDisplay);
+		panel4.add(scrollTillThree);
+		
+		tillFourDisplay = new JTextArea(7, 30);
+		tillFourDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
+		tillFourDisplay.setLineWrap(true);
+		tillFourDisplay.setEditable(false);
+		DefaultCaret caret5 = (DefaultCaret)tillFourDisplay.getCaret();
+		caret5.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		
+		scrollTillFour = new JScrollPane(tillFourDisplay);
+		panel4.add(scrollTillFour);
+		
 		content.add(panel4);
 
 		// Add listeners to the buttons
@@ -245,19 +273,14 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	public JTextArea getTillTwoDisplay(){
 		return tillTwoDisplay;
 	}
-	public void setQueueDisplay(String s) {
-		queueDisplay.append(s);
-	}
-	public void clearQueueDisplay(){
-		queueDisplay.setText("");
-	}
-	public void clearTillOneDisplay(){
-		tillOneDisplay.setText("");
-	}
-	public void setTillOneDisplay(String s) {
-		tillOneDisplay.append("\n" + s);
+
+	public JTextArea getTillThreeDisplay(){
+		return tillThreeDisplay;
 	}
 	
+	public JTextArea getTillFourDisplay(){
+		return tillFourDisplay;
+	}
 	/**
 	 * Takes a string and a JTextArea as arguments and prints the string to the JTextArea
 	 * on a new line
@@ -287,6 +310,10 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 			CafeController.updateServer(s, 1);
 		}else if(((Server) arg1).getServerNo()==1) {
 			CafeController.updateServer(s2, 2);
+		}else if (((Server) arg1).getServerNo()==2) {
+			CafeController.updateServer(s3, 3);
+		}else if(((Server) arg1).getServerNo()==3) {
+			CafeController.updateServer(s4, 4);
 		}
 
 	}
