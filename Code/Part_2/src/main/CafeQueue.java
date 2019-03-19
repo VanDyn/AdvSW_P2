@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
@@ -13,11 +14,14 @@ public class CafeQueue extends Thread implements Subject{
 
 	private static Queue<Order> queue = new LinkedList<>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
+	private SimTime time;
+	
 	//Interface i;
 	
-	CafeQueue(Interface i){
+	CafeQueue(Interface i, SimTime t){
 		//this.i = i;
 		//this.queue = new ArrayList<>();
+		this.time = t;
 	}
 	
 
@@ -34,7 +38,7 @@ public class CafeQueue extends Thread implements Subject{
 			addToQueue();
 			notifyObservers();
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(time.get());
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -86,7 +90,7 @@ public class CafeQueue extends Thread implements Subject{
 		
 	}
 	
-	public static Queue getQueue() {
+	public static Queue<Order> getQueue() {
 		return queue;
 	}
 	
@@ -94,4 +98,22 @@ public class CafeQueue extends Thread implements Subject{
 		
 		return queue.size();
 	}
+	
+	public synchronized static ArrayList<String> getQueueMembers(){
+		ArrayList<String> members = new ArrayList<String>();
+		
+		for(Order m : queue) {
+			members.add(m.getID());
+		}
+		
+		return members;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

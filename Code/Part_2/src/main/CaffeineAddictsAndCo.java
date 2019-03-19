@@ -19,11 +19,14 @@ public class CaffeineAddictsAndCo {
 	   Interface i = new Interface(filename);
 	   ol = new OrderList();
 	   
+	   SimTime t = new SimTime();
+	   CafeQueue queue = new CafeQueue(i,t);
+	   Server server = new Server(queue, t);
 	   
-	   CafeQueue queue = new CafeQueue(i);
-	   Server server = new Server(queue);
+	   CafeGUI gui = new CafeGUI(queue, server, t);
+	   CafeController cafeCon = new CafeController(gui);
 	   
-	   CafeGUI gui = new CafeGUI(queue, server);
+	   // while (gui.getStart == true && gui.getStop == false)   // start the threads  NOT SURE WHERE TO USE THIS!
 	   queue.start();
 	   server.start();
 	   

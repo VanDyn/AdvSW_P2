@@ -12,8 +12,7 @@ import main.Order;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Server extends Thread implements Subject
-{
+public class Server extends Thread implements Subject {
 	private String customerName;
 	private BigDecimal total;
 	private Order order;
@@ -21,77 +20,79 @@ public class Server extends Thread implements Subject
 	private CafeQueue queue;
 	private List<Observer> observers = new ArrayList<Observer>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
+	private SimTime time;
 
-	public Server(CafeQueue q)
-	{
-		this.queue = q; //take class as argument
+	public Server(CafeQueue q, SimTime t) {
+		this.queue = q; // take class as argument
+		this.time = t;
 	}
 
-	
+	// public void setState(int state) {
+	// this.state = state;
+	// notifyAllObservers();
+	// }
 
-//	public void setState(int state) {
-//	   this.state = state;
-//	   notifyAllObservers();
-//	}
+	// There is a lot happening in this method. Refactor it into multiple
+	// methods? I need these so that I can display what is happening in the GUI
 
-	
-	
-	
-	// There is a lot happening in this method.  Refactor it into multiple methods?  I need these so that I can display what is happening in the GUI
-	
-	public void run()
-	{
-		while(queue.getQueueSize() != 0) {
-			Order order = CafeQueue.serveCustomer(); //get orders from class
-			//System.out.println(">s< Serving: " + order.getID());
+	public void run() {
+		while (queue.getQueueSize() != 0) {
+			Order order = CafeQueue.serveCustomer(); // get orders from class
+			// System.out.println(">s< Serving: " + order.getID());
 			LinkedList<MenuItem> list = order.getItemList();
 			int length = list.size();
 			customerName = order.getID();
-			BigDecimal total = new BigDecimal(0);;
-			try 
-			{
-				for(int i=0;i<length;i++) //print processing message and sleep
+			BigDecimal total = new BigDecimal(0);
+			;
+			try {
+				for (int i = 0; i < length; i++) // print processing message and
+													// sleep
 				{
 					MenuItem item = list.pop();
 					total.add(item.getCost());
 					description = item.getDescription();
-					
+
 					notifyObservers();
 					sendToLog("Processing: " + description + " total: " + (total).toString());
-					
-					Thread.sleep((long)(Math.random() * 3000));  //sleep random max 3 seconds
+					Thread.sleep(time.get());
+					//Thread.sleep((long) (Math.random() * 3000)); // sleep random
+																	// max 3
+																	// seconds
 				}
+			} catch (Exception e) {
 			}
-			catch(Exception e){}
 		}
 
 	}
-	
-	public String getItem(){
+
+	public String getItem() {
 		return description;
 	}
-	
+
 	private static synchronized void sendToLog(String details) {
 		Log l = Log.INSTANCE;
 		l.log(details);
 	}
-	
+
 	public void registerObserver(Observer obs) {
 		registeredObservers.add(obs);
-		
+
 	}
 
 	public void removeObserver(Observer obs) {
 		registeredObservers.remove(obs);
-		
+
 	}
 
 	public void notifyObservers() {
-		for(Observer obs : registeredObservers) {
+		for (Observer obs : registeredObservers) {
 			obs.update(null, this);
 		}
-		
+
 	}
 
+	public String getCustomerName() {
+		return customerName;
+	}
 
 }
