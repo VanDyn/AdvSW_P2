@@ -246,8 +246,11 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	public void clearQueueDisplay(){
 		queueDisplay.setText("");
 	}
+	public void clearTillOneDisplay(){
+		tillOneDisplay.setText("");
+	}
 	public void setTillOneDisplay(String s) {
-		tillOneDisplay.append(s);
+		tillOneDisplay.append("\n" + s);
 	}
 	
 	/**

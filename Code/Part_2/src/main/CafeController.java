@@ -28,6 +28,7 @@ public class CafeController {
 	private static CafeGUI gui;
 	// private Server server;
 	// private CafeQueue queue;
+	private static String temp;
 
 	/**
 	 * Takes an instance of CafeGUI, Server and CafeQueue
@@ -42,6 +43,7 @@ public class CafeController {
 
 	CafeController(CafeGUI gui) {
 		this.gui = gui;
+		this.temp = "X";
 	}
 
 	public synchronized static void updateQueue() {
@@ -58,9 +60,18 @@ public class CafeController {
 
 	public synchronized static void updateServer(Server s, int thread) {
 		if (thread == 1) {
-			gui.setTillOneDisplay(s.getItem() + "\n");
-			
-			// IMPROVE TILL DISPLAYS!!!
+
+			System.out.println(s.getCustomerName() + temp);
+
+			if (temp == "X" || temp != s.getCustomerName()) {
+				temp = s.getCustomerName();
+				gui.clearTillOneDisplay();
+				gui.setTillOneDisplay("Currently Serving : " + temp);
+				gui.setTillOneDisplay(s.getItem());
+			} else {
+				gui.setTillOneDisplay(s.getItem());
+			}
+
 		}
 
 	}
