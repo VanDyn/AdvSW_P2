@@ -1,0 +1,12 @@
+COF101;2.60;Americano;Coffee
+COF102;3.00;Latte;Coffee
+COF103;2.10;Espresso;Coffee
+TEA201;1.90;Black Tea;Tea
+TEA202;2.10;Earl Grey;Tea
+TEA203;2.40;Iced Tea;Tea
+SND301;3.40;Ham and Cheese;Sandwich
+SND302;4.00;Egg;Sandwich
+SND303;4.50;Five Cheese Toastie;Sandwich
+BAK401;1.10;Chocolate Cookie;Bakery
+BAK402;1.50;Blueberry Muffin;Bakery
+BAK403;1.35;Brownie;Bakery
