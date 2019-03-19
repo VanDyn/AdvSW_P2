@@ -33,12 +33,8 @@ public class CafeController {
 	/**
 	 * Takes an instance of CafeGUI, Server and CafeQueue
 	 * 
-	 * @param gui
-	 *            - CafeGUI
-	 * @param server
-	 *            - Server
-	 * @param queue
-	 *            - CafeQueue
+	 * @param gui - CafeGUI
+	 * 
 	 */
 
 	CafeController(CafeGUI gui) {
@@ -61,17 +57,31 @@ public class CafeController {
 	public synchronized static void updateServer(Server s, int thread) {
 		if (thread == 1) {
 
-			System.out.println(s.getCustomerName() + temp);
+			System.out.println(s.getCustomerName() + temp);  // REMEMBER TO DELETE THIS!
 
 			if (temp == "X" || temp != s.getCustomerName()) {
 				temp = s.getCustomerName();
-				gui.clearTillOneDisplay();
-				gui.setTillOneDisplay("Currently Serving : " + temp);
-				gui.setTillOneDisplay(s.getItem());
+				gui.clearDisplay(gui.getTillOneDisplay());
+				gui.printToDisplay("Currently Serving : " + temp, gui.getTillOneDisplay());
+				gui.printToDisplay(s.getItem(), gui.getTillOneDisplay());
 			} else {
-				gui.setTillOneDisplay(s.getItem());
+				gui.printToDisplay(s.getItem(), gui.getTillOneDisplay());
 			}
 
+		}
+		else if (thread == 2){
+			
+			System.out.println(s.getCustomerName() + temp + "TILL TWO");  // REMEMBER TO DELETE THIS!
+
+			if (temp == "X" || temp != s.getCustomerName()) {
+				temp = s.getCustomerName();
+				gui.clearDisplay(gui.getTillTwoDisplay());
+				gui.printToDisplay("Currently Serving : " + temp, gui.getTillTwoDisplay());
+				gui.printToDisplay(s.getItem(), gui.getTillTwoDisplay());
+			} else {
+				gui.printToDisplay(s.getItem(), gui.getTillTwoDisplay());
+			}
+			
 		}
 
 	}

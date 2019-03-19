@@ -22,8 +22,9 @@ public class CaffeineAddictsAndCo {
 	   SimTime t = new SimTime();
 	   CafeQueue queue = new CafeQueue(i,t);
 	   Server server = new Server(queue, t);
+	   Server server2 = new Server(queue, t);
 	   
-	   CafeGUI gui = new CafeGUI(queue, server, t);
+	   CafeGUI gui = new CafeGUI(queue, server, server2, t);
 	   CafeController cafeCon = new CafeController(gui);
 	   
 	   // while (gui.getStart == true && gui.getStop == false)   // start the threads  NOT SURE WHERE TO USE THIS!
