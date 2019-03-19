@@ -101,5 +101,8 @@ public class Server extends Thread implements Subject {
 	public String getCustomerName() {
 		return customerName;
 	}
-
+	
+	public int getServerNo(){
+		return this.serverNo;
+	}
 }
