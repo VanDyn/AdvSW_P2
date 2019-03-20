@@ -23,16 +23,29 @@ public class CaffeineAddictsAndCo {
 	   CafeQueue queue = new CafeQueue(i,t);
 	   Boolean[] controlList = {true, true, true, true}; 
 	   ServerControl c = new ServerControl(controlList);
-	   Server server = new Server(queue, t, c, 0);
-	   Server server2 = new Server(queue, t, c, 1);
-	   Server server3 = new Server(queue, t, c, 2);
-	   Server server4 = new Server(queue, t, c, 3);
+	   
+	   Requests requests = new Requests();
+	   KitchenCounter counter = new KitchenCounter();
+	   
+	   KitchenStaff kitchen = new KitchenStaff(requests,counter);
+	   //KitchenStaff kitchen2 = new KitchenStaff(requests,counter);
+	   //KitchenStaff kitchen3 = new KitchenStaff(requests,counter);
+	   
+	   Server server = new Server(queue, t, c, 0,counter,requests);
+	   Server server2 = new Server(queue, t, c, 1,counter,requests);
+	   Server server3 = new Server(queue, t, c, 2,counter,requests);
+	   Server server4 = new Server(queue, t, c, 3,counter,requests);
 	   
 	   CafeGUI gui = new CafeGUI(queue, server, server2, server3, server4, t);
 	   CafeController cafeCon = new CafeController(gui);
 	   
 	   // while (gui.getStart == true && gui.getStop == false)   // start the threads  NOT SURE WHERE TO USE THIS!
+	   kitchen.start();
+	   //kitchen2.start();
+	   //kitchen3.start();
+	   
 	   queue.start();
+	   
 	   server.start();
 	   server2.start();
 	   server3.start();

@@ -23,11 +23,16 @@ public class Server extends Thread implements Subject {
 	private SimTime time;
 	private ServerControl control;
 	private int serverNo; 
-	public Server(CafeQueue q, SimTime t, ServerControl c, int i) {
+	private KitchenCounter counter;
+	private Requests requests;
+	
+	public Server(CafeQueue q, SimTime t, ServerControl c, int i, KitchenCounter k, Requests r) {
 		this.queue = q; // take class as argument
 		this.time = t;
 		this.control = c;
 		this.serverNo = i;
+		this.counter = k;
+		this.requests = r;
 	}
 
 	// public void setState(int state) {
@@ -54,7 +59,7 @@ public class Server extends Thread implements Subject {
 				int length = list.size();
 				customerName = order.getID();
 				BigDecimal total = new BigDecimal(0);
-				;
+				
 				try {
 					for (int i = 0; i < length; i++) // print processing message and
 														// sleep
@@ -62,7 +67,13 @@ public class Server extends Thread implements Subject {
 						MenuItem item = list.pop();
 						total.add(item.getCost());
 						description = item.getDescription();
-
+						
+						requests.put(description);
+						
+						while(counter.get(description) == false) {
+							Thread.sleep(time.get());  //sleep random max 3 seconds
+						}
+						
 						notifyObservers();
 						sendToLog("Processing: " + description + " total: " + (total).toString());
 						Thread.sleep(time.get());

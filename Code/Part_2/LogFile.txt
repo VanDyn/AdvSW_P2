@@ -1,28 +1,62 @@
 Dave has joined the queue
-Customer Served : Dave
-Processing: Americano total: 0
 John has joined the queue
-Processing: Americano total: 0
 Kerry has joined the queue
-Processing: Latte total: 0
 Ryan has joined the queue
+Customer Served : Dave
 Customer Served : John
-Processing: Espresso total: 0
+Kitchen Staff are making: Americano
+Customer Served : Kerry
+Kitchen Staff are making: Espresso
+Kitchen Staff are making: Americano
+Processing: Americano total: 0
+Customer Served : Ryan
+Kitchen Staff are making: Black Tea
 Dillon has joined the queue
 Processing: Americano total: 0
-Chris has joined the queue
-Customer Served : Kerry
-Processing: Americano total: 0
-Darren has joined the queue
-Processing: Chocolate Cookie total: 0
-Kayleigh has joined the queue
-Customer Served : Ryan
+Processing: Espresso total: 0
+Kitchen Staff are making: Chocolate Cookie
 Processing: Black Tea total: 0
-Rebecca has joined the queue
+Chris has joined the queue
+Kitchen Staff are making: Americano
+Processing: Americano total: 0
+Kitchen Staff are making: Americano
+Processing: Chocolate Cookie total: 0
 Customer Served : Dillon
-Processing: Brownie total: 0
-Ryan has joined the queue
-Processing: Brownie total: 0
-Processing: Brownie total: 0
+Kitchen Staff are making: Brownie
+Darren has joined the queue
+Processing: Americano total: 0
 Customer Served : Chris
+Kitchen Staff are making: Ham and Cheese
+Customer Served : Darren
+Kitchen Staff are making: Blueberry Muffin
+Processing: Brownie total: 0
+Kayleigh has joined the queue
+Kitchen Staff are making: Latte
 Processing: Ham and Cheese total: 0
+Processing: Blueberry Muffin total: 0
+Kitchen Staff are making: Brownie
+Processing: Latte total: 0
+Rebecca has joined the queue
+Kitchen Staff are making: Latte
+Kitchen Staff are making: Iced Tea
+Processing: Brownie total: 0
+Customer Served : Kayleigh
+Ryan has joined the queue
+Kitchen Staff are making: Espresso
+Processing: Latte total: 0
+Processing: Iced Tea total: 0
+Kitchen Staff are making: Brownie
+Processing: Espresso total: 0
+Customer Served : Rebecca
+Kitchen Staff are making: Black Tea
+Customer Served : Ryan
+Kitchen Staff are making: Egg
+Processing: Brownie total: 0
+Processing: Black Tea total: 0
+Kitchen Staff are making: Black Tea
+Processing: Black Tea total: 0
+Processing: Egg total: 0
+Kitchen Staff are making: Black Tea
+Processing: Black Tea total: 0
+Kitchen Staff are making: Black Tea
+Processing: Black Tea total: 0
