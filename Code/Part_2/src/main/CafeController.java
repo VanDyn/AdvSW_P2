@@ -67,11 +67,11 @@ public class CafeController {
 			//System.out.println(s.getCustomerName() + temp); // REMEMBER TO
 															// DELETE THIS!
 
-			if (temp == "W" || temp != s.getCustomerName()) {
+			if (temp == "W" || temp != s.getCustomerName() ) {
 				temp = s.getCustomerName();
 				gui.clearDisplay(gui.getTillOneDisplay());
 				gui.printToDisplay("Currently Serving : " + temp, gui.getTillOneDisplay());
-				gui.printToDisplay(s.getItem(), gui.getTillOneDisplay());
+				gui.printToDisplay("-------------------", gui.getTillOneDisplay());
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillOneDisplay());
 			}
@@ -85,7 +85,7 @@ public class CafeController {
 				temp2 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillTwoDisplay());
 				gui.printToDisplay("Currently Serving : " + temp2, gui.getTillTwoDisplay());
-				gui.printToDisplay(s.getItem(), gui.getTillTwoDisplay());
+				gui.printToDisplay("-------------------", gui.getTillTwoDisplay());
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillTwoDisplay());
 			}
@@ -99,7 +99,7 @@ public class CafeController {
 				temp3 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillThreeDisplay());
 				gui.printToDisplay("Currently Serving : " + temp3, gui.getTillThreeDisplay());
-				gui.printToDisplay(s.getItem(), gui.getTillThreeDisplay());
+				gui.printToDisplay("-------------------", gui.getTillThreeDisplay());
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillThreeDisplay());
 			}
@@ -113,7 +113,7 @@ public class CafeController {
 				temp4 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillFourDisplay());
 				gui.printToDisplay("Currently Serving : " + temp4, gui.getTillFourDisplay());
-				gui.printToDisplay(s.getItem(), gui.getTillFourDisplay());
+				gui.printToDisplay("-------------------", gui.getTillFourDisplay());
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillFourDisplay());
 			}

@@ -39,7 +39,6 @@ public class CaffeineAddictsAndCo {
 	   CafeGUI gui = new CafeGUI(queue, server, server2, server3, server4, t);
 	   CafeController cafeCon = new CafeController(gui);
 	   
-	   // while (gui.getStart == true && gui.getStop == false)   // start the threads  NOT SURE WHERE TO USE THIS!
 	   kitchen.start();
 	   //kitchen2.start();
 	  // kitchen3.start();
@@ -51,7 +50,6 @@ public class CaffeineAddictsAndCo {
 	   server3.start();
 	   server4.start();
 	   
-	   //Server s1 = new Server(queue); s1.start();
 		
 	}
 }

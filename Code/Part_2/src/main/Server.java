@@ -59,6 +59,7 @@ public class Server extends Thread implements Subject {
 				int length = list.size();
 				customerName = order.getID();
 				BigDecimal total = new BigDecimal(0);
+				notifyObservers();
 				
 				try {
 					for (int i = 0; i < length; i++) // print processing message and
