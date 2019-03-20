@@ -1,4 +1,4 @@
-package main;
+package SharedObjects;
 
 public class ServerControl {
 	private Boolean[] servers;

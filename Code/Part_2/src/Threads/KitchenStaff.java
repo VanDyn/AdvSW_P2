@@ -1,4 +1,10 @@
-package main;
+package Threads;
+
+import SharedObjects.KitchenCounter;
+import SharedObjects.Requests;
+import SharedObjects.SimTime;
+import main.Log;
+
 /**
  * 
  * @author calumthompson
@@ -13,7 +19,7 @@ public class KitchenStaff extends Thread{
 	private SimTime time;
 
 	
-	KitchenStaff(Requests r, KitchenCounter k, SimTime t){
+	public KitchenStaff(Requests r, KitchenCounter k, SimTime t){
 		this.requests = r;
 		this.counter = k;
 		this.time = t;

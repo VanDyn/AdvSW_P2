@@ -2,7 +2,7 @@
 Class for holding data concerning menu items
 Contains id String, float cost and description String.
 *****/
-package main;
+package RefactoredCode;
 
 import java.math.BigDecimal;
 

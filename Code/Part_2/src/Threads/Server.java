@@ -1,13 +1,18 @@
-package main;
+package Threads;
 
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 
-import main.CafeQueue;
-import main.MenuItem;
-import main.Order;
+import RefactoredCode.MenuItem;
+import RefactoredCode.Order;
+import SharedObjects.KitchenCounter;
+import SharedObjects.Requests;
+import SharedObjects.ServerControl;
+import SharedObjects.SimTime;
+import Threads.CafeQueue;
+import main.Log;
 
 import java.util.ArrayList;
 import java.util.List;

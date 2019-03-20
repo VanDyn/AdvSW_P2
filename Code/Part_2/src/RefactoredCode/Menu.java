@@ -1,4 +1,4 @@
-package main;
+package RefactoredCode;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

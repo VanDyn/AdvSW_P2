@@ -1,4 +1,4 @@
-package main;
+package RefactoredCode;
 
 /**
  * Exception class that throws an error and informs user

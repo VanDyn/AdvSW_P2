@@ -1,4 +1,4 @@
-package main;
+package GUI;
 
 //Import all Java GUI classes
 import java.awt.*;
@@ -11,6 +11,11 @@ import java.util.Observer;
 
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
+
+import SharedObjects.SimTime;
+import Threads.CafeQueue;
+import Threads.Server;
+import main.Log;
 
 /**
  * Class which will implement the GUI for the coffee shop simulation.

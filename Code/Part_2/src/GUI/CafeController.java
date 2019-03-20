@@ -1,4 +1,4 @@
-package main;
+package GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +11,9 @@ import java.util.Observer;
 import java.util.Queue;
 
 import javax.swing.JTextArea;
+
+import Threads.CafeQueue;
+import Threads.Server;
 
 /**
  * Class to act as the controller for MVC design pattern
@@ -41,7 +44,7 @@ public class CafeController {
 	 * 
 	 */
 
-	CafeController(CafeGUI gui) {
+	public CafeController(CafeGUI gui) {
 		this.gui = gui;
 		this.temp = "W";
 		this.temp2 = "X";

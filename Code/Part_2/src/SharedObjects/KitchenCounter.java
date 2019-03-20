@@ -1,4 +1,4 @@
-package main;
+package SharedObjects;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class KitchenCounter {
 	private boolean empty;
 	private boolean done;
 	
-	KitchenCounter(){
+	public KitchenCounter(){
 		this.availableFood  = new HashMap<String,Integer>();
 		this.empty = true;
 		this.done = false;

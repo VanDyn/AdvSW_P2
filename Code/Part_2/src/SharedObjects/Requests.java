@@ -1,4 +1,4 @@
-package main;
+package SharedObjects;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -17,7 +17,7 @@ public class Requests {
 	
 	private boolean done;
 	
-	Requests(){
+	public Requests(){
 		this.orderedFood = new LinkedList<String>();
 		this.done = false;
 	}

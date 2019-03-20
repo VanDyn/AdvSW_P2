@@ -1,4 +1,4 @@
-package main;
+package RefactoredCode;
 
 public class NotOnMenuException extends Exception {
 	public NotOnMenuException(String var, String input) {

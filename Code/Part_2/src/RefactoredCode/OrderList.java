@@ -7,7 +7,7 @@
  */
 
 
-package main;
+package RefactoredCode;
 
 import java.util.*;
 

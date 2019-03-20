@@ -1,4 +1,4 @@
-package main;
+package Threads;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,9 +6,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
 import java.util.Queue;
-import java.util.Observable;
 
-import main.Order;
+import RefactoredCode.Interface;
+import RefactoredCode.Order;
+import SharedObjects.SimTime;
+import main.Log;
+
+import java.util.Observable;
 
 public class CafeQueue extends Thread implements Subject{
 
@@ -18,7 +22,7 @@ public class CafeQueue extends Thread implements Subject{
 	
 	//Interface i;
 	
-	CafeQueue(Interface i, SimTime t){
+	public CafeQueue(Interface i, SimTime t){
 		//this.i = i;
 		//this.queue = new ArrayList<>();
 		this.time = t;
