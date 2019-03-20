@@ -44,11 +44,11 @@ public class CafeController {
 		this.gui = gui;
 	}
 
-	public synchronized static void updateQueue() {
+	public synchronized static void updateQueue(CafeQueue q) {
 
 		gui.clearQueueDisplay();
 
-		ArrayList<String> arr = CafeQueue.getQueueMembers();
+		ArrayList<String> arr = q.getQueueMembers();
 
 		for (String i : arr) {
 			gui.setQueueDisplay(i + "\n");

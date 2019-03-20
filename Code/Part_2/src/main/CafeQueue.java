@@ -12,14 +12,14 @@ import main.Order;
 
 public class CafeQueue extends Thread implements Subject{
 
-	private static Queue<Order> queue = new LinkedList<>();
+	private Queue<Order> queue = new LinkedList<>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
 	private SimTime time;
 	
-	//Interface i;
+	Interface i;
 	
 	CafeQueue(Interface i, SimTime t){
-		//this.i = i;
+		this.i = i;
 		//this.queue = new ArrayList<>();
 		this.time = t;
 	}
@@ -34,7 +34,7 @@ public class CafeQueue extends Thread implements Subject{
 	 */
 	public void run() {
 		//System.out.println(Interface.getSize());
-		while(Interface.getSize() != 0) {// && queue.size() != 0) {
+		while(i.getSize() != 0) {// && queue.size() != 0) {
 			addToQueue();
 			notifyObservers();
 			try {
@@ -51,8 +51,8 @@ public class CafeQueue extends Thread implements Subject{
 	 * Add an order to the queue
 	 */
 	private synchronized void addToQueue() {
-		Order order = Interface.getOrder();
-		//System.out.println(">Q<" + order.getID() + " has joined the queue");
+		Order order = i.getOrder();
+		System.out.println(">Q<" + order.getID() + " has joined the queue");
 		sendToLog(order.getID() + " has joined the queue");
 		queue.add(order);
 	}
@@ -61,14 +61,14 @@ public class CafeQueue extends Thread implements Subject{
 	 * Method for the server thread to access orders from the queue.
 	 * Accessed orders will be removed from the queue.
 	 */
-	public static synchronized Order serveCustomer() {
+	public synchronized Order serveCustomer() {
 		System.out.println(">Q< Serving customer: " + queue.peek().getID());
 		sendToLog("Customer Served : " + queue.peek().getID());
 		return queue.poll();
 	}
 	
 	// Sends a string to the Log class
-	private static synchronized void sendToLog(String details) {
+	private synchronized void sendToLog(String details) {
 		Log l = Log.INSTANCE;
 		l.log(details);
 	}
@@ -90,7 +90,7 @@ public class CafeQueue extends Thread implements Subject{
 		
 	}
 	
-	public static Queue<Order> getQueue() {
+	public Queue<Order> getQueue() {
 		return queue;
 	}
 	
@@ -99,7 +99,7 @@ public class CafeQueue extends Thread implements Subject{
 		return queue.size();
 	}
 	
-	public synchronized static ArrayList<String> getQueueMembers(){
+	public synchronized ArrayList<String> getQueueMembers(){
 		ArrayList<String> members = new ArrayList<String>();
 		
 		for(Order m : queue) {

@@ -18,6 +18,7 @@ public class Server extends Thread implements Subject {
 	private Order order;
 	private String description;
 	private CafeQueue queue;
+	private CafeQueue priorityQueue = null;
 	private List<Observer> observers = new ArrayList<Observer>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
 	private SimTime time;
@@ -25,6 +26,15 @@ public class Server extends Thread implements Subject {
 	public Server(CafeQueue q, SimTime t) {
 		this.queue = q; // take class as argument
 		this.time = t;
+	}
+	
+	//Constructor for priorityQueue
+	public Server(CafeQueue q, CafeQueue pq, SimTime t) {
+		
+		this.queue = q;
+		this.priorityQueue = pq;
+		this.time = t;
+		
 	}
 
 	// public void setState(int state) {
@@ -36,8 +46,17 @@ public class Server extends Thread implements Subject {
 	// methods? I need these so that I can display what is happening in the GUI
 
 	public void run() {
-		while (queue.getQueueSize() != 0) {
-			Order order = CafeQueue.serveCustomer(); // get orders from class
+		
+		while (queue.getQueueSize() != 0 || 
+				(priorityQueue != null || priorityQueue.getQueueSize() != 0)) {
+			System.out.println("Regular Queue: " + queue.getQueueSize());
+			
+			if (priorityQueue != null && priorityQueue.getQueueSize() != 0) {
+				order = priorityQueue.serveCustomer(); // get orders from class
+			}
+			else {
+				order = queue.serveCustomer();
+			}
 			// System.out.println(">s< Serving: " + order.getID());
 			LinkedList<MenuItem> list = order.getItemList();
 			int length = list.size();

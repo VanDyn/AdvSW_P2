@@ -42,6 +42,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	
 	// Instances to be observed
 	private CafeQueue q;
+	private CafeQueue pq;
 	private Server s;
 
 	// Booleans to determine when to start or stop the threads.
@@ -55,12 +56,15 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 * @param server - an instance of Server class
 	 * @param t 
 	 */
-	public CafeGUI(CafeQueue queue, Server server, SimTime t) {
+	public CafeGUI(CafeQueue queue, CafeQueue priorityQueue, Server server, SimTime t) {
 		
 		// Instances to be observed
 		this.q = queue;
 		queue.registerObserver(this);
 
+		this.pq = priorityQueue;
+		priorityQueue.registerObserver(this);
+		
 		this.s = server;
 		server.registerObserver(this);
 		this.time = t;
@@ -272,8 +276,12 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		// System.out.println(arg1.getClass().getSimpleName());
 		
 		if (arg1.equals(q)) {
-			CafeController.updateQueue(); 
-		} else if (arg1.equals(s)) {
+			CafeController.updateQueue(q); 
+		}
+		else if (arg1.equals(pq)) {
+			CafeController.updateQueue(pq);
+		}
+		else if (arg1.equals(s)) {
 			CafeController.updateServer(s, 1);
 		}
 
