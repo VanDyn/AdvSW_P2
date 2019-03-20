@@ -64,7 +64,7 @@ public class CafeController {
 	public synchronized static void updateServer(Server s, int thread) {
 		if (thread == 1) {
 
-			System.out.println(s.getCustomerName() + temp); // REMEMBER TO
+			//System.out.println(s.getCustomerName() + temp); // REMEMBER TO
 															// DELETE THIS!
 
 			if (temp == "W" || temp != s.getCustomerName()) {
@@ -78,7 +78,7 @@ public class CafeController {
 
 		} else if (thread == 2) {
 
-			System.out.println(s.getCustomerName() + temp2); // REMEMBER TO
+			//System.out.println(s.getCustomerName() + temp2); // REMEMBER TO
 																// DELETE THIS!
 
 			if (temp2 == "X" || temp2 != s.getCustomerName()) {
@@ -92,7 +92,7 @@ public class CafeController {
 
 		} else if (thread == 3) {
 
-			System.out.println(s.getCustomerName() + temp3); // REMEMBER TO
+			//System.out.println(s.getCustomerName() + temp3); // REMEMBER TO
 																// DELETE THIS!
 
 			if (temp3 == "Y" || temp3 != s.getCustomerName()) {
@@ -106,7 +106,7 @@ public class CafeController {
 
 		} else if (thread == 4) {
 
-			System.out.println(s.getCustomerName() + temp4); // REMEMBER TO
+			//System.out.println(s.getCustomerName() + temp4); // REMEMBER TO
 																// DELETE THIS!
 
 			if (temp4 == "Z" || temp4 != s.getCustomerName()) {

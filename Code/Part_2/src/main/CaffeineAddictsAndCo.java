@@ -27,9 +27,9 @@ public class CaffeineAddictsAndCo {
 	   Requests requests = new Requests();
 	   KitchenCounter counter = new KitchenCounter();
 	   
-	   KitchenStaff kitchen = new KitchenStaff(requests,counter);
-	   //KitchenStaff kitchen2 = new KitchenStaff(requests,counter);
-	   //KitchenStaff kitchen3 = new KitchenStaff(requests,counter);
+	   KitchenStaff kitchen = new KitchenStaff(requests,counter,t);
+	  // KitchenStaff kitchen2 = new KitchenStaff(requests,counter,t);
+	  // KitchenStaff kitchen3 = new KitchenStaff(requests,counter,t);
 	   
 	   Server server = new Server(queue, t, c, 0,counter,requests);
 	   Server server2 = new Server(queue, t, c, 1,counter,requests);
@@ -42,7 +42,7 @@ public class CaffeineAddictsAndCo {
 	   // while (gui.getStart == true && gui.getStop == false)   // start the threads  NOT SURE WHERE TO USE THIS!
 	   kitchen.start();
 	   //kitchen2.start();
-	   //kitchen3.start();
+	  // kitchen3.start();
 	   
 	   queue.start();
 	   

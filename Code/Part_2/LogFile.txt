@@ -35,8 +35,8 @@ Kitchen Staff are making: Latte
 Processing: Ham and Cheese total: 0
 Processing: Blueberry Muffin total: 0
 Kitchen Staff are making: Brownie
-Processing: Latte total: 0
 Rebecca has joined the queue
+Processing: Latte total: 0
 Kitchen Staff are making: Latte
 Kitchen Staff are making: Iced Tea
 Processing: Brownie total: 0
@@ -54,9 +54,3 @@ Kitchen Staff are making: Egg
 Processing: Brownie total: 0
 Processing: Black Tea total: 0
 Kitchen Staff are making: Black Tea
-Processing: Black Tea total: 0
-Processing: Egg total: 0
-Kitchen Staff are making: Black Tea
-Processing: Black Tea total: 0
-Kitchen Staff are making: Black Tea
-Processing: Black Tea total: 0

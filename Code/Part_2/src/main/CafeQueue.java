@@ -108,6 +108,10 @@ public class CafeQueue extends Thread implements Subject{
 		return queue.size();
 	}
 	
+	public synchronized boolean isEmpty() {
+		return queue.isEmpty();
+	}
+	
 	public synchronized static ArrayList<String> getQueueMembers(){
 		ArrayList<String> members = new ArrayList<String>();
 		

@@ -10,12 +10,13 @@ public class KitchenStaff extends Thread{
 	
 	private Requests requests;
 	private KitchenCounter counter;
-	
+	private SimTime time;
 
 	
-	KitchenStaff(Requests r, KitchenCounter k){
+	KitchenStaff(Requests r, KitchenCounter k, SimTime t){
 		this.requests = r;
 		this.counter = k;
+		this.time = t;
 	}
 	
 	public void run() {
@@ -31,6 +32,12 @@ public class KitchenStaff extends Thread{
 					e.printStackTrace();
 				}
 			}else {
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				counter.put(item);
 				sendToLog("Kitchen Staff are making: " + item);
 			}
