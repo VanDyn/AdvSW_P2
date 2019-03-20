@@ -47,8 +47,8 @@ public class CaffeineAddictsAndCo {
 	   Server server3 = new Server(queue, t, c, 2,counter,requests);
 	   Server server4 = new Server(queue, t, c, 3,counter,requests);
 	   
-	   KitchenStaff k1 = new KitchenStaff(requests,counter,t);
-	   KitchenStaff k2 = new KitchenStaff(requests,counter,t);
+	   KitchenStaff k1 = new KitchenStaff(requests,counter,t,1);
+	   KitchenStaff k2 = new KitchenStaff(requests,counter,t,2);
 	   
 	   CafeGUI gui = new CafeGUI(queue, server, server2, server3, server4, k1, k2, t);
 	   gui.setSize(800, 1000);

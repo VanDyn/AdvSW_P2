@@ -354,18 +354,41 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 */
 	public synchronized void update(Observable arg0, Object arg1) {
 		
-		if (arg1.equals(q)) {
+//		if (arg1.equals(q)) {
+//			CafeController.updateQueue(); 
+//		} else if (((Server) arg1).getServerNo()==0) {
+//			CafeController.updateServer(s, 1);
+//		}else if(((Server) arg1).getServerNo()==1) {
+//			CafeController.updateServer(s2, 2);
+//		}else if (((Server) arg1).getServerNo()==2) {
+//			CafeController.updateServer(s3, 3);
+//		}else if(((Server) arg1).getServerNo()==3) {
+//			CafeController.updateServer(s4, 4);
+//		} else if(((KitchenStaff) arg1).getID()==1) {
+//			CafeController.updateKitchen(k1, 1);
+//		}else if(((KitchenStaff) arg1).getID()==2) {
+//			CafeController.updateKitchen(k2, 2);
+//		}// ADD KITCHEN STAFF HERE
+		
+		if (arg1 instanceof CafeQueue) {
 			CafeController.updateQueue(); 
-		} else if (((Server) arg1).getServerNo()==0) {
-			CafeController.updateServer(s, 1);
-		}else if(((Server) arg1).getServerNo()==1) {
-			CafeController.updateServer(s2, 2);
-		}else if (((Server) arg1).getServerNo()==2) {
-			CafeController.updateServer(s3, 3);
-		}else if(((Server) arg1).getServerNo()==3) {
-			CafeController.updateServer(s4, 4);
-		} // ADD KITCHEN STAFF HERE
-
+		} else if (arg1 instanceof Server) {
+			if(((Server) arg1).getServerNo()==0) {
+				CafeController.updateServer(s, 1);
+			}else if(((Server) arg1).getServerNo()==1) {
+				CafeController.updateServer(s2, 2);
+			}else if (((Server) arg1).getServerNo()==2) {
+				CafeController.updateServer(s3, 3);
+			}else if(((Server) arg1).getServerNo()==3) {
+				CafeController.updateServer(s4, 4);
+			} 
+		}else if(arg1 instanceof KitchenStaff) {
+			if(((KitchenStaff) arg1).getID()==1) {
+				CafeController.updateKitchen(k1, 1);
+			}else if(((KitchenStaff) arg1).getID()==2) {
+				CafeController.updateKitchen(k2, 2);
+		}
+		}
 	}
 	
 

@@ -81,7 +81,7 @@ public class CafeController {
 			if (temp == "W" || temp != s.getCustomerName()) {
 				temp = s.getCustomerName();
 				gui.clearDisplay(gui.getTillOneDisplay());
-				gui.printToDisplay("Currently Serving : " + temp + " : £" + s.getTotal(), gui.getTillOneDisplay());
+				gui.printToDisplay("Currently Serving : " + temp + " : ï¿½" + s.getTotal(), gui.getTillOneDisplay());
 				gui.printToDisplay("-------------------", gui.getTillOneDisplay());
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillOneDisplay());
@@ -92,7 +92,7 @@ public class CafeController {
 			if (temp2 == "X" || temp2 != s.getCustomerName()) {
 				temp2 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillTwoDisplay());
-				gui.printToDisplay("Currently Serving : " + temp2 + " : £" + s.getTotal(), gui.getTillTwoDisplay());
+				gui.printToDisplay("Currently Serving : " + temp2 + " : ï¿½" + s.getTotal(), gui.getTillTwoDisplay());
 				gui.printToDisplay("-------------------", gui.getTillTwoDisplay());
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillTwoDisplay());
@@ -106,7 +106,7 @@ public class CafeController {
 			if (temp3 == "Y" || temp3 != s.getCustomerName()) {
 				temp3 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillThreeDisplay());
-				gui.printToDisplay("Currently Serving : " + temp3 + " : £" + s.getTotal(), gui.getTillThreeDisplay());
+				gui.printToDisplay("Currently Serving : " + temp3 + " : ï¿½" + s.getTotal(), gui.getTillThreeDisplay());
 				gui.printToDisplay("-------------------", gui.getTillThreeDisplay());
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillThreeDisplay());
@@ -120,7 +120,7 @@ public class CafeController {
 			if (temp4 == "Z" || temp4 != s.getCustomerName()) {
 				temp4 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillFourDisplay());
-				gui.printToDisplay("Currently Serving : " + temp4 + " : £" + s.getTotal(), gui.getTillFourDisplay());
+				gui.printToDisplay("Currently Serving : " + temp4 + " : ï¿½" + s.getTotal(), gui.getTillFourDisplay());
 				gui.printToDisplay("-------------------", gui.getTillFourDisplay());
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillFourDisplay());
@@ -130,19 +130,27 @@ public class CafeController {
 	}
 	public synchronized static void updateKitchen(KitchenStaff k, int thread){
 		if (thread == 1) {
-
-			if (temp5 == "A" || temp != k.getCustomerName()) {
+			if (temp6 == "A" || temp != k.getItem() && (k.getItem() != "-1")) {
+				temp6 = k.getItem();
 				gui.clearDisplay(gui.getStaffOneDisplay());
-			//	gui.printToDisplay(s, j);
+				gui.printToDisplay("Currently making : " + temp6, gui.getStaffOneDisplay());
+				gui.printToDisplay("-------------------", gui.getStaffOneDisplay());
 			} else {
-				gui.printToDisplay(s.getItem(), gui.getStaffOneDisplay());
+				gui.printToDisplay(k.getItem(), gui.getStaffOneDisplay());
 			}
+
+//			if (temp5 == "A" || temp != k.getItem()) {
+//				gui.clearDisplay(gui.getStaffOneDisplay());
+//			//	gui.printToDisplay(s, j);
+//			} else {
+//				gui.printToDisplay(k.getItem(), gui.getStaffOneDisplay());
+//			}
 
 		} else if (thread == 2) {
 
 
-			if (temp6 == "B" || temp2 != k.getCustomerName()) {
-				temp6 = k.getCustomerName();
+			if (temp6 == "B" || temp2 != k.getItem() && (k.getItem() != "-1")) {
+				temp6 = k.getItem();
 				gui.clearDisplay(gui.getStaffTwoDisplay());
 				gui.printToDisplay("Currently making : " + temp6, gui.getStaffTwoDisplay());
 				gui.printToDisplay("-------------------", gui.getStaffTwoDisplay());

@@ -16,26 +16,29 @@ import main.Log;
  * Producer for - any bakery item
  * 				  any sandwhich  
  */
-public class KitchenStaff extends Thread{
+public class KitchenStaff extends Thread implements Subject{
 	
 	private Requests requests;
 	private KitchenCounter counter;
 	private SimTime time;
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
+	private String item;
+	private int id;
 
 	
-	public KitchenStaff(Requests r, KitchenCounter k, SimTime t){
+	public KitchenStaff(Requests r, KitchenCounter k, SimTime t,int id){
 		this.requests = r;
 		this.counter = k;
 		this.time = t;
+		this.id = id;
 	}
 	
 	public void run() {
 		
 		while(true) {
-			String item = requests.get();
+			 
 			
-			if(item.equals("-1")) {
+			if(requests.isEmpty() == 0) {
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
@@ -43,14 +46,20 @@ public class KitchenStaff extends Thread{
 					e.printStackTrace();
 				}
 			}else {
+				item = requests.get();
+				notifyObservers();
+				sendToLog("Kitchen Staff are making: " + item);
+				
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 				counter.put(item);
-				sendToLog("Kitchen Staff are making: " + item);
+				
+				sendToLog("Kitchen Staff have made: " + item);
 			}
 
 		}
@@ -63,6 +72,25 @@ public class KitchenStaff extends Thread{
 
 	public void registerObserver(Observer obs) {
 		registeredObservers.add(obs);
-		
+
+	}
+
+	public void removeObserver(Observer obs) {
+		registeredObservers.remove(obs);
+
+	}
+
+	public void notifyObservers() {
+		for (Observer obs : registeredObservers) {
+			obs.update(null, this);
+		}
+
+	}
+	
+	public String getItem() {
+		return item;
+	}
+	public int getID() {
+		return id;
 	}
 }

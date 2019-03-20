@@ -43,4 +43,8 @@ public class Requests {
 		done = false;
 	}
 	
+	public int isEmpty() {
+		return orderedFood.size();
+	}
+	
 }
