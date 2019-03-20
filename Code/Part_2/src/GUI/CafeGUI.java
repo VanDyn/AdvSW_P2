@@ -14,6 +14,7 @@ import javax.swing.text.DefaultCaret;
 
 import SharedObjects.SimTime;
 import Threads.CafeQueue;
+import Threads.KitchenStaff;
 import Threads.Server;
 import main.Log;
 
@@ -37,9 +38,13 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	// Labels for the Panel 3
 	private JLabel tillOne, tillTwo;
 	
-	// Text areas for panel 4
+	// Text areas for panel 4 & 5
 	private JTextArea tillOneDisplay, tillTwoDisplay, tillThreeDisplay, tillFourDisplay;
 	private JScrollPane scrollTillOne, scrollTillTwo, scrollTillThree, scrollTillFour;
+	
+	// Text areas for panel 6
+	private JTextArea staffOneDisplay, staffTwoDisplay;
+	private JScrollPane scrollStaffOne, scrollStaffTwo;
 	
 	// Instances to be observed
 	private CafeQueue q;
@@ -47,6 +52,8 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	private Server s2;
 	private Server s3;
 	private Server s4;
+	private KitchenStaff k1;
+	private KitchenStaff k2;
 
 	// Booleans to determine when to start or stop the threads.
 	private boolean begin;
@@ -59,7 +66,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 * @param server - an instance of Server class
 	 * @param t 
 	 */
-	public CafeGUI(CafeQueue queue, Server server, Server server2, Server server3, Server server4, SimTime t) {
+	public CafeGUI(CafeQueue queue, Server server, Server server2, Server server3, Server server4, KitchenStaff k1, KitchenStaff k2, SimTime t) {
 		
 		// Instances to be observed
 		this.q = queue;
@@ -77,6 +84,12 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		this.s4 = server4;
 		server4.registerObserver(this);
 		
+		this.k1 = k1;
+		k1.registerObserver(this);
+		
+		this.k2 = k2;
+		k2.registerObserver(this);
+		
 		this.time = t;
 	
 
@@ -86,7 +99,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		
 		// Create a container and layout
 		Container content = getContentPane();
-		content.setLayout(new GridLayout(6, 1));
+		content.setLayout(new GridLayout(7, 1));
 
 		// Panel 1
 		JPanel panel1 = new JPanel();
@@ -134,8 +147,8 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		JPanel panel3 = new JPanel();
 		panel3.setLayout(new GridLayout(1, 2));
 
-		tillOne = new JLabel("Till 1");
-		tillTwo = new JLabel("Till 2");
+		tillOne = new JLabel("Till, Till 3 & Kitchen 1");
+		tillTwo = new JLabel("Till, Till 4 & Kitchen 2");
 		tillOne.setHorizontalAlignment(JLabel.CENTER);
 		tillTwo.setHorizontalAlignment(JLabel.CENTER);
 		tillOne.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
@@ -195,6 +208,31 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		panel5.add(scrollTillFour);
 		
 		content.add(panel5);
+		
+		JPanel panel6 = new JPanel();
+		panel6.setLayout(new GridLayout(1, 2));
+		
+		staffOneDisplay = new JTextArea(300, 200);
+		staffOneDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
+		staffOneDisplay.setLineWrap(true);
+		staffOneDisplay.setEditable(false);
+		DefaultCaret caret6 = (DefaultCaret)staffOneDisplay.getCaret();
+		caret6.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		
+		scrollStaffOne = new JScrollPane(staffOneDisplay);
+		panel6.add(scrollStaffOne);
+		
+		staffTwoDisplay = new JTextArea(300, 200);
+		staffTwoDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
+		staffTwoDisplay.setLineWrap(true);
+		staffTwoDisplay.setEditable(false);
+		DefaultCaret caret7 = (DefaultCaret)staffTwoDisplay.getCaret();
+		caret7.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		
+		scrollStaffTwo = new JScrollPane(staffTwoDisplay);
+		panel6.add(scrollStaffTwo);
+		
+		content.add(panel6);
 
 		// Add listeners to the buttons
 		start.addActionListener(this);
@@ -288,6 +326,13 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	public JTextArea getTillFourDisplay(){
 		return tillFourDisplay;
 	}
+	
+	public JTextArea getStaffOneDisplay(){
+		return staffOneDisplay;
+	}
+	public JTextArea getStaffTwoDisplay(){
+		return staffTwoDisplay;
+	}
 	/**
 	 * Takes a string and a JTextArea as arguments and prints the string to the JTextArea
 	 * on a new line
@@ -319,7 +364,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 			CafeController.updateServer(s3, 3);
 		}else if(((Server) arg1).getServerNo()==3) {
 			CafeController.updateServer(s4, 4);
-		}
+		} // ADD KITCHEN STAFF HERE
 
 	}
 	

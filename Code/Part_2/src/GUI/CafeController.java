@@ -13,6 +13,7 @@ import java.util.Queue;
 import javax.swing.JTextArea;
 
 import Threads.CafeQueue;
+import Threads.KitchenStaff;
 import Threads.Server;
 
 /**
@@ -35,7 +36,9 @@ public class CafeController {
 	private static String temp2;
 	private static String temp3;
 	private static String temp4;
-	
+	private static String temp5;
+	private static String temp6;
+
 	// Formatting
 	private static String format = "%1$10s %2$-20s";
 
@@ -53,8 +56,9 @@ public class CafeController {
 		this.temp2 = "X";
 		this.temp3 = "Y";
 		this.temp4 = "Z";
-		
-		
+		this.temp5 = "A";
+		this.temp6 = "B";
+
 	}
 
 	public synchronized static void updateQueue() {
@@ -64,8 +68,8 @@ public class CafeController {
 		ArrayList<String> arr = CafeQueue.getQueueMembers();
 		ArrayList<String> arr2 = CafeQueue.getQueueOrders();
 
-		for (int i =0; i<arr.size(); i++) {
-			String q = String.format(format, arr.get(i),  arr2.get(i));
+		for (int i = 0; i < arr.size(); i++) {
+			String q = String.format(format, arr.get(i), arr2.get(i));
 			gui.printToDisplay(q, gui.getQueueDisplay());
 		}
 
@@ -74,8 +78,7 @@ public class CafeController {
 	public synchronized static void updateServer(Server s, int thread) {
 		if (thread == 1) {
 
-
-			if (temp == "W" || temp != s.getCustomerName() ) {
+			if (temp == "W" || temp != s.getCustomerName()) {
 				temp = s.getCustomerName();
 				gui.clearDisplay(gui.getTillOneDisplay());
 				gui.printToDisplay("Currently Serving : " + temp + " : £" + s.getTotal(), gui.getTillOneDisplay());
@@ -85,9 +88,6 @@ public class CafeController {
 			}
 
 		} else if (thread == 2) {
-
-			//System.out.println(s.getCustomerName() + temp2); // REMEMBER TO
-																// DELETE THIS!
 
 			if (temp2 == "X" || temp2 != s.getCustomerName()) {
 				temp2 = s.getCustomerName();
@@ -100,13 +100,13 @@ public class CafeController {
 
 		} else if (thread == 3) {
 
-			//System.out.println(s.getCustomerName() + temp3); // REMEMBER TO
-																// DELETE THIS!
+			// System.out.println(s.getCustomerName() + temp3); // REMEMBER TO
+			// DELETE THIS!
 
 			if (temp3 == "Y" || temp3 != s.getCustomerName()) {
 				temp3 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillThreeDisplay());
-				gui.printToDisplay("Currently Serving : " + temp3  + " : £" + s.getTotal(), gui.getTillThreeDisplay());
+				gui.printToDisplay("Currently Serving : " + temp3 + " : £" + s.getTotal(), gui.getTillThreeDisplay());
 				gui.printToDisplay("-------------------", gui.getTillThreeDisplay());
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillThreeDisplay());
@@ -114,20 +114,43 @@ public class CafeController {
 
 		} else if (thread == 4) {
 
-			//System.out.println(s.getCustomerName() + temp4); // REMEMBER TO
-																// DELETE THIS!
+			// System.out.println(s.getCustomerName() + temp4); // REMEMBER TO
+			// DELETE THIS!
 
 			if (temp4 == "Z" || temp4 != s.getCustomerName()) {
 				temp4 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillFourDisplay());
-				gui.printToDisplay("Currently Serving : " + temp4  + " : £" + s.getTotal(), gui.getTillFourDisplay());
+				gui.printToDisplay("Currently Serving : " + temp4 + " : £" + s.getTotal(), gui.getTillFourDisplay());
 				gui.printToDisplay("-------------------", gui.getTillFourDisplay());
 			} else {
 				gui.printToDisplay(s.getItem(), gui.getTillFourDisplay());
 			}
 
 		}
-
 	}
+	public synchronized static void updateKitchen(KitchenStaff k, int thread){
+		if (thread == 1) {
 
+			if (temp5 == "A" || temp != k.getCustomerName()) {
+				gui.clearDisplay(gui.getStaffOneDisplay());
+			//	gui.printToDisplay(s, j);
+			} else {
+				gui.printToDisplay(s.getItem(), gui.getStaffOneDisplay());
+			}
+
+		} else if (thread == 2) {
+
+
+			if (temp6 == "B" || temp2 != k.getCustomerName()) {
+				temp6 = k.getCustomerName();
+				gui.clearDisplay(gui.getStaffTwoDisplay());
+				gui.printToDisplay("Currently making : " + temp6, gui.getStaffTwoDisplay());
+				gui.printToDisplay("-------------------", gui.getStaffTwoDisplay());
+			} else {
+				gui.printToDisplay(k.getItem(), gui.getStaffTwoDisplay());
+			}
+
+		}
+		
+	}
 }

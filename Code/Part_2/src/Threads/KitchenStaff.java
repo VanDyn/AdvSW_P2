@@ -1,5 +1,9 @@
 package Threads;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observer;
+
 import SharedObjects.KitchenCounter;
 import SharedObjects.Requests;
 import SharedObjects.SimTime;
@@ -17,6 +21,7 @@ public class KitchenStaff extends Thread{
 	private Requests requests;
 	private KitchenCounter counter;
 	private SimTime time;
+	private List<Observer> registeredObservers = new ArrayList<Observer>();
 
 	
 	public KitchenStaff(Requests r, KitchenCounter k, SimTime t){
@@ -54,5 +59,10 @@ public class KitchenStaff extends Thread{
 	private static synchronized void sendToLog(String details) {
 		Log l = Log.INSTANCE;
 		l.log(details);
+	}
+
+	public void registerObserver(Observer obs) {
+		registeredObservers.add(obs);
+		
 	}
 }

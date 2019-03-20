@@ -42,31 +42,30 @@ public class CaffeineAddictsAndCo {
 	   Requests requests = new Requests();
 	   KitchenCounter counter = new KitchenCounter();
 	   
-	   KitchenStaff kitchen = new KitchenStaff(requests,counter,t);
-	  // KitchenStaff kitchen2 = new KitchenStaff(requests,counter,t);
-	  // KitchenStaff kitchen3 = new KitchenStaff(requests,counter,t);
-	   
 	   Server server = new Server(queue, t, c, 0,counter,requests);
 	   Server server2 = new Server(queue, t, c, 1,counter,requests);
 	   Server server3 = new Server(queue, t, c, 2,counter,requests);
 	   Server server4 = new Server(queue, t, c, 3,counter,requests);
 	   
-	   CafeGUI gui = new CafeGUI(queue, server, server2, server3, server4, t);
+	   KitchenStaff k1 = new KitchenStaff(requests,counter,t);
+	   KitchenStaff k2 = new KitchenStaff(requests,counter,t);
+	   
+	   CafeGUI gui = new CafeGUI(queue, server, server2, server3, server4, k1, k2, t);
 	   gui.setSize(800, 1000);
 	   gui.setVisible(true);
 		
 	   CafeController cafeCon = new CafeController(gui);
 	   
-	   kitchen.start();
-	   //kitchen2.start();
-	  // kitchen3.start();
-	   
+	 
 	   queue.start();
 	   
 	   server.start();
 	   server2.start();
 	   server3.start();
 	   server4.start();
+	   
+	   k1.start();
+	   k2.start();
 	   
 		
 	}
