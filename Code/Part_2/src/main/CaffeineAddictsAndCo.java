@@ -37,6 +37,9 @@ public class CaffeineAddictsAndCo {
 	   Server server4 = new Server(queue, t, c, 3,counter,requests);
 	   
 	   CafeGUI gui = new CafeGUI(queue, server, server2, server3, server4, t);
+	   gui.setSize(600, 800);
+	   gui.setVisible(true);
+		
 	   CafeController cafeCon = new CafeController(gui);
 	   
 	   kitchen.start();
