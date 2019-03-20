@@ -126,6 +126,15 @@ public class CafeQueue extends Thread implements Subject{
 		return members;
 	}
 	
+	public synchronized static ArrayList<String> getQueueOrders(){
+		ArrayList<String> orders = new ArrayList<String>();
+		
+		for(Order n : queue) {
+			orders.add("   " + Integer.toString(n.getItemNumber()) + " Items");
+		}
+		
+		return orders;
+	}
 	
 	
 	

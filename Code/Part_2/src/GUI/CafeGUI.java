@@ -36,14 +36,10 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 	// Labels for the Panel 3
 	private JLabel tillOne, tillTwo;
-
+	
 	// Text areas for panel 4
 	private JTextArea tillOneDisplay, tillTwoDisplay, tillThreeDisplay, tillFourDisplay;
 	private JScrollPane scrollTillOne, scrollTillTwo, scrollTillThree, scrollTillFour;
-
-	// Formatting
-	// private String format = "%1$10s %2$-60s";
-	// private String output;
 	
 	// Instances to be observed
 	private CafeQueue q;
@@ -90,11 +86,12 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		
 		// Create a container and layout
 		Container content = getContentPane();
-		content.setLayout(new GridLayout(5, 1));
+		content.setLayout(new GridLayout(6, 1));
 
 		// Panel 1
 		JPanel panel1 = new JPanel();
 		panel1.setLayout(new GridLayout(1, 1));
+		panel1.setPreferredSize(new Dimension(600, 100));
 				
 		welcome = new JLabel("Caffeine Addicts & Co");
 		welcome.setHorizontalAlignment(JLabel.CENTER);
@@ -119,9 +116,9 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		// Panel 2
 		JPanel panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(1, 1));
-		panel2.setSize(600, 500);
+		panel2.setSize(600, 100);
 
-		queueDisplay = new JTextArea(15, 60);
+		queueDisplay = new JTextArea(600, 200);
 		queueDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
 		queueDisplay.setLineWrap(true); // possibly unnecessary
 		queueDisplay.setEditable(false);
@@ -150,9 +147,9 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 		// Panel 4
 		JPanel panel4 = new JPanel();
-		panel4.setLayout(new GridLayout(2, 2));
+		panel4.setLayout(new GridLayout(1, 2));
 
-		tillOneDisplay = new JTextArea(7, 30);
+		tillOneDisplay = new JTextArea(300, 200);
 		tillOneDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
 		tillOneDisplay.setLineWrap(true);
 		tillOneDisplay.setEditable(false);
@@ -162,7 +159,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		scrollTillOne = new JScrollPane(tillOneDisplay);
 		panel4.add(scrollTillOne);
 
-		tillTwoDisplay = new JTextArea(7, 30);
+		tillTwoDisplay = new JTextArea(300, 200);
 		tillTwoDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
 		tillTwoDisplay.setLineWrap(true);
 		tillTwoDisplay.setEditable(false);
@@ -171,8 +168,13 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		
 		scrollTillTwo = new JScrollPane(tillTwoDisplay);
 		panel4.add(scrollTillTwo);
+		
+		content.add(panel4);
 
-		tillThreeDisplay = new JTextArea(7, 30);
+		JPanel panel5 = new JPanel();
+		panel5.setLayout(new GridLayout(1, 2));
+		
+		tillThreeDisplay = new JTextArea(300, 200);
 		tillThreeDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
 		tillThreeDisplay.setLineWrap(true);
 		tillThreeDisplay.setEditable(false);
@@ -180,9 +182,9 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		caret4.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 		
 		scrollTillThree = new JScrollPane(tillThreeDisplay);
-		panel4.add(scrollTillThree);
+		panel5.add(scrollTillThree);
 		
-		tillFourDisplay = new JTextArea(7, 30);
+		tillFourDisplay = new JTextArea(300, 200);
 		tillFourDisplay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
 		tillFourDisplay.setLineWrap(true);
 		tillFourDisplay.setEditable(false);
@@ -190,9 +192,9 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		caret5.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 		
 		scrollTillFour = new JScrollPane(tillFourDisplay);
-		panel4.add(scrollTillFour);
+		panel5.add(scrollTillFour);
 		
-		content.add(panel4);
+		content.add(panel5);
 
 		// Add listeners to the buttons
 		start.addActionListener(this);
@@ -306,8 +308,6 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 * 
 	 */
 	public synchronized void update(Observable arg0, Object arg1) {
-
-		// System.out.println(arg1.getClass().getSimpleName());  //
 		
 		if (arg1.equals(q)) {
 			CafeController.updateQueue(); 

@@ -38,6 +38,8 @@ public class Server extends Thread implements Subject {
 		this.serverNo = i;
 		this.counter = k;
 		this.requests = r;
+		this.total = new BigDecimal(0);
+		
 	}
 
 	// public void setState(int state) {
@@ -63,7 +65,7 @@ public class Server extends Thread implements Subject {
 				LinkedList<MenuItem> list = order.getItemList();
 				int length = list.size();
 				customerName = order.getID();
-				BigDecimal total = new BigDecimal(0);
+				total = new BigDecimal(0);
 				notifyObservers();
 				
 				try {
@@ -71,7 +73,7 @@ public class Server extends Thread implements Subject {
 														// sleep
 					{
 						MenuItem item = list.pop();
-						total.add(item.getCost());
+						total = total.add(item.getCost());
 						description = item.getDescription();
 						
 						requests.put(description);
@@ -127,5 +129,9 @@ public class Server extends Thread implements Subject {
 	
 	public int getServerNo(){
 		return this.serverNo;
+	}
+	
+	public String getTotal(){
+		return this.total.toString();
 	}
 }
