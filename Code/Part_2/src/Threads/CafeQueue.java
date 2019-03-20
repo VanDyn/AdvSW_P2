@@ -1,4 +1,4 @@
-package main;
+package Threads;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,9 +6,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
 import java.util.Queue;
-import java.util.Observable;
 
-import main.Order;
+import RefactoredCode.Interface;
+import RefactoredCode.Order;
+import SharedObjects.SimTime;
+import main.Log;
+
+import java.util.Observable;
 
 public class CafeQueue extends Thread implements Subject{
 
@@ -18,7 +22,7 @@ public class CafeQueue extends Thread implements Subject{
 	
 	//Interface i;
 	
-	CafeQueue(Interface i, SimTime t){
+	public CafeQueue(Interface i, SimTime t){
 		//this.i = i;
 		//this.queue = new ArrayList<>();
 		this.time = t;
@@ -34,6 +38,13 @@ public class CafeQueue extends Thread implements Subject{
 	 */
 	public void run() {
 		//System.out.println(Interface.getSize());
+		
+		// ADD EXCEPTION FOR EMPTY QUEUE
+		
+		addToQueue();
+		addToQueue();
+		addToQueue();
+		
 		while(Interface.getSize() != 0) {// && queue.size() != 0) {
 			addToQueue();
 			notifyObservers();
@@ -61,10 +72,12 @@ public class CafeQueue extends Thread implements Subject{
 	 * Method for the server thread to access orders from the queue.
 	 * Accessed orders will be removed from the queue.
 	 */
-	public static synchronized Order serveCustomer() {
-		System.out.println(">Q< Serving customer: " + queue.peek().getID());
+	public synchronized Order serveCustomer() {
+		//System.out.println(">Q< Serving customer: " + queue.peek().getID());
 		sendToLog("Customer Served : " + queue.peek().getID());
-		return queue.poll();
+		Order temp = queue.poll();
+		notifyObservers();
+		return temp;
 	}
 	
 	// Sends a string to the Log class
@@ -97,6 +110,10 @@ public class CafeQueue extends Thread implements Subject{
 	public synchronized int getQueueSize(){
 		
 		return queue.size();
+	}
+	
+	public synchronized boolean isEmpty() {
+		return queue.isEmpty();
 	}
 	
 	public synchronized static ArrayList<String> getQueueMembers(){

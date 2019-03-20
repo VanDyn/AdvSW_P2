@@ -8,7 +8,7 @@
 * This class is an intermediary class between the main method and orderlist. 
 * 
 **/
-package main;
+package RefactoredCode;
 
 import java.io.*;
 import java.math.BigDecimal;

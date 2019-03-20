@@ -1,4 +1,4 @@
-package main;
+package RefactoredCode;
 
 /**
  * Exception class which throws an error if a product is selected before

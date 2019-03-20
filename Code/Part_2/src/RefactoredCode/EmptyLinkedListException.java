@@ -1,4 +1,4 @@
-package main;
+package RefactoredCode;
 
 public class EmptyLinkedListException extends Exception
 {

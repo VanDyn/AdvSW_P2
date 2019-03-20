@@ -1,4 +1,4 @@
-package main;
+package SharedObjects;
 
 public class SimTime {
 	private int timeLength = 0;

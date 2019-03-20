@@ -1,4 +1,4 @@
-package main;
+package Threads;
 
 import java.util.Observer;
 
