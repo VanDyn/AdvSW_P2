@@ -10,11 +10,11 @@ import SharedObjects.SimTime;
 import main.Log;
 
 /**
- * 
+ * Thread for the kitchen Staff
  * @author calumthompson
  *
- * Producer for - any bakery item
- * 				  any sandwhich  
+ * Producer for - Requests class
+ * Consumer for - KitchenCounter class  
  */
 public class KitchenStaff extends Thread implements Subject{
 	
