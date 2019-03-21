@@ -14,14 +14,14 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class Interface {
+public class TextToOrder {
 
 	private static Menu menu;
 	//private static Map<String,Order> orderList;
 	public static ArrayList<Order> orderList;
 	
-	public Interface(String filename) {
-		menu = new Menu("src/main/exampleMenu.txt");
+	public TextToOrder(String filename) {
+		menu = new Menu("exampleMenu.txt");
 		//orderList = new TreeMap<String,Order>();
 		orderList = new ArrayList<Order>();
 		
@@ -45,8 +45,9 @@ public class Interface {
 	 */
 	private void getPrevOrders(String filename) {
 	
-		try(BufferedReader prevOrders = new BufferedReader(new FileReader(filename))) {
-			
+		try(InputStream is = getClass().getResourceAsStream(filename);) {
+			InputStreamReader isr = new InputStreamReader(is);
+		    BufferedReader prevOrders = new BufferedReader(isr);
 			String str;
 			
 			while((str = prevOrders.readLine())!= null) {
@@ -56,8 +57,8 @@ public class Interface {
 				String[] orderLine = str.split("/");
 				
 				//Needed customer info. Is it needed? If so, refactor orderlist
-				String cusInfo = orderLine[0];
-				String[] name = cusInfo.split(";");
+				String name = orderLine[0];
+				//String[] name = cusInfo.split(";");
 //				String time = cusInfo.substring(0, cusInfo.indexOf(";"));
 //				String name = cusInfo.substring(cusInfo.indexOf(":"));
 				//Needed order info (Only need item descriptions) 
@@ -74,7 +75,7 @@ public class Interface {
 				}
 				
 				//Create an order and append to orderList
-				makeOrder(name[1],order,orderTotal);
+				makeOrder(name,order,orderTotal);
 				
 			}		
 			

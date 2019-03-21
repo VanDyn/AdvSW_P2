@@ -1,6 +1,7 @@
 package Threads;
 
 import java.math.BigDecimal;
+
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
@@ -30,6 +31,7 @@ public class Server extends Thread implements Subject {
 	private int serverNo; 
 	private KitchenCounter counter;
 	private Requests requests;
+	private ArrayList<String> arr;
 	
 	public Server(CafeQueue q, SimTime t, ServerControl c, int i, KitchenCounter k, Requests r) {
 		this.queue = q; // take class as argument
@@ -38,6 +40,8 @@ public class Server extends Thread implements Subject {
 		this.serverNo = i;
 		this.counter = k;
 		this.requests = r;
+		this.total = new BigDecimal(0);
+		arr = new ArrayList<String>();
 	}
 
 	// public void setState(int state) {
@@ -58,12 +62,13 @@ public class Server extends Thread implements Subject {
 		while (queue.getQueueSize() != 0) {
 			if(this.control.get(this.serverNo)==false) {continue;} 
 			else {
+				arr.clear();
 				Order order = queue.serveCustomer(); // get orders from class
 				// System.out.println(">s< Serving: " + order.getID());
 				LinkedList<MenuItem> list = order.getItemList();
 				int length = list.size();
 				customerName = order.getID();
-				BigDecimal total = new BigDecimal(0);
+				total = new BigDecimal(0);
 				notifyObservers();
 				
 				try {
@@ -71,7 +76,7 @@ public class Server extends Thread implements Subject {
 														// sleep
 					{
 						MenuItem item = list.pop();
-						total.add(item.getCost());
+						total = total.add(item.getCost());
 						description = item.getDescription();
 						
 						requests.put(description);
@@ -79,7 +84,7 @@ public class Server extends Thread implements Subject {
 						while(counter.get(description) == false) {
 							Thread.sleep(time.get());  //sleep random max 3 seconds
 						}
-						
+						arr.add(description);
 						notifyObservers();
 						sendToLog("Processing: " + description + " total: " + (total).toString());
 						Thread.sleep(time.get());
@@ -127,5 +132,12 @@ public class Server extends Thread implements Subject {
 	
 	public int getServerNo(){
 		return this.serverNo;
+	}
+	
+	public String getTotal(){
+		return this.total.toString();
+	}
+	public synchronized ArrayList<String> getArr(){
+		return arr;
 	}
 }
