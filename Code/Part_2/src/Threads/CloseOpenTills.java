@@ -59,7 +59,7 @@ public class CloseOpenTills extends Thread {
 					control.turnon(2);
 					control.turnon(3);
 				}
-			} else if (gui.getEnd() == false) {
+			} else if (gui.getBegin() == false) {
 
 				control.turnoff(0);
 				control.turnoff(1);
