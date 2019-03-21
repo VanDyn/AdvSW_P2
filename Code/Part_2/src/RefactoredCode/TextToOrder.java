@@ -14,13 +14,13 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class Interface {
+public class TextToOrder {
 
 	private static Menu menu;
 	//private static Map<String,Order> orderList;
 	public static ArrayList<Order> orderList;
 	
-	public Interface(String filename) {
+	public TextToOrder(String filename) {
 		menu = new Menu("exampleMenu.txt");
 		//orderList = new TreeMap<String,Order>();
 		orderList = new ArrayList<Order>();

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Observer;
 import java.util.Queue;
 
-import RefactoredCode.Interface;
+import RefactoredCode.TextToOrder;
 import RefactoredCode.Order;
 import SharedObjects.ServerControl;
 import SharedObjects.SimTime;
@@ -26,7 +26,7 @@ public class CafeQueue extends Thread implements Subject{
 	private ServerControl control;
 	//Interface i;
 	
-	public CafeQueue(Interface i, SimTime t, ServerControl q){
+	public CafeQueue(TextToOrder i, SimTime t, ServerControl q){
 		//this.i = i;
 		//this.queue = new ArrayList<>();
 		this.time = t;
@@ -47,7 +47,7 @@ public class CafeQueue extends Thread implements Subject{
 		addToQueue();
 		addToQueue();
 		
-		while(Interface.getSize() != 0) {
+		while(TextToOrder.getSize() != 0) {
 			if(this.control.get(0)==false) {continue;} 
 			else 
 			{
@@ -66,7 +66,7 @@ public class CafeQueue extends Thread implements Subject{
 	 * Adds an order to the queue
 	 */
 	private synchronized void addToQueue() {
-		Order order = Interface.getOrder();
+		Order order = TextToOrder.getOrder();
 		sendToLog(order.getID() + " has joined the queue");
 		queue.add(order);
 	}

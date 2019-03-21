@@ -89,7 +89,7 @@ public class CafeController {
 		if (thread == 1) {
 			gui.clearDisplay(gui.getTillOneDisplay());
 			temp = s.getCustomerName();
-			gui.printToDisplay("Currently Serving : " + temp + " : £" + s.getTotal(), gui.getTillOneDisplay());
+			gui.printToDisplay("Currently Serving : " + temp + " : Â£" + s.getTotal(), gui.getTillOneDisplay());
 			gui.printToDisplay("-------------------", gui.getTillOneDisplay());
 			for (String i : s.getArr()) {
 
@@ -100,7 +100,7 @@ public class CafeController {
 
 			temp2 = s.getCustomerName();
 			gui.clearDisplay(gui.getTillTwoDisplay());
-			gui.printToDisplay("Currently Serving : " + temp2 + " : £" + s.getTotal(), gui.getTillTwoDisplay());
+			gui.printToDisplay("Currently Serving : " + temp2 + " : Â£" + s.getTotal(), gui.getTillTwoDisplay());
 			gui.printToDisplay("-------------------", gui.getTillTwoDisplay());
 
 			for (String i : s.getArr()) {
@@ -112,7 +112,7 @@ public class CafeController {
 
 			temp3 = s.getCustomerName();
 			gui.clearDisplay(gui.getTillThreeDisplay());
-			gui.printToDisplay("Currently Serving : " + temp3 + " : £" + s.getTotal(), gui.getTillThreeDisplay());
+			gui.printToDisplay("Currently Serving : " + temp3 + " : Â£" + s.getTotal(), gui.getTillThreeDisplay());
 			gui.printToDisplay("-------------------", gui.getTillThreeDisplay());
 			for (String i : s.getArr()) {
 
@@ -123,7 +123,7 @@ public class CafeController {
 
 			temp4 = s.getCustomerName();
 			gui.clearDisplay(gui.getTillFourDisplay());
-			gui.printToDisplay("Currently Serving : " + temp4 + " : £" + s.getTotal(), gui.getTillFourDisplay());
+			gui.printToDisplay("Currently Serving : " + temp4 + " : Â£" + s.getTotal(), gui.getTillFourDisplay());
 			gui.printToDisplay("-------------------", gui.getTillFourDisplay());
 
 			for (String i : s.getArr()) {

@@ -1,7 +1,7 @@
 package Threads;
 
 import GUI.CafeGUI;
-import RefactoredCode.Interface;
+import RefactoredCode.TextToOrder;
 import SharedObjects.ServerControl;
 import main.Log;
 
@@ -30,7 +30,7 @@ public class CloseOpenTills extends Thread {
 	 * @param i
 	 * @param g
 	 */
-	public CloseOpenTills(ServerControl c, ServerControl k, ServerControl q, CafeQueue queue, Interface i, CafeGUI g) {
+	public CloseOpenTills(ServerControl c, ServerControl k, ServerControl q, CafeQueue queue, TextToOrder i, CafeGUI g) {
 		this.SControl = c;
 		this.queue = queue;
 		this.KControl = k;
@@ -42,7 +42,7 @@ public class CloseOpenTills extends Thread {
 	 * Threads run method which 
 	 */
 	public void run() {
-		while (Interface.getSize() != 0 || queue.getQueueSize() != 0) {
+		while (TextToOrder.getSize() != 0 || queue.getQueueSize() != 0) {
 			int s = queue.getQueueSize();
 
 			if (gui.getEnabled() == true) {

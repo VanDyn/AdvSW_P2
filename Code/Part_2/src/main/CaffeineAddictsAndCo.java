@@ -7,9 +7,8 @@ import GUI.CafeController;
 import GUI.CafeGUI;
 import RefactoredCode.CreateNewCustomerException;
 import RefactoredCode.EmptyLinkedListException;
-import RefactoredCode.Interface;
+import RefactoredCode.TextToOrder;
 import RefactoredCode.NotOnMenuException;
-import RefactoredCode.OrderList;
 import RefactoredCode.script_orders;
 import SharedObjects.KitchenCounter;
 import SharedObjects.Requests;
@@ -28,14 +27,12 @@ import Threads.Server;
  */
 public class CaffeineAddictsAndCo {
 
-	public static OrderList ol;
 
 	public static void main(String[] args) throws NotOnMenuException, CreateNewCustomerException, EmptyLinkedListException {
-		//script_orders nn = new script_orders();
+		script_orders nn = new script_orders();
 
 		String filename = "existingOrders";
-		Interface i = new Interface(filename);
-		ol = new OrderList();
+		TextToOrder i = new TextToOrder(filename);
 
 		SimTime t = new SimTime();
 		Boolean[] queueControlList = {true}; 
