@@ -18,7 +18,7 @@ public class Interface {
 
 	private static Menu menu;
 	//private static Map<String,Order> orderList;
-	public static ArrayList<Order> orderList;
+	public ArrayList<Order> orderList;
 	
 	public Interface(String filename) {
 		menu = new Menu("src/main/exampleMenu.txt");
@@ -110,11 +110,11 @@ public class Interface {
 //		return orderList;
 //	}
 	
-	public static int getSize() {
+	public int getSize() {
 		return orderList.size();
 	}
 	
-	public static Order getOrder() {
+	public Order getOrder() {
 		Order o = orderList.get(0);
 		orderList.remove(0);
 		return o;

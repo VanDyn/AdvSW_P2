@@ -24,6 +24,7 @@ public class Server extends Thread implements Subject {
 	private Order order;
 	private String description;
 	private CafeQueue queue;
+	private CafeQueue priorityQueue = null;
 	private List<Observer> observers = new ArrayList<Observer>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
 	private SimTime time;
@@ -35,6 +36,18 @@ public class Server extends Thread implements Subject {
 	
 	public Server(CafeQueue q, SimTime t, ServerControl c, int i, KitchenCounter k, Requests r) {
 		this.queue = q; // take class as argument
+		this.time = t;
+		this.control = c;
+		this.serverNo = i;
+		this.counter = k;
+		this.requests = r;
+		this.total = new BigDecimal(0);
+		arr = new ArrayList<String>();
+	}
+	
+	public Server(CafeQueue[] qs, SimTime t, ServerControl c, int i, KitchenCounter k, Requests r) {
+		this.queue = qs[0];
+		this.priorityQueue = qs[1];
 		this.time = t;
 		this.control = c;
 		this.serverNo = i;
@@ -59,12 +72,16 @@ public class Server extends Thread implements Subject {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		while (queue.getQueueSize() != 0) {
+		while (queue.getQueueSize() != 0 || (priorityQueue.getQueueSize() != 0 && priorityQueue != null)) {
 			if(this.control.get(this.serverNo)==false) {continue;} 
 			else {
 				arr.clear();
-				Order order = queue.serveCustomer(); // get orders from class
-				// System.out.println(">s< Serving: " + order.getID());
+				if (priorityQueue.getQueueSize() !=0 && priorityQueue != null) {
+					order = priorityQueue.serveCustomer();
+				} else {
+					order = queue.serveCustomer(); // get orders from class
+				}
+				System.out.println(">s< Serving: " + order.getID());
 				LinkedList<MenuItem> list = order.getItemList();
 				int length = list.size();
 				customerName = order.getID();

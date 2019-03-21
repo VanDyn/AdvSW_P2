@@ -35,25 +35,28 @@ public class CaffeineAddictsAndCo {
 
 		String filename = "src/main/existingOrders";
 		Interface i = new Interface(filename);
-		ol = new OrderList();
+		Interface pi = new Interface("src/main/onlineOrders");
 
 		SimTime t = new SimTime();
 		CafeQueue queue = new CafeQueue(i,t);
+		CafeQueue priorityQueue = new CafeQueue(pi, t);
 		Boolean[] controlList = {true, true, true, true}; 
 		ServerControl c = new ServerControl(controlList);
 
 		Requests requests = new Requests();
 		KitchenCounter counter = new KitchenCounter();
 
-		Server server = new Server(queue, t, c, 0,counter,requests);
-		Server server2 = new Server(queue, t, c, 1,counter,requests);
-		Server server3 = new Server(queue, t, c, 2,counter,requests);
-		Server server4 = new Server(queue, t, c, 3,counter,requests);
+		CafeQueue[] queues = {queue, priorityQueue};
+		
+		Server server = new Server(queues, t, c, 0,counter,requests);
+		Server server2 = new Server(queues, t, c, 1,counter,requests);
+		Server server3 = new Server(queues, t, c, 2,counter,requests);
+		Server server4 = new Server(queues, t, c, 3,counter,requests);
 
 		KitchenStaff k1 = new KitchenStaff(requests,counter,t,1);
 		KitchenStaff k2 = new KitchenStaff(requests,counter,t,2);
 
-		CafeGUI gui = new CafeGUI(queue, server, server2, server3, server4, k1, k2, t);
+		CafeGUI gui = new CafeGUI(queues, server, server2, server3, server4, k1, k2, t);
 		gui.setSize(800, 1000);
 		gui.setVisible(true);
 
@@ -62,6 +65,7 @@ public class CaffeineAddictsAndCo {
 		CloseOpenTills cOTill = new CloseOpenTills(c, queue, gui);
 
 		queue.start();
+		priorityQueue.start();
 		cOTill.start();
 
 		server.start();

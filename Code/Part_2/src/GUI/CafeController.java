@@ -63,12 +63,12 @@ public class CafeController {
 	 * Method updates the JTextField queueDisplay with information from
 	 * customers in the queue.
 	 */
-	public synchronized static void updateQueue() {
+	public static synchronized void updateQueue(CafeQueue queue) {
 
 		gui.clearDisplay(gui.getQueueDisplay());
 
-		ArrayList<String> arr = CafeQueue.getQueueMembers();
-		ArrayList<String> arr2 = CafeQueue.getQueueOrders();
+		ArrayList<String> arr = queue.getQueueMembers();
+		ArrayList<String> arr2 = queue.getQueueOrders();
 
 		for (int i = 0; i < arr.size(); i++) {
 			String q = String.format(format, arr.get(i), arr2.get(i));
