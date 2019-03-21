@@ -1,51 +1,128 @@
+Marcus has joined the queue
 Henry has joined the queue
 Marcus has joined the queue
 Chloe has joined the queue
 Henry has joined the queue
-Marcus has joined the queue
 Henry has joined the queue
+Customer Served : Marcus
 Customer Served : Henry
 Customer Served : Marcus
 Customer Served : Chloe
-Customer Served : Henry
+Kitchen Staff are making: Five Cheese Toastie
+Kitchen Staff are making: Ham and Cheese
+Kitchen Staff have made: Five Cheese Toastie
+Kitchen Staff have made: Ham and Cheese
+Kitchen Staff are making: Chocolate Cookie
 Kitchen Staff are making: Blueberry Muffin
-Kitchen Staff are making: Espresso
-Susan has joined the queue
+Kitchen Staff have made: Chocolate Cookie
 Kitchen Staff have made: Blueberry Muffin
-Kitchen Staff have made: Espresso
-Kitchen Staff are making: Earl Grey
-Kitchen Staff are making: Egg
-Kitchen Staff have made: Earl Grey
-Kitchen Staff have made: Egg
-Processing: Blueberry Muffin total: 1.50
-Processing: Egg total: 4.00
-Processing: Earl Grey total: 2.10
-Processing: Espresso total: 2.10
-Marcus has joined the queue
-Customer Served : Marcus
-Kitchen Staff are making: Espresso
-Kitchen Staff are making: Latte
-Marcus has joined the queue
-Kitchen Staff have made: Espresso
-Kitchen Staff are making: Chocolate Cookie
-Kitchen Staff have made: Latte
-Kitchen Staff have made: Chocolate Cookie
-Processing: Espresso total: 3.60
-Processing: Latte total: 3.00
-Processing: Chocolate Cookie total: 3.20
 Chloe has joined the queue
-Kitchen Staff are making: Egg
-Kitchen Staff are making: Chocolate Cookie
-Kitchen Staff have made: Egg
-Kitchen Staff are making: Espresso
-Kitchen Staff have made: Chocolate Cookie
+Processing: Five Cheese Toastie total: 4.50
+Processing: Ham and Cheese total: 3.39
+Processing: Chocolate Cookie total: 1.10
+Processing: Blueberry Muffin total: 1.50
+Susan has joined the queue
+Customer Served : Henry
+Kitchen Staff are making: Americano
+Kitchen Staff are making: Earl Grey
+Kitchen Staff have made: Americano
+Kitchen Staff are making: Latte
+Kitchen Staff have made: Earl Grey
+Kitchen Staff are making: Earl Grey
+Kitchen Staff have made: Latte
+Kitchen Staff have made: Earl Grey
+Henry has joined the queue
+Processing: Americano total: 7.10
+Processing: Earl Grey total: 3.20
+Processing: Latte total: 3.00
+Processing: Earl Grey total: 3.60
 Chloe has joined the queue
 Customer Served : Henry
+Kitchen Staff are making: Americano
+Kitchen Staff are making: Latte
+Kitchen Staff have made: Americano
+Kitchen Staff are making: Blueberry Muffin
+Kitchen Staff have made: Latte
+Kitchen Staff are making: Iced Tea
+Kitchen Staff have made: Blueberry Muffin
+Kitchen Staff have made: Iced Tea
+Susan has joined the queue
+Processing: Latte total: 6.20
+Processing: Americano total: 2.60
+Processing: Blueberry Muffin total: 4.50
+Processing: Iced Tea total: 5.99
+Chloe has joined the queue
+Customer Served : Chloe
+Customer Served : Susan
+Kitchen Staff are making: Black Tea
+Kitchen Staff are making: Iced Tea
+Kitchen Staff have made: Black Tea
+Kitchen Staff have made: Iced Tea
+Kitchen Staff are making: Earl Grey
+Kitchen Staff are making: Earl Grey
+Kitchen Staff have made: Earl Grey
+Kitchen Staff have made: Earl Grey
+Susan has joined the queue
+Processing: Black Tea total: 4.49
+Processing: Iced Tea total: 6.89
+Processing: Earl Grey total: 2.10
+Processing: Earl Grey total: 2.10
+Henry has joined the queue
+Customer Served : Henry
+Kitchen Staff are making: Espresso
+Kitchen Staff are making: Chocolate Cookie
 Kitchen Staff have made: Espresso
+Kitchen Staff have made: Chocolate Cookie
+Kitchen Staff are making: Iced Tea
 Kitchen Staff are making: Ham and Cheese
 Kitchen Staff have made: Ham and Cheese
-Processing: Egg total: 7.60
-Processing: Chocolate Cookie total: 4.10
-Processing: Espresso total: 5.30
+Kitchen Staff have made: Iced Tea
+Henry has joined the queue
+Processing: Espresso total: 6.59
+Processing: Chocolate Cookie total: 3.20
+Processing: Iced Tea total: 2.39
+Processing: Ham and Cheese total: 5.49
 Susan has joined the queue
+Customer Served : Chloe
+Customer Served : Susan
+Kitchen Staff are making: Five Cheese Toastie
+Kitchen Staff are making: Blueberry Muffin
+Kitchen Staff have made: Five Cheese Toastie
+Kitchen Staff are making: Chocolate Cookie
+Kitchen Staff have made: Blueberry Muffin
+Kitchen Staff are making: Latte
+Kitchen Staff have made: Chocolate Cookie
+Kitchen Staff have made: Latte
+Henry has joined the queue
+Processing: Five Cheese Toastie total: 7.70
+Processing: Blueberry Muffin total: 1.50
+Processing: Chocolate Cookie total: 3.49
+Processing: Latte total: 3.00
+Henry has joined the queue
+Customer Served : Chloe
+Customer Served : Susan
+Customer Served : Henry
+Kitchen Staff are making: Espresso
+Kitchen Staff are making: Ham and Cheese
+Kitchen Staff have made: Espresso
+Kitchen Staff are making: Iced Tea
+Kitchen Staff have made: Ham and Cheese
+Kitchen Staff are making: Ham and Cheese
+Kitchen Staff have made: Iced Tea
+Kitchen Staff have made: Ham and Cheese
+Henry has joined the queue
+Processing: Espresso total: 2.10
 Processing: Ham and Cheese total: 3.39
+Processing: Iced Tea total: 2.39
+Processing: Ham and Cheese total: 6.39
+Susan has joined the queue
+Customer Served : Henry
+Customer Served : Susan
+Kitchen Staff are making: Ham and Cheese
+Kitchen Staff are making: Blueberry Muffin
+Kitchen Staff have made: Blueberry Muffin
+Kitchen Staff have made: Ham and Cheese
+Kitchen Staff are making: Blueberry Muffin
+Kitchen Staff are making: Chocolate Cookie
+Kitchen Staff have made: Chocolate Cookie
+Kitchen Staff have made: Blueberry Muffin
