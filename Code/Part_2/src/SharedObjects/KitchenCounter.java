@@ -23,7 +23,10 @@ public class KitchenCounter {
 		this.empty = true;
 		this.done = false;
 	}
-	
+	/**
+	 * Prepared food are added to the kitchen counter from the kitchen staff 
+	 * @param s	item
+	 */
 	public synchronized void put(String s) {
 		if(availableFood.containsKey(s) == false){
 			availableFood.put(s,1);
@@ -31,7 +34,11 @@ public class KitchenCounter {
 			availableFood.put(s, availableFood.get(s) + 1);
 		}
 	}
-	// catch exception
+	/**
+	 * Get a specific food item from the kitchen counter.
+	 * @param s
+	 * @return		true is servers item has been prepared
+	 */
 	public synchronized boolean get(String s) {
 		
 		if(availableFood.containsKey(s) && availableFood.get(s) != 0) { 

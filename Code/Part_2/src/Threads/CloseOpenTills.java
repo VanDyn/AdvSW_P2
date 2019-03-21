@@ -7,7 +7,7 @@ import SharedObjects.ServerControl;
  * A class to automatically control the number of servers required to meet the
  * demands of the CafeQueue
  * 
- * @author Calum
+ * @author calumthompson
  *
  */
 public class CloseOpenTills extends Thread {
@@ -30,8 +30,7 @@ public class CloseOpenTills extends Thread {
 	}
 
 	/**
-	 * Method controls which Servers are active at any one time. The larger the
-	 * queue, the more servers are used.
+	 * Threads run method which 
 	 */
 	public void run() {
 		while (true) {
