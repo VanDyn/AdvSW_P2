@@ -30,6 +30,7 @@ public class Server extends Thread implements Subject {
 	private int serverNo; 
 	private KitchenCounter counter;
 	private Requests requests;
+	private ArrayList<String> arr;
 	
 	public Server(CafeQueue q, SimTime t, ServerControl c, int i, KitchenCounter k, Requests r) {
 		this.queue = q; // take class as argument
@@ -39,7 +40,7 @@ public class Server extends Thread implements Subject {
 		this.counter = k;
 		this.requests = r;
 		this.total = new BigDecimal(0);
-		
+		arr = new ArrayList<String>();
 	}
 
 	// public void setState(int state) {
@@ -60,6 +61,7 @@ public class Server extends Thread implements Subject {
 		while (queue.getQueueSize() != 0) {
 			if(this.control.get(this.serverNo)==false) {continue;} 
 			else {
+				arr.clear();
 				Order order = queue.serveCustomer(); // get orders from class
 				// System.out.println(">s< Serving: " + order.getID());
 				LinkedList<MenuItem> list = order.getItemList();
@@ -81,7 +83,7 @@ public class Server extends Thread implements Subject {
 						while(counter.get(description) == false) {
 							Thread.sleep(time.get());  //sleep random max 3 seconds
 						}
-						
+						arr.add(description);
 						notifyObservers();
 						sendToLog("Processing: " + description + " total: " + (total).toString());
 						Thread.sleep(time.get());
@@ -133,5 +135,8 @@ public class Server extends Thread implements Subject {
 	
 	public String getTotal(){
 		return this.total.toString();
+	}
+	public synchronized ArrayList<String> getArr(){
+		return arr;
 	}
 }

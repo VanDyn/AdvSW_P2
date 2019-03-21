@@ -77,54 +77,76 @@ public class CafeController {
 
 	public synchronized static void updateServer(Server s, int thread) {
 		if (thread == 1) {
-
-			if (temp == "W" || temp != s.getCustomerName()) {
-				temp = s.getCustomerName();
-				gui.clearDisplay(gui.getTillOneDisplay());
-				gui.printToDisplay("Currently Serving : " + temp + " : �" + s.getTotal(), gui.getTillOneDisplay());
-				gui.printToDisplay("-------------------", gui.getTillOneDisplay());
-			} else {
-				gui.printToDisplay(s.getItem(), gui.getTillOneDisplay());
+			gui.clearDisplay(gui.getTillOneDisplay());
+			temp = s.getCustomerName();
+			gui.printToDisplay("Currently Serving : " + temp + " : �" + s.getTotal(), gui.getTillOneDisplay());
+			gui.printToDisplay("-------------------", gui.getTillOneDisplay());
+			for(String i : s.getArr()) {
+				
+				gui.printToDisplay(i, gui.getTillOneDisplay());
 			}
+
+//			if (temp == "W" || temp != s.getCustomerName()) {
+//				temp = s.getCustomerName();
+//				gui.clearDisplay(gui.getTillOneDisplay());
+//				gui.printToDisplay("Currently Serving : " + temp + " : �" + s.getTotal(), gui.getTillOneDisplay());
+//				gui.printToDisplay("-------------------", gui.getTillOneDisplay());
+//			} else {
+//				gui.printToDisplay(s.getItem(), gui.getTillOneDisplay());
+//			}
 
 		} else if (thread == 2) {
 
-			if (temp2 == "X" || temp2 != s.getCustomerName()) {
+//			if (temp2 == "X" || temp2 != s.getCustomerName()) {
 				temp2 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillTwoDisplay());
 				gui.printToDisplay("Currently Serving : " + temp2 + " : �" + s.getTotal(), gui.getTillTwoDisplay());
 				gui.printToDisplay("-------------------", gui.getTillTwoDisplay());
-			} else {
-				gui.printToDisplay(s.getItem(), gui.getTillTwoDisplay());
-			}
+				
+				for(String i : s.getArr()) {
+					
+					gui.printToDisplay(i, gui.getTillTwoDisplay());
+				}
+//			} else {
+//				gui.printToDisplay(s.getItem(), gui.getTillTwoDisplay());
+//			}
 
 		} else if (thread == 3) {
 
-			// System.out.println(s.getCustomerName() + temp3); // REMEMBER TO
-			// DELETE THIS!
-
-			if (temp3 == "Y" || temp3 != s.getCustomerName()) {
+//			// System.out.println(s.getCustomerName() + temp3); // REMEMBER TO
+//			// DELETE THIS!
+//
+//			if (temp3 == "Y" || temp3 != s.getCustomerName()) {
 				temp3 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillThreeDisplay());
 				gui.printToDisplay("Currently Serving : " + temp3 + " : �" + s.getTotal(), gui.getTillThreeDisplay());
 				gui.printToDisplay("-------------------", gui.getTillThreeDisplay());
-			} else {
-				gui.printToDisplay(s.getItem(), gui.getTillThreeDisplay());
-			}
+				for(String i : s.getArr()) {
+					
+					gui.printToDisplay(i, gui.getTillThreeDisplay());
+				}
+//			} else {
+//				gui.printToDisplay(s.getItem(), gui.getTillThreeDisplay());
+//			}
 
 		} else if (thread == 4) {
 
 			// System.out.println(s.getCustomerName() + temp4); // REMEMBER TO
 			// DELETE THIS!
 
-			if (temp4 == "Z" || temp4 != s.getCustomerName()) {
+//			if (temp4 == "Z" || temp4 != s.getCustomerName()) {
 				temp4 = s.getCustomerName();
 				gui.clearDisplay(gui.getTillFourDisplay());
 				gui.printToDisplay("Currently Serving : " + temp4 + " : �" + s.getTotal(), gui.getTillFourDisplay());
 				gui.printToDisplay("-------------------", gui.getTillFourDisplay());
-			} else {
-				gui.printToDisplay(s.getItem(), gui.getTillFourDisplay());
-			}
+				
+				for(String i : s.getArr()) {
+					
+					gui.printToDisplay(i, gui.getTillFourDisplay());
+				}
+//			} else {
+//				gui.printToDisplay(s.getItem(), gui.getTillFourDisplay());
+//			}
 
 		}
 	}
