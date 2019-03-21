@@ -3,6 +3,9 @@ package RefactoredCode;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -37,9 +40,9 @@ public class Menu {
 	 */
 	public Menu(String txtFile) {
 		this.menu = new HashSet<MenuItem>();
-		try {
-
-			BufferedReader buff = new BufferedReader(new FileReader(txtFile));
+		try(InputStream is = getClass().getResourceAsStream(txtFile);) {
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader buff = new BufferedReader(isr);
 			Scanner scan = new Scanner(buff);
 			String[] data = new String[4];
 
@@ -69,6 +72,9 @@ public class Menu {
 			scan.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 	}
 

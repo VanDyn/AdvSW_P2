@@ -1,5 +1,10 @@
 package SharedObjects;
-
+/**
+ * A class to control the speed of the program. This is to be used to change the thread delays
+ * Producer Design Pattern
+ * @author Jack
+ *
+ */
 public class SimTime {
 	private int timeLength = 0;
 	

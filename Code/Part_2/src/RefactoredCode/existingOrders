@@ -1,0 +1,20 @@
+Henry/BAK402,COF103,SND302;7.6;Blueberry Muffin:Bakery,Espresso:Coffee,Egg:Sandwich
+Marcus/COF103,BAK401,COF103;5.2999997;Espresso:Coffee,Chocolate Cookie:Bakery,Espresso:Coffee
+Chloe/TEA202;2.1;Earl Grey:Tea
+Henry/SND302;4.0;Egg:Sandwich
+Marcus/COF102,BAK401;4.1;Latte:Coffee,Chocolate Cookie:Bakery
+Henry/SND301,TEA203;5.8;Ham and Cheese:Sandwich,Iced Tea:Tea
+Susan/TEA201,COF103,BAK403;5.35;Black Tea:Tea,Espresso:Coffee,Brownie:Bakery
+Marcus/COF103,SND301,COF103;7.6;Espresso:Coffee,Ham and Cheese:Sandwich,Espresso:Coffee
+Marcus/COF101,COF102;5.6;Americano:Coffee,Latte:Coffee
+Chloe/SND302;4.0;Egg:Sandwich
+Chloe/COF101;2.6;Americano:Coffee
+Susan/TEA201;1.9;Black Tea:Tea
+Marcus/BAK402;1.5;Blueberry Muffin:Bakery
+Susan/COF103;2.1;Espresso:Coffee
+Susan/TEA203,SND301;5.8;Iced Tea:Tea,Ham and Cheese:Sandwich
+Chloe/COF103,BAK403,BAK403;4.7999997;Espresso:Coffee,Brownie:Bakery,Brownie:Bakery
+Henry/TEA203;2.4;Iced Tea:Tea
+Henry/COF103;2.1;Espresso:Coffee
+Marcus/COF101,SND301;6.0;Americano:Coffee,Ham and Cheese:Sandwich
+Susan/BAK403,BAK403;2.7;Brownie:Bakery,Brownie:Bakery

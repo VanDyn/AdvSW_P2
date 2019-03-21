@@ -20,8 +20,8 @@ public class Interface {
 	//private static Map<String,Order> orderList;
 	public static ArrayList<Order> orderList;
 	
-	public Interface(String filename) {
-		menu = new Menu("src/main/exampleMenu.txt");
+	public Interface(String filename){
+		menu = new Menu("exampleMenu.txt");
 		//orderList = new TreeMap<String,Order>();
 		orderList = new ArrayList<Order>();
 		
@@ -45,8 +45,9 @@ public class Interface {
 	 */
 	private void getPrevOrders(String filename) {
 	
-		try(BufferedReader prevOrders = new BufferedReader(new FileReader(filename))) {
-			
+		try(InputStream is = getClass().getResourceAsStream(filename);) {
+			InputStreamReader isr = new InputStreamReader(is);
+		    BufferedReader prevOrders = new BufferedReader(isr);
 			String str;
 			
 			while((str = prevOrders.readLine())!= null) {

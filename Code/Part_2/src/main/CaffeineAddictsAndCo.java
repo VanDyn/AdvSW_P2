@@ -31,7 +31,7 @@ public class CaffeineAddictsAndCo {
 	
 	public static void main(String[] args) throws NotOnMenuException, CreateNewCustomerException, EmptyLinkedListException {
 		
-	   String filename = "src/main/existingOrders";
+	   String filename = "existingOrders";
 	   Interface i = new Interface(filename);
 	   ol = new OrderList();
 	   
