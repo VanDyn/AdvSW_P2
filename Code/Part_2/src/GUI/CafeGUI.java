@@ -53,9 +53,8 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	private KitchenStaff k1;
 	private KitchenStaff k2;
 
-	// Booleans to determine when to start or stop the threads.
-	private boolean begin;
-	private boolean end;
+	// Boolean to determine when to start or stop the threads.
+	private boolean enabled;
 
 	// To Synch threads
 	private SimTime time;
@@ -262,8 +261,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		setVisible(true);
 
 		// Booleans
-		begin = false;
-		end = false;
+		enabled = true;
 
 	}
 
@@ -277,17 +275,15 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 		if (e.getSource() == start) {
 
-			begin = true;
-			end = false;
+			enabled = true;
 			start.setEnabled(false);
 			stop.setEnabled(true);
 		} else if (e.getSource() == stop) {
 
-			begin = false;
-			end = true;
+			enabled = false;
 			stop.setEnabled(false);
 			start.setEnabled(true);
-			makeLog();
+			//makeLog();
 
 		}else if(e.getSource() == faster) {
 			
@@ -307,44 +303,8 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 * 
 	 * @return begin
 	 */
-	public boolean getBegin() {
-		return begin;
-	}
-
-	/**
-	 * Getter method which returns a boolean
-	 * 
-	 * @return end
-	 */
-	public boolean getEnd() {
-		return end;
-	}
-
-	/**
-	 * This will create the log once the cafe has closed
-	 * 
-	 */
-	private void makeLog() {
-		Log.INSTANCE.logToFile();
-
-	}
-
-	/**
-	 * Getter method which returns the status of "begin"
-	 * 
-	 * @return boolean begin
-	 */
-	public boolean getStart() {
-		return begin;
-	}
-
-	/**
-	 * Getter method which returns the status of "end"
-	 * 
-	 * @return boolean end
-	 */
-	public boolean getStop() {
-		return end;
+	public boolean getEnabled() {
+		return enabled;
 	}
 
 	/**

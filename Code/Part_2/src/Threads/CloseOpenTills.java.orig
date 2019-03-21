@@ -17,7 +17,6 @@ public class CloseOpenTills extends Thread {
 	private ServerControl SControl;
 	private ServerControl KControl;
 	private ServerControl QControl;
-	private Interface i;
 	private CafeQueue queue;
 	private CafeGUI gui;
 
@@ -37,14 +36,13 @@ public class CloseOpenTills extends Thread {
 		this.KControl = k;
 		this.QControl = q;
 		this.gui = g;
-		this.i = i;
 	}
 
 	/**
 	 * Threads run method which 
 	 */
 	public void run() {
-		while (i.getSize() != 0 || queue.getQueueSize() != 0) {
+		while (Interface.getSize() != 0 || queue.getQueueSize() != 0) {
 			int s = queue.getQueueSize();
 
 			if (gui.getEnabled() == true) {
@@ -72,8 +70,11 @@ public class CloseOpenTills extends Thread {
 					SControl.turnon(2);
 					SControl.turnon(3);
 				}
+<<<<<<< HEAD
+			} else if (gui.getBegin() == false) {
+=======
 			} else if (gui.getEnabled() == false) {
-
+>>>>>>> Dev2
 
 				SControl.turnoff(0);
 				SControl.turnoff(1);

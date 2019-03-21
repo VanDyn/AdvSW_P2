@@ -1,7 +1,6 @@
 package Threads;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
@@ -9,10 +8,10 @@ import java.util.Queue;
 
 import RefactoredCode.Interface;
 import RefactoredCode.Order;
+import SharedObjects.ServerControl;
 import SharedObjects.SimTime;
 import main.Log;
 
-import java.util.Observable;
 /**
  * Class to handle the threading for the Queue
  * Orders are read in over time to simulate customers joining the queue
@@ -24,13 +23,21 @@ public class CafeQueue extends Thread implements Subject{
 	private Queue<Order> queue = new LinkedList<>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
 	private SimTime time;
+
+	private ServerControl control;
 	
 	Interface i;
 	
 	public CafeQueue(Interface i, SimTime t){
 		this.i = i;
+		this.time = t;
+	}
+	
+	public CafeQueue(Interface i, SimTime t, ServerControl q){
+		this.i = i;
 		//this.queue = new ArrayList<>();
 		this.time = t;
+		this.control = q;
 	}
 	
 
@@ -54,11 +61,12 @@ public class CafeQueue extends Thread implements Subject{
 				Thread.sleep(time.get());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+				}
+			
 			}
 		}
-		
-	}
-	
+			
+
 	/*
 	 * Adds an order to the queue
 	 */

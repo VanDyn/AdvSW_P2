@@ -1,7 +1,6 @@
 package Threads;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
@@ -9,28 +8,37 @@ import java.util.Queue;
 
 import RefactoredCode.Interface;
 import RefactoredCode.Order;
+import SharedObjects.ServerControl;
 import SharedObjects.SimTime;
 import main.Log;
 
-import java.util.Observable;
-
+/**
+ * Class to handle the threading for the Queue
+ * Orders are read in over time to simulate customers joining the queue
+ * @author calumthompson
+ *
+ */
 public class CafeQueue extends Thread implements Subject{
 
 	private Queue<Order> queue = new LinkedList<>();
 	private List<Observer> registeredObservers = new ArrayList<Observer>();
 	private SimTime time;
+<<<<<<< HEAD
 	
 	Interface i;
 	
-<<<<<<< HEAD:Code/Part_2/src/Threads/CafeQueue.java
 	public CafeQueue(Interface i, SimTime t){
-		//this.i = i;
-=======
-	CafeQueue(Interface i, SimTime t){
 		this.i = i;
->>>>>>> priorityQ:Code/Part_2/src/main/CafeQueue.java
+=======
+	private ServerControl control;
+	//Interface i;
+	
+	public CafeQueue(Interface i, SimTime t, ServerControl q){
+		//this.i = i;
+>>>>>>> Dev2
 		//this.queue = new ArrayList<>();
 		this.time = t;
+		this.control = q;
 	}
 	
 
@@ -41,38 +49,44 @@ public class CafeQueue extends Thread implements Subject{
 	 * Thread will sleep inbetween orders being added to delay the simulation.
 	 * @see java.lang.Thread#run()
 	 */
-	public void run() {
-		//System.out.println(Interface.getSize());
-<<<<<<< HEAD:Code/Part_2/src/Threads/CafeQueue.java
+	public void run() {		
 		
-		// ADD EXCEPTION FOR EMPTY QUEUE
-		
+		/*addToQueue();
 		addToQueue();
 		addToQueue();
-		addToQueue();
-		
-		while(Interface.getSize() != 0) {// && queue.size() != 0) {
-=======
-		while(i.getSize() != 0) {// && queue.size() != 0) {
->>>>>>> priorityQ:Code/Part_2/src/main/CafeQueue.java
+<<<<<<< HEAD
+		*/
+		while(i.getSize() != 0) {
 			addToQueue();
 			notifyObservers();
 			try {
 				Thread.sleep(time.get());
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+=======
+		addToQueue();
+		
+		while(Interface.getSize() != 0) {
+			if(this.control.get(0)==false) {continue;} 
+			else 
+			{
+				addToQueue();
+				notifyObservers();
+				try {
+					Thread.sleep(time.get());
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+>>>>>>> Dev2
 			}
 		}
-		
 	}
-	
+
 	/*
-	 * Add an order to the queue
+	 * Adds an order to the queue
 	 */
 	private synchronized void addToQueue() {
 		Order order = i.getOrder();
-		System.out.println(">Q<" + order.getID() + " has joined the queue");
 		sendToLog(order.getID() + " has joined the queue");
 		queue.add(order);
 	}
@@ -82,11 +96,6 @@ public class CafeQueue extends Thread implements Subject{
 	 * Accessed orders will be removed from the queue.
 	 */
 	public synchronized Order serveCustomer() {
-<<<<<<< HEAD:Code/Part_2/src/Threads/CafeQueue.java
-		//System.out.println(">Q< Serving customer: " + queue.peek().getID());
-=======
-		System.out.println(">Q< Serving customer: " + queue.peek().getID());
->>>>>>> priorityQ:Code/Part_2/src/main/CafeQueue.java
 		sendToLog("Customer Served : " + queue.peek().getID());
 		Order temp = queue.poll();
 		notifyObservers();
@@ -99,6 +108,9 @@ public class CafeQueue extends Thread implements Subject{
 		l.log(details);
 	}
 
+	/**
+	 * Methods to make the class Observable
+	 */
 	public void registerObserver(Observer obs) {
 		registeredObservers.add(obs);
 		
@@ -116,7 +128,7 @@ public class CafeQueue extends Thread implements Subject{
 		
 	}
 	
-	public Queue<Order> getQueue() {
+	public synchronized Queue<Order> getQueue() {
 		return queue;
 	}
 	
@@ -125,15 +137,12 @@ public class CafeQueue extends Thread implements Subject{
 		return queue.size();
 	}
 	
-<<<<<<< HEAD:Code/Part_2/src/Threads/CafeQueue.java
 	public synchronized boolean isEmpty() {
 		return queue.isEmpty();
 	}
 	
-	public synchronized static ArrayList<String> getQueueMembers(){
-=======
+	// return list of the customers in the queue
 	public synchronized ArrayList<String> getQueueMembers(){
->>>>>>> priorityQ:Code/Part_2/src/main/CafeQueue.java
 		ArrayList<String> members = new ArrayList<String>();
 		
 		for(Order m : queue) {
@@ -143,7 +152,8 @@ public class CafeQueue extends Thread implements Subject{
 		return members;
 	}
 	
-	public synchronized static ArrayList<String> getQueueOrders(){
+	// return a list of the number of items each customer has
+	public synchronized ArrayList<String> getQueueOrders(){
 		ArrayList<String> orders = new ArrayList<String>();
 		
 		for(Order n : queue) {
@@ -152,11 +162,5 @@ public class CafeQueue extends Thread implements Subject{
 		
 		return orders;
 	}
-	
-	
-	
-	
-	
-	
 	
 }
