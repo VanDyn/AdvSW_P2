@@ -20,7 +20,7 @@ public class script_orders {
 	String[] name = {"Chloe","Marcus","Susan","Henry","Jenny","Lucy","Alex","Shayne","AJ","Jack","Calum"};
 	
 	//Change this number to increase or decrease the number of orders in the text file
-	int numberOfOrders = 50;
+	int numberOfOrders = 20;
 	
 	public script_orders() {
 		String m = "src/main/exampleMenu.txt";

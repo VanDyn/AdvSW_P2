@@ -31,27 +31,31 @@ public class CaffeineAddictsAndCo {
 	public static OrderList ol;
 
 	public static void main(String[] args) throws NotOnMenuException, CreateNewCustomerException, EmptyLinkedListException {
-		script_orders nn = new script_orders();
+		//script_orders nn = new script_orders();
 
-		String filename = "src/main/existingOrders";
+		String filename = "existingOrders";
 		Interface i = new Interface(filename);
 		ol = new OrderList();
 
 		SimTime t = new SimTime();
-		CafeQueue queue = new CafeQueue(i,t);
-		Boolean[] controlList = {true, true, true, true}; 
-		ServerControl c = new ServerControl(controlList);
+		Boolean[] queueControlList = {true}; 
+		ServerControl q = new ServerControl(queueControlList);
+		CafeQueue queue = new CafeQueue(i,t,q);
 
 		Requests requests = new Requests();
 		KitchenCounter counter = new KitchenCounter();
-
+	
+		Boolean[] serverControlList = {true, true, true, true}; 
+		ServerControl c = new ServerControl(serverControlList);
 		Server server = new Server(queue, t, c, 0,counter,requests);
 		Server server2 = new Server(queue, t, c, 1,counter,requests);
 		Server server3 = new Server(queue, t, c, 2,counter,requests);
 		Server server4 = new Server(queue, t, c, 3,counter,requests);
 
-		KitchenStaff k1 = new KitchenStaff(requests,counter,t,1);
-		KitchenStaff k2 = new KitchenStaff(requests,counter,t,2);
+		Boolean[] kitchenControlList = {true, true}; 
+		ServerControl k = new ServerControl(kitchenControlList);
+		KitchenStaff k1 = new KitchenStaff(requests,counter,t,k,1);
+		KitchenStaff k2 = new KitchenStaff(requests,counter,t,k,2);
 
 		CafeGUI gui = new CafeGUI(queue, server, server2, server3, server4, k1, k2, t);
 		gui.setSize(800, 1000);
@@ -59,7 +63,7 @@ public class CaffeineAddictsAndCo {
 
 		CafeController cafeCon = new CafeController(gui);
 
-		CloseOpenTills cOTill = new CloseOpenTills(c, queue, gui);
+		CloseOpenTills cOTill = new CloseOpenTills(c, k, q, queue, i, gui);
 
 		queue.start();
 		cOTill.start();
