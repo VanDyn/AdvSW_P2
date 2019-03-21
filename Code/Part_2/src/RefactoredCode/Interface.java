@@ -56,8 +56,8 @@ public class Interface {
 				String[] orderLine = str.split("/");
 				
 				//Needed customer info. Is it needed? If so, refactor orderlist
-				String cusInfo = orderLine[0];
-				String[] name = cusInfo.split(";");
+				String name = orderLine[0];
+				//String[] name = cusInfo.split(";");
 //				String time = cusInfo.substring(0, cusInfo.indexOf(";"));
 //				String name = cusInfo.substring(cusInfo.indexOf(":"));
 				//Needed order info (Only need item descriptions) 
@@ -74,7 +74,7 @@ public class Interface {
 				}
 				
 				//Create an order and append to orderList
-				makeOrder(name[1],order,orderTotal);
+				makeOrder(name,order,orderTotal);
 				
 			}		
 			

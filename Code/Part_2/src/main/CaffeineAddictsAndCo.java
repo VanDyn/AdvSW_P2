@@ -15,6 +15,7 @@ import SharedObjects.Requests;
 import SharedObjects.ServerControl;
 import SharedObjects.SimTime;
 import Threads.CafeQueue;
+import Threads.CloseOpenTills;
 import Threads.KitchenStaff;
 import Threads.Server;
 
@@ -38,6 +39,7 @@ public class CaffeineAddictsAndCo {
 	   CafeQueue queue = new CafeQueue(i,t);
 	   Boolean[] controlList = {true, true, true, true}; 
 	   ServerControl c = new ServerControl(controlList);
+	   CloseOpenTills cOTill = new CloseOpenTills(c, queue);
 	   
 	   Requests requests = new Requests();
 	   KitchenCounter counter = new KitchenCounter();
@@ -58,6 +60,7 @@ public class CaffeineAddictsAndCo {
 	   
 	 
 	   queue.start();
+	   cOTill.start();
 	   
 	   server.start();
 	   server2.start();
