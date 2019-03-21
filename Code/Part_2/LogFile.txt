@@ -1,61 +1,51 @@
-Dave has joined the queue
-John has joined the queue
-Kerry has joined the queue
-Ryan has joined the queue
-Customer Served : Dave
-Customer Served : John
-Customer Served : Kerry
-Kitchen Staff are making: Americano
-Processing: Americano total: 0
-Customer Served : Ryan
-Kitchen Staff are making: Espresso
-Kitchen Staff are making: Americano
-Kitchen Staff are making: Black Tea
-Dillon has joined the queue
-Processing: Americano total: 0
-Processing: Espresso total: 0
-Processing: Black Tea total: 0
-Kitchen Staff are making: Chocolate Cookie
-Chris has joined the queue
-Kitchen Staff are making: Americano
-Processing: Chocolate Cookie total: 0
-Kitchen Staff are making: Americano
-Customer Served : Dillon
-Kitchen Staff are making: Brownie
-Darren has joined the queue
-Processing: Americano total: 0
-Processing: Americano total: 0
-Customer Served : Chris
-Processing: Brownie total: 0
-Kitchen Staff are making: Ham and Cheese
-Kayleigh has joined the queue
-Customer Served : Darren
-Kitchen Staff are making: Latte
-Processing: Ham and Cheese total: 0
+Henry has joined the queue
+Marcus has joined the queue
+Chloe has joined the queue
+Henry has joined the queue
+Marcus has joined the queue
+Henry has joined the queue
+Customer Served : Henry
+Customer Served : Marcus
+Customer Served : Chloe
+Customer Served : Henry
 Kitchen Staff are making: Blueberry Muffin
-Kitchen Staff are making: Brownie
-Processing: Latte total: 0
-Rebecca has joined the queue
-Processing: Blueberry Muffin total: 0
-Processing: Brownie total: 0
-Kitchen Staff are making: Latte
-Customer Served : Kayleigh
-Ryan has joined the queue
 Kitchen Staff are making: Espresso
-Kitchen Staff are making: Iced Tea
-Processing: Latte total: 0
-Kitchen Staff are making: Brownie
-Processing: Espresso total: 0
-Processing: Iced Tea total: 0
-Customer Served : Rebecca
-Kitchen Staff are making: Black Tea
-Processing: Brownie total: 0
-Processing: Black Tea total: 0
-Customer Served : Ryan
-Kitchen Staff are making: Black Tea
+Susan has joined the queue
+Kitchen Staff have made: Blueberry Muffin
+Kitchen Staff have made: Espresso
+Kitchen Staff are making: Earl Grey
 Kitchen Staff are making: Egg
-Processing: Black Tea total: 0
-Processing: Egg total: 0
-Kitchen Staff are making: Black Tea
-Processing: Black Tea total: 0
-Kitchen Staff are making: Black Tea
+Kitchen Staff have made: Earl Grey
+Kitchen Staff have made: Egg
+Processing: Blueberry Muffin total: 1.50
+Processing: Egg total: 4.00
+Processing: Earl Grey total: 2.10
+Processing: Espresso total: 2.10
+Marcus has joined the queue
+Customer Served : Marcus
+Kitchen Staff are making: Espresso
+Kitchen Staff are making: Latte
+Marcus has joined the queue
+Kitchen Staff have made: Espresso
+Kitchen Staff are making: Chocolate Cookie
+Kitchen Staff have made: Latte
+Kitchen Staff have made: Chocolate Cookie
+Processing: Espresso total: 3.60
+Processing: Latte total: 3.00
+Processing: Chocolate Cookie total: 3.20
+Chloe has joined the queue
+Kitchen Staff are making: Egg
+Kitchen Staff are making: Chocolate Cookie
+Kitchen Staff have made: Egg
+Kitchen Staff are making: Espresso
+Kitchen Staff have made: Chocolate Cookie
+Chloe has joined the queue
+Customer Served : Henry
+Kitchen Staff have made: Espresso
+Kitchen Staff are making: Ham and Cheese
+Kitchen Staff have made: Ham and Cheese
+Processing: Egg total: 7.60
+Processing: Chocolate Cookie total: 4.10
+Processing: Espresso total: 5.30
+Susan has joined the queue
+Processing: Ham and Cheese total: 3.39

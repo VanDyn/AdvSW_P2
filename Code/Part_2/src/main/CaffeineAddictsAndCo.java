@@ -39,7 +39,7 @@ public class CaffeineAddictsAndCo {
 	   CafeQueue queue = new CafeQueue(i,t);
 	   Boolean[] controlList = {true, true, true, true}; 
 	   ServerControl c = new ServerControl(controlList);
-	   CloseOpenTills cOTill = new CloseOpenTills(c, queue);
+	  
 	   
 	   Requests requests = new Requests();
 	   KitchenCounter counter = new KitchenCounter();
@@ -58,6 +58,7 @@ public class CaffeineAddictsAndCo {
 		
 	   CafeController cafeCon = new CafeController(gui);
 	   
+	   CloseOpenTills cOTill = new CloseOpenTills(c, queue, gui);
 	 
 	   queue.start();
 	   cOTill.start();
