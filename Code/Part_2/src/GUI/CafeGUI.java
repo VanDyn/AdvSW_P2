@@ -147,8 +147,8 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 		JPanel panel3 = new JPanel();
 		panel3.setLayout(new GridLayout(1, 2));
 
-		tillOne = new JLabel("Till, Till 3 & Kitchen 1");
-		tillTwo = new JLabel("Till, Till 4 & Kitchen 2");
+		tillOne = new JLabel("Till 1, Till 3 & Kitchen 1");
+		tillTwo = new JLabel("Till 2, Till 4 & Kitchen 2");
 		tillOne.setHorizontalAlignment(JLabel.CENTER);
 		tillTwo.setHorizontalAlignment(JLabel.CENTER);
 		tillOne.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
@@ -258,8 +258,6 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 */
 	public void actionPerformed(ActionEvent e) {
 
-		System.out.println(e.getActionCommand()); // REMEMBER TO DELETE THIS
-
 		if (e.getSource() == start) {
 
 			begin = true;
@@ -273,11 +271,13 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 		}else if(e.getSource() == faster) {
 			
-			time.put(time.get()-500);  // Add exception here
+			if(time.get() > 0) {time.put(time.get()-500);}  // Limit 0 -> 3000ms delay
+			System.out.println("Speed up. Delay time: " + (time.get()));
 			
 		}else if(e.getSource() == slower){
-			
-			time.put(time.get() +500); // Add exception here.
+			if(time.get() < 2500) {time.put(time.get() +500);}
+			System.out.println("Slow down. Delay time: " + (time.get()));
+
 		}
 
 	}
