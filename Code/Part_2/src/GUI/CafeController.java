@@ -30,8 +30,6 @@ import Threads.Server;
 public class CafeController {
 
 	private static CafeGUI gui;
-	// private Server server;
-	// private CafeQueue queue;
 	private static String temp;
 	private static String temp2;
 	private static String temp3;
@@ -43,7 +41,8 @@ public class CafeController {
 	private static String format = "%1$10s %2$-20s";
 
 	/**
-	 * Takes an instance of CafeGUI and acts as the controller between the GUI and CafeQueue, Server, KitchenStaff
+	 * Takes an instance of CafeGUI and acts as the controller between the GUI
+	 * and CafeQueue, Server, KitchenStaff
 	 * 
 	 * @param gui
 	 * 

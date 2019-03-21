@@ -60,8 +60,8 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	private SimTime time;
 
 	/**
-	 * CafeGUI constructor which takes the CafeQueue and multiple instances of Server  and KitchenStaff classes
-	 * to observe.
+	 * CafeGUI constructor which takes the CafeQueue and multiple instances of
+	 * Server and KitchenStaff classes to observe.
 	 * 
 	 * @param queue
 	 * @param server
@@ -268,8 +268,6 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 */
 	public void actionPerformed(ActionEvent e) {
 
-		System.out.println(e.getActionCommand()); // REMEMBER TO DELETE THIS
-
 		if (e.getSource() == start) {
 
 			begin = true;
@@ -282,27 +280,31 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 			makeLog();
 
 		} else if (e.getSource() == faster) {
-			if (time.get() > 1000){
+			if (time.get() > 1000) {
 				time.put(time.get() - 500);
 			}
 		} else if (e.getSource() == slower) {
 
-			time.put(time.get() + 500); 
+			time.put(time.get() + 500);
 		}
 
 	}
+
 	/**
-	 * Getter method which returns a boolean 
+	 * Getter method which returns a boolean
+	 * 
 	 * @return begin
 	 */
-	public boolean getBegin(){
+	public boolean getBegin() {
 		return begin;
 	}
+
 	/**
-	 * Getter method which returns a boolean 
+	 * Getter method which returns a boolean
+	 * 
 	 * @return end
 	 */
-	public boolean getEnd(){
+	public boolean getEnd() {
 		return end;
 	}
 
@@ -401,18 +403,17 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 	 * JTextArea on a new line
 	 * 
 	 * @param s
-	 *            - String
 	 * @param j
-	 *            - JTextArea
+	 * 
 	 */
 	public void printToDisplay(String s, JTextArea j) {
 		j.append("\n" + s);
 	}
 
 	/**
-	 * Clears all text from the specified JTextField
+	 * Clears all text from the specified JTextArea
 	 * 
-	 * @param j
+	 * @param JTextArea
 	 */
 	public void clearDisplay(JTextArea j) {
 		j.setText("");
@@ -420,7 +421,7 @@ public class CafeGUI extends JFrame implements ActionListener, Observer {
 
 	/**
 	 * This method will update the GUI displays when any change is observed in
-	 * either the Server or CafeQueue classes.
+	 * either the Server, CafeQueue or KitchenStaff classes.
 	 * 
 	 */
 	public synchronized void update(Observable arg0, Object arg1) {
